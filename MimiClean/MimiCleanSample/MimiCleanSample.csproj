@@ -9,4 +9,8 @@
     <RootNamespace>StudioIdGames.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\MimiClean\MimiClean.csproj" />
+  </ItemGroup>
+
 </Project>
