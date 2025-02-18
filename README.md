@@ -1,2 +1,2 @@
 # MimiClean
-Simple Clean Architecture Project
+Simple Clean-like Architecture Library for C#.
