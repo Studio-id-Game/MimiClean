@@ -4,6 +4,28 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <RootNamespace>StudioIdGames.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
     <AssemblyName>StudioIdGames.$(MSBuildProjectName)</AssemblyName>
+    <Company>StudioIdGames</Company>
+    <Authors>K.Hiroya</Authors>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <VersionPrefix>0.1.0.0</VersionPrefix>
+    <VersionSuffix>bata</VersionSuffix>
+    <Title>MimiClean</Title>
+    <Description>C# Simple clean-like architecture</Description>
+    <PackageProjectUrl>https://github.com/Studio-id-Game/MimiClean</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Studio-id-Game/MimiClean</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
