@@ -3,7 +3,7 @@
 namespace StudioIdGames.MimiClean
 {
     /// <summary>
-    /// 代替可能でシングルトン（static）な機能のGenericsDictionlay。
+    /// Static Type Caching を利用して、<see cref="Singleton{TInterface, TSelf}"/>で実装された機能を管理します。
     /// </summary>
     internal static class SingletonMap<TInterface>
         where TInterface : class

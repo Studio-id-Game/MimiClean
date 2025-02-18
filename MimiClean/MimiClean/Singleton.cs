@@ -4,6 +4,7 @@ namespace StudioIdGames.MimiClean
 {
     /// <summary>
     /// 代替可能でシングルトン（static）な機能を抽象化する事が出来ます。
+    /// <see cref="SingletonMap{TInterface}"/> を用いて Static Type Caching を行います。
     /// </summary>
     public abstract class Singleton<TInterface, TSelf>
         where TInterface : class
