@@ -1,8 +1,9 @@
 [English README is here](/README-en.md)
 
 # MimiClean
-シンプルな、クリーンアーキテクチャ風の仕組みを提供するC#ライブラリです。
-Developed by hirohiroj3cub.
+クリーンアーキテクチャ風の仕組みを提供する、シンプルな C# (.NET Standerd 2.0) 向けライブラリです。
+
+Developed by Studio-id-Games, hirohiroj3cub.
 
 # 用途
 このライブラリは以下のような目的に利用できます。
@@ -14,13 +15,12 @@ Developed by hirohiroj3cub.
 - Dependency Injection っぽい依存関係解消手段
 - レールウェイ指向（Railway-Oriented） っぽいエラーハンドリング
 - Clean Architecture っぽい階層設計構造
-  - Domain, App(lication), Adapter の三層構造
   - Domain：システムの概念スケールでの設計
     - Entity：概念スケールのオブジェクト
       - EntityModule/EntityModuleSet : Entityの部分的機能を分割・共有するための機能
     - Service : DIの為のアクセスポイント
   - App(lication) : 動作スケールでの設計
-    - Interactor/Usecase : 動作の定義と実装
+    - Usecase/Interactor : 動作の定義と実装
     - Repository : データアクセスの定義
   - Adapter : 環境スケールでの設計
     - Gateway : 環境にあわせた入力の実装
@@ -37,9 +37,9 @@ Developed by hirohiroj3cub.
 # 利用方法
 MITライセンスです。今はReleaseを出していないので、各自 VisualStudio 等でビルドして、お好きな場所にdllを配置・参照してご利用ください。.Net Standerd2.0で作成しているので様々な環境で利用できます。
 
-各クラスの利用方法は、Sampleプロジェクトをご参照ください。後日、ReleaceやAPIリファレンス、簡単な導入例のドキュメント等も整備する予定です。
+各クラスの利用方法は、[Sampleプロジェクト](/MimiClean/MimiCleanSample)をご参照ください。後日、compile済み.dllの配布やAPIリファレンス、簡単な導入例のドキュメント等も整備する予定です。
 
 # 開発背景
 基本的にはゲーム開発（Unityや、自作開発ツール）の為に作成しました。色々と厳密に定義しようとすると実装も利用も面倒なので、可能な限り簡略化して利用しやすいライブラリを目指しています。
 
-バグや機能要望があれば、お気軽にIsuueください！
+バグや機能要望があれば、[お気軽にIsuueください！](https://github.com/Studio-id-Game/MimiClean/issues)
