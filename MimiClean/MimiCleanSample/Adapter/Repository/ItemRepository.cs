@@ -8,6 +8,9 @@ namespace StudioIdGames.MimiCleanSample.Adapter.Repository
         protected override IList<ItemEntity> List { get; } = [];
     }
 
+    /// <summary>
+    /// Dummy Test
+    /// </summary>
     internal class ItemRepository02 : ItemRepositoryAbstract<ItemRepository02>
     {
         //You can develop other List class for another way.
