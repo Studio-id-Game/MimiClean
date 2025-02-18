@@ -19,7 +19,7 @@ namespace StudioIdGames.MimiClean
             {
                 if (IsEmpty)
                 {
-                    throw new InvalidOperationException($"Need set instance before this operation. ({typeof(TInterface)})");
+                    throw new InvalidOperationException($"Need to call `Use()` before accessing {typeof(TInterface)}.");
                 }
 
                 return instance;
