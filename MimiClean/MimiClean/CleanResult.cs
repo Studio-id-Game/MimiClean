@@ -1,5 +1,8 @@
 ﻿namespace StudioIdGames.MimiClean
 {
+    /// <summary>
+    /// レールウェイ指向プログラミング（Railway-Oriented Programming, ROP）に基づいたエラーハンドリングを提供します。
+    /// </summary>
     public static class CleanResult
     {
         public readonly struct Void { }
@@ -11,8 +14,17 @@
         public static CleanResult<Void> Failed(CleanResultError error) => CleanResult<Void>.Failed(error);
     }
 
+    /// <summary>
+    /// レールウェイ指向プログラミング（Railway-Oriented Programming, ROP）に基づいたエラーハンドリングを提供します。
+    /// </summary>
+    /// <typeparam name="TResult"></typeparam>
     public readonly ref struct CleanResult<TResult>
     {
+        public class CleanResultCastError<T> : CleanResultError
+        {
+            public override string Message => $"Can't cast {typeof(TResult).Name} to {typeof(T).Name}";
+        }
+
         public CleanResult(CleanResultState state, TResult result, CleanResultError error)
         {
             State = state;
@@ -32,7 +44,7 @@
 
         public bool IsFailed => State == CleanResultState.Failed;
 
-        public CleanResultState TryGet(out TResult result)
+        public CleanResultState TryGetValue(out TResult result)
         {
             result = Result;
             return State;
@@ -55,7 +67,16 @@
 
         public CleanResult<T> As<T>()
         {
-            return Result is T resultT ? As(resultT) : As<T>(default);
+            return Result is T resultT ? As(resultT) : CleanResult<T>.Failed(new CleanResultCastError<T>());
+        }
+
+        public CleanResultBoxed<TResult> Box() => new CleanResultBoxed<TResult>(State, Result, Error);
+
+        public override string ToString()
+        {
+            var stateText = IsSuccess ? "Success" : IsFailed ? $"Failed: {Error?.Message ?? "<unknown error>"}" : "Canceled";
+            var resultText = Result.ToString() ?? "<null>";
+            return $"[{stateText}] {resultText}";
         }
 
         public static bool operator true(CleanResult<TResult> t) { return t.State == CleanResultState.Success; }
@@ -69,4 +90,3 @@
         public static CleanResult<TResult> Failed(CleanResultError error) => new CleanResult<TResult>(CleanResultState.Failed, default, error);
     }
 }
-
