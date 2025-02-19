@@ -3,40 +3,22 @@
     /// <summary>
     /// UseCaseを実装します。
     /// </summary>
-    /// <typeparam name="TInputData">入力構造体</typeparam>
-    /// <typeparam name="TOutputData">出力構造体</typeparam>
-    public abstract class Interactor<TInputData, TOutputData> : IUseCase<TInputData, TOutputData>
+    /// <typeparam name="TInput">入力オブジェクト</typeparam>
+    /// <typeparam name="TOutput">出力オブジェクト</typeparam>
+    public abstract class Interactor<TInput, TOutput> : IUseCase<TInput, TOutput>
     {
-        public abstract class InteractorError : CleanResultError
+        /// <inheritdoc/>
+        public virtual CleanResult<TOutput> Excute(in CleanResult<TInput> input)
         {
-            public Interactor<TInputData, TOutputData> Interactor { get; }
-
-            protected InteractorError(Interactor<TInputData, TOutputData> interactor)
-            {
-                Interactor = interactor;
-            }
-        }
-
-        public sealed class NotImplementedInteractorError : InteractorError
-        {
-            public NotImplementedInteractorError(Interactor<TInputData, TOutputData> interactor) : base(interactor)
-            {
-            }
-
-            public override string Message => $"the class {Interactor.GetType().Name} is not implemented.";
-        }
-
-        public virtual CleanResult<TOutputData> Excute(in CleanResult<TInputData> input)
-        {
-            return CleanResult<TOutputData>.Failed(new NotImplementedInteractorError(this));
+            return CleanResult<TOutput>.Failed(new InteractorError.NotImplemented(this));
         }
     }
 
     /// <summary>
-    /// UseCaseを実装します。
+    /// 出力のないUseCaseを実装します。
     /// </summary>
-    /// <typeparam name="TInputData">入力構造体</typeparam>
-    public abstract class Interactor<TInputData> : Interactor<TInputData, CleanResult.Void>, IUseCase<TInputData>
+    /// <typeparam name="TInput">入力オブジェクト</typeparam>
+    public abstract class Interactor<TInput> : Interactor<TInput, CleanResult.Void>, IUseCase<TInput>
     {
     }
 }

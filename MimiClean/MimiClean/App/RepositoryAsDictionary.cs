@@ -3,7 +3,12 @@ using System.Collections.Generic;
 
 namespace StudioIdGames.MimiClean.App
 {
-    public abstract class RepositoryAsDictionary<TInterface, TSelf, TKey, TValue> : Repository<TInterface, TSelf, TValue>, IDictionary<TKey, TValue>, IRepositoryAsDictionary<TKey, TValue>
+    /// <summary>
+    /// Key-Value Pair型のデータストアを表現する為の抽象クラスです。
+    /// </summary>
+    /// <typeparam name="TKey">インデックスの型</typeparam>
+    /// <typeparam name="TValue">要素の型</typeparam>
+    public abstract class RepositoryAsDictionary<TInterface, TSelf, TKey, TValue> : Repository<TInterface, TSelf, KeyValuePair<TKey, TValue>>, IDictionary<TKey, TValue>, IRepositoryAsDictionary<TKey, TValue>
         where TInterface : class, IRepositoryAsDictionary<TKey, TValue>
         where TSelf : RepositoryAsDictionary<TInterface, TSelf, TKey, TValue>, TInterface, new()
     {
@@ -49,7 +54,7 @@ namespace StudioIdGames.MimiClean.App
             Pairs.CopyTo(array, arrayIndex);
         }
 
-        public IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
+        public override IEnumerator<KeyValuePair<TKey, TValue>> GetEnumerator()
         {
             return Pairs.GetEnumerator();
         }

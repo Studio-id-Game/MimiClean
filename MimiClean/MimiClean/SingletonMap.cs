@@ -5,6 +5,7 @@ namespace StudioIdGames.MimiClean
     /// <summary>
     /// Static Type Caching を利用して、<see cref="Singleton{TInterface, TSelf}"/>で実装された機能を管理します。
     /// </summary>
+    /// <typeparam name="TInterface">機能を定義しているインターフェース</typeparam>
     internal static class SingletonMap<TInterface>
         where TInterface : class
     {

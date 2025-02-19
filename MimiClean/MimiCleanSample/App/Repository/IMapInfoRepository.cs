@@ -3,7 +3,7 @@ using StudioIdGames.MimiCleanSample.Domain;
 
 namespace StudioIdGames.MimiCleanSample.App.Repository
 {
-    interface IMapInfoRepository : IRepositoryAsSingle<MapInfoEntity>
+    internal interface IMapInfoRepository : IRepositoryAsSingle<MapInfoEntity>
     {
 
     }
