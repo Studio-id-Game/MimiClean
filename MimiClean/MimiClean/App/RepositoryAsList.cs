@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 namespace StudioIdGames.MimiClean.App
 {
+    /// <summary>
+    /// List型のデータストアを表現する為の抽象クラスです。
+    /// </summary>
+    /// <typeparam name="TValue">要素の型</typeparam>
     public abstract class RepositoryAsList<TInterface, TSelf, TValue> : Repository<TInterface, TSelf, TValue>, IList<TValue>, IRepositoryAsList<TValue>
         where TInterface : class, IRepositoryAsList<TValue>
         where TSelf : RepositoryAsList<TInterface, TSelf, TValue>, TInterface, new()
@@ -34,7 +38,7 @@ namespace StudioIdGames.MimiClean.App
             List.CopyTo(array, arrayIndex);
         }
 
-        public IEnumerator<TValue> GetEnumerator()
+        public override IEnumerator<TValue> GetEnumerator()
         {
             return List.GetEnumerator();
         }
