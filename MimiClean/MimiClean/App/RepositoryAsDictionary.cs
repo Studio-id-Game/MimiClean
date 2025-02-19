@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using StudioIdGames.MimiClean.Domain;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace StudioIdGames.MimiClean.App

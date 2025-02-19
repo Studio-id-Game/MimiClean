@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace StudioIdGames.MimiClean.App
+namespace StudioIdGames.MimiClean.Domain
 {
     /// <summary>
     /// データストアを表現する為のインターフェースです。

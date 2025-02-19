@@ -1,4 +1,6 @@
-﻿namespace StudioIdGames.MimiClean.Domain
+﻿using StudioIdGames.MimiClean.App;
+
+namespace StudioIdGames.MimiClean.Domain
 {
     /// <summary>
     /// ベクトル演算など、完全な依存性注入が困難なフレームワーク機能をサービスとして提供します。

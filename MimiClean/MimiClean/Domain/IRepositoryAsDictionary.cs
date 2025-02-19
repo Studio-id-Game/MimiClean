@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StudioIdGames.MimiClean.App
+namespace StudioIdGames.MimiClean.Domain
 {
     /// <summary>
     /// Key-Value Pair型のデータストアを表現する為のインターフェースです。
