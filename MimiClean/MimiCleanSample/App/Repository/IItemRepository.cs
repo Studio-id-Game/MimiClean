@@ -1,4 +1,4 @@
-﻿using StudioIdGames.MimiClean.App;
+﻿using StudioIdGames.MimiClean.Domain;
 using StudioIdGames.MimiCleanSample.Domain;
 
 namespace StudioIdGames.MimiCleanSample.App.Repository

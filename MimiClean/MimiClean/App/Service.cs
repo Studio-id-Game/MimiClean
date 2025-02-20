@@ -1,4 +1,6 @@
-﻿namespace StudioIdGames.MimiClean.Domain
+﻿using StudioIdGames.MimiClean.Domain;
+
+namespace StudioIdGames.MimiClean.App
 {
     /// <summary>
     /// 現在利用されている<see cref="IService"/>インスタンスへのシンプルなアクセスを提供します。

@@ -1,5 +1,5 @@
 ﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain;
+using StudioIdGames.MimiClean.App;
 using StudioIdGames.MimiCleanSample.Adapter.Controller;
 using StudioIdGames.MimiCleanSample.App.Service;
 using StudioIdGames.MimiCleanSample.Domain.Type;

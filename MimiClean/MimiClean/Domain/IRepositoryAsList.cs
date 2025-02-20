@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace StudioIdGames.MimiClean.App
+namespace StudioIdGames.MimiClean.Domain
 {
     /// <summary>
     /// List型のデータストアを表現する為のインターフェースです。
