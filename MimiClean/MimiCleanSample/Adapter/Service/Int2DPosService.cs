@@ -3,7 +3,7 @@ using StudioIdGames.MimiCleanSample.Domain.Service;
 
 namespace StudioIdGames.MimiCleanSample.Adapter.Service
 {
-    public class Int2DPosService01 : Service<IInt2DPosService, Int2DPosService01>, IInt2DPosService
+    internal class Int2DPosService01 : Service<IInt2DPosService, Int2DPosService01>, IInt2DPosService
     {
         public (int x, int y) Add((int x, int y) a, (int x, int y) b)
         {
@@ -14,7 +14,7 @@ namespace StudioIdGames.MimiCleanSample.Adapter.Service
     /// <summary>
     /// Dummy Test
     /// </summary>
-    public class Int2DPosService02 : Service<IInt2DPosService, Int2DPosService02>, IInt2DPosService
+    internal class Int2DPosService02 : Service<IInt2DPosService, Int2DPosService02>, IInt2DPosService
     {
         /// <summary>
         /// Dummy Test
