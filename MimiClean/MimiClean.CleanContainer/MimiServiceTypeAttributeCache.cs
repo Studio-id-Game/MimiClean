@@ -49,6 +49,4 @@ namespace StudioIdGames.MimiClean.CleanContainer
             return ret;
         }
     }
-
-
 }
