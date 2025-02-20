@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using StudioIdGames.MimiClean.CleanContainer;
+using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiClean.CleanContainerSample
+namespace StudioIdGames.MimiCleanContainerSample
 {
     internal class Program
     {

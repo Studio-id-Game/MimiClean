@@ -1,4 +1,4 @@
-﻿namespace StudioIdGames.MimiClean.CleanContainer
+﻿namespace StudioIdGames.MimiCleanContainer
 {
     public enum MimiServiceType
     {

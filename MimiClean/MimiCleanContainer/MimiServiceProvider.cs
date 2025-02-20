@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StudioIdGames.MimiClean.CleanContainer
+namespace StudioIdGames.MimiCleanContainer
 {
     public class MimiServiceProvider : IServiceProvider
     {

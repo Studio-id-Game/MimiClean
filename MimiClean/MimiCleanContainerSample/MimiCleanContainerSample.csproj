@@ -10,7 +10,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\MimiClean.CleanContainer\MimiClean.CleanContainer.csproj" />
+	  <ProjectReference Include="..\MimiCleanContainer\MimiCleanContainer.csproj" />
 	</ItemGroup>
 
 </Project>

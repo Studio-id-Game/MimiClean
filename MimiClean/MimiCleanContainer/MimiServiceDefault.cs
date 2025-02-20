@@ -1,7 +1,7 @@
 ﻿using System;
 
 
-namespace StudioIdGames.MimiClean.CleanContainer
+namespace StudioIdGames.MimiCleanContainer
 {
     public static class MimiServiceDefault<TInterface>
             where TInterface : class, IMimiService

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StudioIdGames.MimiClean.CleanContainer
+namespace StudioIdGames.MimiCleanContainer
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, Inherited = true, AllowMultiple = false)]
     public sealed class MimiServiceTypeAttribute : Attribute

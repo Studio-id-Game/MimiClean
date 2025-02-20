@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-namespace StudioIdGames.MimiClean.CleanContainer
+namespace StudioIdGames.MimiCleanContainer
 {
     public static class MimiServiceProviderExtension
     {

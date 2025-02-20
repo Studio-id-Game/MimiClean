@@ -1,4 +1,4 @@
-﻿namespace StudioIdGames.MimiClean.CleanContainerSample
+﻿namespace StudioIdGames.MimiCleanContainerSample
 {
     internal class Service01 : IService01
     {

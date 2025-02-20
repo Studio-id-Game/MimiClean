@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StudioIdGames.MimiClean.CleanContainer
+namespace StudioIdGames.MimiCleanContainer
 {
     /// <summary>
     /// Static Type Caching を利用して、<see cref="StaticService{TInterface, TSelf}"/>で実装された機能を管理します。

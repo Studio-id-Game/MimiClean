@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Reflection;
 
-namespace StudioIdGames.MimiClean.CleanContainer
+namespace StudioIdGames.MimiCleanContainer
 {
     internal static class MimiServiceTypeAttributeCache
     {

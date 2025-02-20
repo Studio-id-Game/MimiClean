@@ -1,6 +1,6 @@
-﻿using StudioIdGames.MimiClean.CleanContainer;
+﻿using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiClean.CleanContainerSample
+namespace StudioIdGames.MimiCleanContainerSample
 {
     internal class Service02(IServiceProvider provider) : IService02
     {
