@@ -8,13 +8,14 @@ namespace StudioIdGames.MimiCleanContainer
         public static T GetMimiService<T>(this IServiceProvider serviceProvider)
             where T : class, IMimiService
         {
-            var serviceType = MimiServiceTypeAttributeCache.Get<T>();
-            if (serviceType == MimiServiceType.Static)
+            if (StaticServices<T>.IsUsed)
             {
+                //Console.WriteLine($"Get {typeof(T).Name} from Instance");
                 return StaticServices<T>.Instance;
             }
             else
             {
+                //Console.WriteLine($"Get {typeof(T).Name} from Provider");
                 return (T)serviceProvider.GetService(typeof(T));
             }
         }

@@ -2,7 +2,7 @@
 
 namespace StudioIdGames.MimiCleanContainerSample
 {
-    internal interface IService02 : ITransientService
+    internal interface IService02 : IStaticService
     {
         public void Set(string t);
 

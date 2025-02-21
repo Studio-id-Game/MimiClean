@@ -10,9 +10,7 @@ namespace StudioIdGames.MimiCleanContainer
             public static readonly Lazy<MimiServiceType> serviceType = new Lazy<MimiServiceType>(() =>
             {
                 var att = GetAttribute(typeof(T));
-                if (att == null) return MimiServiceType.None;
-                return att.ServiceType;
-
+                return att == null ? MimiServiceType.None : att.ServiceType;
             });
         }
 

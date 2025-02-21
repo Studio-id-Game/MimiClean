@@ -10,6 +10,7 @@ namespace StudioIdGames.MimiCleanContainer
         where TInterface : class, IMimiService
     {
         private static TInterface instance;
+        private static bool isUsed;
         private static readonly object lockObj = new object();
 
         /// <summary>
@@ -34,6 +35,7 @@ namespace StudioIdGames.MimiCleanContainer
                 lock (lockObj)
                 {
                     instance = value;
+                    isUsed = instance != null;
                 }
             }
         }
@@ -44,7 +46,7 @@ namespace StudioIdGames.MimiCleanContainer
             {
                 lock (lockObj)
                 {
-                    return instance != null;
+                    return isUsed;
                 }
             }
         }

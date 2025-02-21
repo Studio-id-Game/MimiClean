@@ -1,7 +1,42 @@
-﻿namespace StudioIdGames.MimiCleanContainerSample
+﻿using StudioIdGames.MimiCleanContainer;
+
+namespace StudioIdGames.MimiCleanContainerSample
 {
-    internal class Service01 : IService01
+    internal class Service01_1 : IService01
     {
-        public string Text { get; set; } = "DEFAULT";
+        private string text = "DEFAULT-1";
+
+        public string Text { get => "[01_1]" + text; set => text = value; }
+    }
+
+    internal class Service01_2 : IService01
+    {
+        private string text = "DEFAULT-2";
+
+        public string Text { get => "[01_2]" + text; set => text = value; }
+    }
+
+    [MimiServiceType(MimiServiceType.Singleton)]
+    internal class Service01_Singleton : IService01
+    {
+        private string text = "DEFAULT-Singleton";
+
+        public string Text { get => "[01_Singleton]" + text; set => text = value; }
+    }
+
+    [MimiServiceType(MimiServiceType.Scoped)]
+    internal class Service01_Scoped : IService01
+    {
+        private string text = "DEFAULT-Scoped";
+
+        public string Text { get => "[01_Scoped]" + text; set => text = value; }
+    }
+
+    [MimiServiceType(MimiServiceType.Transient)]
+    internal class Service01_Transient : IService01
+    {
+        private string text = "DEFAULT-Transient";
+
+        public string Text { get => "[01_Transient]" + text; set => text = value; }
     }
 }
