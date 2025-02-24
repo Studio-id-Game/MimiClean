@@ -11,7 +11,6 @@ namespace StudioIdGames.MimiCleanContainer
     {
         private static TInterface instance;
         private static bool isUsed;
-        private static readonly object lockObj = new object();
 
         /// <summary>
         /// <see cref="TInterface"/>として利用するインスタンス。nullを取得しようとした場合エラーをスローします。
@@ -20,23 +19,16 @@ namespace StudioIdGames.MimiCleanContainer
         {
             get
             {
-                lock (lockObj)
-                {
-                    if (instance == null)
-                    {
-                        throw new InvalidOperationException($"Need to set Instance before accessing {typeof(TInterface)}.");
-                    }
-
-                    return instance;
-                }
+                return instance ?? throw new InvalidOperationException($"Need to set Instance before accessing {typeof(TInterface)}.");
             }
             set
             {
-                lock (lockObj)
+                if (isUsed)
                 {
-                    instance = value;
-                    isUsed = instance != null;
+                    throw new InvalidOperationException($"Can't set twice Instance property.");
                 }
+                instance = value;
+                isUsed = instance != null;
             }
         }
 
@@ -44,10 +36,7 @@ namespace StudioIdGames.MimiCleanContainer
         {
             get
             {
-                lock (lockObj)
-                {
-                    return isUsed;
-                }
+                return isUsed;
             }
         }
     }

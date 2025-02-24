@@ -10,12 +10,10 @@ namespace StudioIdGames.MimiCleanContainer
         {
             if (StaticServices<T>.IsUsed)
             {
-                //Console.WriteLine($"Get {typeof(T).Name} from Instance");
                 return StaticServices<T>.Instance;
             }
             else
             {
-                //Console.WriteLine($"Get {typeof(T).Name} from Provider");
                 return (T)serviceProvider.GetService(typeof(T));
             }
         }
