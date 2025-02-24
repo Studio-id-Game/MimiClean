@@ -48,7 +48,7 @@ namespace StudioIdGames.MimiCleanContainerSample
 
         public class PerformanceTest
         {
-            const int COUNT = 10000;
+            private const int COUNT = 10000;
 
             /// <summary>
             /// [BenchmarkDotNet] Mean : 21.051 us | Error : 3.928 us | StdDev : 11.581 us
