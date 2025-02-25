@@ -1,12 +1,17 @@
 ﻿using System.Collections.Generic;
 
-namespace StudioIdGames.MimiClean.Domain
+namespace StudioIdGames.MimiClean.IDomain
 {
     /// <summary>
     /// <see cref="IDomainModule"/>の特定の組み合わせを表現するインターフェースです。
     /// </summary>
     public interface IDomainModuleSet : IDomainModule, IEnumerable<IDomainModule>
     {
+
+        /// <summary>
+        /// セット内のモジュールの数
+        /// </summary>
+        int Count { get; }
 
         /// <summary>
         /// このセットに含まれる<see cref="DomainModule{TDomainEntity}"/>を列挙します。

@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using StudioIdGames.MimiCleanContainer;
+using System.Collections.Generic;
 
-namespace StudioIdGames.MimiClean.Domain
+namespace StudioIdGames.MimiClean.IDomain
 {
     /// <summary>
     /// 概念レベルの設計に登場するオブジェクトを表すインターフェースです
     /// </summary>
-    public interface IDomainEntity
+    public interface IDomainEntity : ITransientService
     {
         /// <summary>
         /// このオブジェクトが利用している<see cref="DomainModule{TDomainEntity}"/>を列挙します。

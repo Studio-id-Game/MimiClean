@@ -8,7 +8,7 @@
     <Authors>K.Hiroya</Authors>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-    <VersionPrefix>0.2.0</VersionPrefix>
+    <VersionPrefix>1.0.0</VersionPrefix>
     <VersionSuffix>bata</VersionSuffix>
     <Title>MimiClean</Title>
     <Description>C# Simple clean-like architecture</Description>
@@ -26,6 +26,10 @@
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MimiCleanContainer\MimiCleanContainer.csproj" />
   </ItemGroup>
 
 </Project>

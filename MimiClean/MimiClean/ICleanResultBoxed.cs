@@ -30,5 +30,4 @@
         /// </summary>
         bool IsFailed { get; }
     }
-
 }
