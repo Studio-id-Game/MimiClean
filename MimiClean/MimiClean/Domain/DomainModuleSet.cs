@@ -3,12 +3,14 @@ using System.Collections.Generic;
 
 namespace StudioIdGames.MimiClean.Domain
 {
+    using IApp;
+    using IDomain;
+
     /// <summary>
     /// <see cref="IDomainModule"/>の特定の組み合わせを表現するクラスです。継承して利用する事も出来ます。
     /// </summary>
     /// <typeparam name="TDomainEntity">親の<see cref="DomainEntity"/></typeparam>
-    public class DomainModuleSet<TDomainEntity> : DomainModule<TDomainEntity>, IDomainModuleSet, IEnumerable<IDomainModule>
-        where TDomainEntity : IDomainEntity
+    public class DomainModuleSet : DomainModule, IDomainModuleSet, IEnumerable<IDomainModule>
     {
         private readonly List<IDomainModule> customModules = new List<IDomainModule>();
 
@@ -17,7 +19,7 @@ namespace StudioIdGames.MimiClean.Domain
         /// </summary>
         /// <param name="entity">親の<see cref="DomainEntity"/></param>
         /// <param name="moduleName">モジュールのカスタム名。デフォルトは GetType().Name です。</param>
-        public DomainModuleSet(TDomainEntity entity, string moduleName = null) : base(entity, moduleName)
+        public DomainModuleSet(ICurrentEntityService currentEntity, string moduleName = null) : base(currentEntity, moduleName)
         {
         }
 
@@ -26,9 +28,7 @@ namespace StudioIdGames.MimiClean.Domain
         /// </summary>
         protected IReadOnlyList<IDomainModule> CustomModules => customModules;
 
-        /// <summary>
-        /// セット内のモジュールの数
-        /// </summary>
+        ///<inheritdoc/>
         public virtual int Count => customModules.Count;
 
         ///<inheritdoc/>

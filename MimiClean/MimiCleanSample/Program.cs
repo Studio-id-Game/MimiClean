@@ -1,53 +1,48 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.App;
-using StudioIdGames.MimiCleanSample.Adapter.Controller;
-using StudioIdGames.MimiCleanSample.Adapter.Repository;
-using StudioIdGames.MimiCleanSample.Adapter.Service;
-using StudioIdGames.MimiCleanSample.App.Repository;
-using StudioIdGames.MimiCleanSample.Domain.Type;
+﻿using StudioIdGames.MimiClean.Domain.App;
+using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiCleanSample
 {
-    internal class Program
+    using Domain.App.Adapter;
+    using Domain.App.Adapter.Gateway;
+    using Domain.App.IAdapter;
+    using Domain.IApp.IRepository;
+
+    public class Program
     {
-        static Program()
+        public static MimiServiceProvider InitServices()
         {
-            //各種リポジトリとサービスを有効にする
-            ItemRepository01.Use();
-            //ItemRepository02.Use();
-            MapInfoRepository20x20.Use();
-            //MapInfoRepository20x20.Use();
-            Int2DPosService01.Use();
-            //Int2DPosService02.Use();
-            MainActionService.Use();
+            var container = new MimiServiceContainer();
+            MimiCleanAppSetup.SetDefaultService(container);
+            AdapterSetup.SetDefaultService_Tuple(container);
+
+            // 各種リポジトリとサービスをカスタムしてビルドする
+            // TODO : AddItem以外、set instance twice の例外が出る。 
+            return container
+                .Add<IAddItem.IGateway, AddItemGatewayDummy>()
+                .Add<IMoveItem.IGateway, MoveItemGatewayDummy>()
+                .Add<ISearchItems.IGateway, SearchItemsGatewayDummy>()
+                .BuildServiceProvider();
+
+
+            /*
+            // 各種リポジトリとサービスをビルドする
+            return container.BuildServiceProvider();
+            */
         }
 
-        private static void Main(/* string[] args */)
+        public static void Main(/* string[] args */)
         {
-            var mapInfo = Repository<IMapInfoRepository>.I.Value;
+            var serviceProvider = InitServices();
+
+            var mapInfo = serviceProvider.GetService<IMapInfoRepository>().Value;
 
             Console.WriteLine($"MapInfo : WH = {mapInfo.Width}, {mapInfo.Height}");
 
             while (true)
             {
-                var mainController = SelectMainActionController.Default;
-                var result = mainController.Invoke();
-
-                if (result.State == CleanResultState.Success)
-                {
-                    if (result.Result == MainActions.Exit)
-                    {
-                        break;
-                    }
-                }
-                else if (result.State == CleanResultState.Canceled)
-                {
-                    Console.WriteLine("Action Canceled");
-                }
-                else if (result.State == CleanResultState.Failed)
-                {
-                    Console.WriteLine("Action Failed : " + result.Error);
-                }
+                var mainController = serviceProvider.GetService<ISelectMainAction>();
+                mainController.Invoke();
                 Console.WriteLine();
             }
         }
