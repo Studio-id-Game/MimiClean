@@ -47,7 +47,7 @@ namespace StudioIdGames.MimiCleanContainerSample
         }
 
         /// <summary>
-        /// BenchmarkDotNet による、Staticモードのパフォーマンステスト。計測結果のMeanがCOUNTにほぼ比例している事から、Staticモードの純粋アクセスタイムはSingletonモードの約5%である事が確認できます。
+        /// BenchmarkDotNet による、Staticモードのパフォーマンステスト。計測結果のMeanがCOUNTにほぼ比例している事から、Staticモードの純粋アクセスタイムはSingletonモードの約7%である事が確認できます。
         /// <code>
         /// Mean   : Arithmetic mean of all measurements
         /// Error  : Half of 99.9% confidence interval
