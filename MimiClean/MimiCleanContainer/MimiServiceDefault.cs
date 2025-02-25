@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 
 namespace StudioIdGames.MimiCleanContainer
@@ -16,7 +17,7 @@ namespace StudioIdGames.MimiCleanContainer
             return factory != null;
         }
 
-        public static void SetDefault(MimiServiceContainer container, Func<IServiceProvider, TInterface> factory, int priority = 0)
+        public static void Set(MimiServiceContainer container, Func<IServiceProvider, TInterface> factory, int priority = 0)
         {
             if (Priority <= priority)
             {
@@ -26,14 +27,41 @@ namespace StudioIdGames.MimiCleanContainer
             }
         }
 
-        public static void SetDefault<TInstance>(MimiServiceContainer container, int priority = 0)
+        public static void Set<TInstance>(MimiServiceContainer container, int priority = 0)
             where TInstance : class, TInterface
         {
             if (Priority <= priority)
             {
                 Priority = priority;
-                container.Add<TInterface, TInstance>();
+
+                Func<IServiceProvider, TInstance> factory = SetFactory<TInstance>;
+                Factory = factory;
+                container.Add<TInterface, TInstance>(factory);
             }
+        }
+
+        public static void Ref<TRefTo>(MimiServiceContainer container, int priority = 0)
+            where TRefTo : class, TInterface
+        {
+            if (Priority <= priority)
+            {
+                Priority = priority;
+
+                Func<IServiceProvider, TRefTo> factory = RefFactory<TRefTo>;
+                Factory = factory;
+                container.Add<TInterface, TRefTo>(factory);
+            }
+        }
+
+        public static TRefTo RefFactory<TRefTo>(IServiceProvider serviceProvider)
+            where TRefTo : class, TInterface
+        {
+            return serviceProvider.GetMimiService<TRefTo>();
+        }
+
+        public static TInstance SetFactory<TInstance>(IServiceProvider serviceProvider)
+        {
+            return ActivatorUtilities.CreateInstance<TInstance>(serviceProvider);
         }
     }
 }

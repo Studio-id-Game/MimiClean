@@ -9,7 +9,7 @@
 		<Authors>K.Hiroya</Authors>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<VersionPrefix>0.1.0</VersionPrefix>
+		<VersionPrefix>0.2.0</VersionPrefix>
 		<VersionSuffix>bata</VersionSuffix>
 		<Title>MimiClean.CleanContainer</Title>
 		<Description>DI Container StudioIdGames.MimiClean</Description>

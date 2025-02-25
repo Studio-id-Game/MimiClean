@@ -25,7 +25,7 @@ namespace StudioIdGames.MimiCleanContainer
             {
                 if (isUsed)
                 {
-                    throw new InvalidOperationException($"Can't set twice Instance property.");
+                    throw new InvalidOperationException($"Can't set twice Instance property of {typeof(TInterface)}.");
                 }
                 instance = value;
                 isUsed = instance != null;

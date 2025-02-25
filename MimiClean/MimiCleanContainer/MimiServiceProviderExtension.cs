@@ -8,14 +8,7 @@ namespace StudioIdGames.MimiCleanContainer
         public static T GetMimiService<T>(this IServiceProvider serviceProvider)
             where T : class, IMimiService
         {
-            if (StaticServices<T>.IsUsed)
-            {
-                return StaticServices<T>.Instance;
-            }
-            else
-            {
-                return (T)serviceProvider.GetService(typeof(T));
-            }
+            return StaticServices<T>.IsUsed ? StaticServices<T>.Instance : serviceProvider.GetService<T>();
         }
 
         public static MimiServiceProvider AsMimiServiceProvider(this IServiceProvider serviceProvider)

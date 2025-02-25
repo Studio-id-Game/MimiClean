@@ -17,6 +17,13 @@ namespace StudioIdGames.MimiCleanContainer
             return BaseProvider.GetMimiService<T>();
         }
 
+        public MimiServiceProvider Config<T>(Action<T> config)
+            where T : class, IMimiService
+        {
+            config?.Invoke(BaseProvider.GetMimiService<T>());
+            return this;
+        }
+
         public object GetService(Type serviceType)
         {
             return BaseProvider.GetService(serviceType);

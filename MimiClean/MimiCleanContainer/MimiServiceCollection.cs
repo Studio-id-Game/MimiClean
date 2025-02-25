@@ -11,12 +11,26 @@ namespace StudioIdGames.MimiCleanContainer
         {
             TInstance Factory(IServiceProvider serviceProvider)
             {
-                var instance = (factory?.Invoke(serviceProvider)) ??
-                    ActivatorUtilities.CreateInstance<TInstance>(serviceProvider) ??
-                    throw new InvalidOperationException($"Can't create instance of the type {typeof(TInstance).Name}.");
+                TInstance instance;
+
+                if (StaticServices<TInstance>.IsUsed)
+                {
+                    instance = StaticServices<TInstance>.Instance;
+                }
+                else
+                {
+                    instance = factory?.Invoke(serviceProvider) ??
+                            ActivatorUtilities.CreateInstance<TInstance>(serviceProvider) ??
+                            throw new InvalidOperationException($"Can't create instance of the type {typeof(TInstance).Name}.");
+
+                    if (!StaticServices<TInstance>.IsUsed)
+                    {
+                        StaticServices<TInstance>.Instance = instance;
+                    }
+                }
+
 
                 StaticServices<TInterface>.Instance = instance;
-                StaticServices<TInstance>.Instance = instance;
 
                 return instance;
             }
