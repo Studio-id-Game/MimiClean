@@ -2,7 +2,7 @@
 
 namespace StudioIdGames.MimiCleanContainerSample
 {
-    internal class Service02_1(IService01 service01) : IService02
+    public class Service02_1(IService01 service01) : IService02
     {
         public IService01 Service01 { get; } = service01;
 
@@ -12,7 +12,7 @@ namespace StudioIdGames.MimiCleanContainerSample
     }
 
 
-    internal class Service02_OtherConst(IServiceProvider provider) : IService02
+    public class Service02_OtherConst(IServiceProvider provider) : IService02
     {
         public IService01 Service01 { get; } = provider.GetMimiService<IService01>()!;
 
@@ -22,7 +22,7 @@ namespace StudioIdGames.MimiCleanContainerSample
     }
 
     [MimiServiceType(MimiServiceType.Singleton)]
-    internal class Service02_Singleton(MimiServiceProvider provider) : IService02
+    public class Service02_Singleton(MimiServiceProvider provider) : IService02
     {
         public IService01 Service01 { get; } = provider.GetService<IService01>()!;
 
@@ -32,7 +32,7 @@ namespace StudioIdGames.MimiCleanContainerSample
     }
 
     [MimiServiceType(MimiServiceType.Scoped)]
-    internal class Service02_Scoped(MimiServiceProvider provider) : IService02
+    public class Service02_Scoped(MimiServiceProvider provider) : IService02
     {
         public IService01 Service01 { get; } = provider.GetService<IService01>()!;
 
@@ -42,7 +42,7 @@ namespace StudioIdGames.MimiCleanContainerSample
     }
 
     [MimiServiceType(MimiServiceType.Transient)]
-    internal class Service02_Transient(MimiServiceProvider provider) : IService02
+    public class Service02_Transient(MimiServiceProvider provider) : IService02
     {
         public IService01 Service01 { get; } = provider.GetService<IService01>()!;
 

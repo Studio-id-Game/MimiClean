@@ -46,69 +46,82 @@ namespace StudioIdGames.MimiCleanContainerSample
             s2.Print();
         }
 
+        /// <summary>
+        /// BenchmarkDotNet による、Staticモードのパフォーマンステスト。計測結果のMeanがCOUNTにほぼ比例している事から、Staticモードの純粋アクセスタイムはSingletonモードの約5%である事が確認できます。
+        /// <code>
+        /// Mean   : Arithmetic mean of all measurements
+        /// Error  : Half of 99.9% confidence interval
+        /// StdDev : Standard deviation of all measurements
+        /// 1 us   : 1 Microsecond(0.000001 sec)
+        ///
+        /// COUNT = 10000
+        /// | Method    | Mean       | Error      | StdDev    |
+        /// |---------- |-----------:|-----------:|----------:|
+        /// | Scoped    |  55.128 us |  1.9950 us | 0.1094 us |
+        /// | Transient |  58.733 us | 23.3906 us | 1.2821 us |
+        /// | Singleton |  40.426 us |  5.9840 us | 0.3280 us |
+        /// | Static    |   2.823 us |  0.0584 us | 0.0032 us |
+        /// 
+        /// COUNT = 10000 * 100
+        /// | Method    | Mean       | Error      | StdDev    |
+        /// |---------- |-----------:|-----------:|----------:|
+        /// | Scoped    | 5,400.4 us |  278.15 us |  15.25 us |
+        /// | Transient | 6,005.7 us |  410.92 us |  22.52 us |
+        /// | Singleton | 3,952.1 us |  123.56 us |   6.77 us |
+        /// | Static    |   282.7 us |    5.61 us |   0.31 us |（めちゃはやいらしい…。…:*…:*=…:*三(o'ω')o
+        /// </code>
+        /// </summary>
+        [ShortRunJob]
         public class PerformanceTest
         {
-            private const int COUNT = 10000;
+            private const int COUNT = 1000000;
 
-            /// <summary>
-            /// [BenchmarkDotNet] Mean : 21.051 us | Error : 3.928 us | StdDev : 11.581 us
-            /// </summary>
+            private readonly MimiServiceProvider serviceProviderScoped = new MimiServiceContainer()
+                    .Add<IService01, Service01_Scoped>()
+                    .BuildServiceProvider();
+
+            private readonly MimiServiceProvider serviceProviderTransient = new MimiServiceContainer()
+                    .Add<IService01, Service01_Transient>()
+                    .BuildServiceProvider();
+
+            private readonly MimiServiceProvider serviceProviderSingleton = new MimiServiceContainer()
+                    .Add<IService01, Service01_Singleton>()
+                    .BuildServiceProvider();
+
+            private readonly MimiServiceProvider serviceProviderStatic = new MimiServiceContainer()
+                    .Add<IService01, Service01_1>()
+                    .BuildServiceProvider();
+
             [Benchmark]
-            public void SingletonSetup()
+            public IService01? Scoped()
             {
-                var services = new MimiServiceContainer()
-                    .Add<IService01, Service01_Singleton>();
-
-                var p = services.BuildServiceProvider();
+                return Test(serviceProviderScoped);
             }
 
-            /// <summary>
-            /// [BenchmarkDotNet] Mean : 6.325 us | Error : 1.075 us | StdDev :  3.170 us
-            /// </summary>
             [Benchmark]
-            public void StaticSetup()
+            public IService01? Transient()
             {
-                var services = new MimiServiceContainer()
-                    .Add<IService01, Service01_1>();
-
-                var p = services.BuildServiceProvider();
+                return Test(serviceProviderTransient);
             }
 
-            /// <summary>
-            /// [BenchmarkDotNet] Mean : 121.798 us | Error : 1.477 us | StdDev :  1.233 us |
-            /// </summary>
             [Benchmark]
-            public string Singleton()
+            public IService01? Singleton()
             {
-                var services = new MimiServiceContainer()
-                    .Add<IService01, Service01_Singleton>();
+                return Test(serviceProviderSingleton);
+            }
 
-                var p = services.BuildServiceProvider();
+            [Benchmark]
+            public IService01? Static()
+            {
+                return Test(serviceProviderStatic);
+            }
 
-                string s = "";
+            public static IService01? Test(MimiServiceProvider serviceProvider)
+            {
+                IService01? s = null;
                 for (int i = 0; i < COUNT; i++)
                 {
-                    s = p.GetService<IService01>().Text;
-                }
-
-                return s;
-            }
-
-            /// <summary>
-            /// [BenchmarkDotNet] Mean : 70.911 us | Error : 1.172 us | StdDev :  1.350 us |
-            /// </summary>
-            [Benchmark]
-            public string Static()
-            {
-                var services = new MimiServiceContainer()
-                    .Add<IService01, Service01_1>();
-
-                var p = services.BuildServiceProvider();
-
-                string s = "";
-                for (int i = 0; i < COUNT; i++)
-                {
-                    s = p.GetService<IService01>().Text;
+                    s = serviceProvider.GetService<IService01>();
                 }
 
                 return s;
