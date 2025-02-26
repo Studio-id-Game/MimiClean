@@ -1,8 +1,8 @@
 # StudioIdGames MimiClean document
 
 ## Index
-- [Top](./index.md)
-- [Scripting API](./api/StudioIdGames)
+- [Top](./MimiClean/index.md)
+- [Scripting API](./MimiClean/api/StudioIdGames)
 - [GitHub Repository](https://github.com/Studio-id-Game/MimiClean)
 
 # MimiClean
