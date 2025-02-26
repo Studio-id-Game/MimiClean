@@ -1,5 +1,4 @@
-﻿
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
+﻿namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
 {
     using Abstract;
     using IAdapter;

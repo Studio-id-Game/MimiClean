@@ -9,7 +9,8 @@
         /// <summary>
         /// 戻り値の無い型を表現するためのダミー構造体
         /// </summary>
-        public readonly struct Void { }
+        public readonly struct Void
+        { }
 
         /// <summary>
         /// 操作の成功を通知する、戻り値の無いオブジェクトを返します。
@@ -34,7 +35,7 @@
     /// レールウェイ指向プログラミング（Railway-Oriented Programming, ROP）に基づいたエラーハンドリングを提供します。
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
-    public readonly ref struct CleanResult<TResult>
+    public readonly struct CleanResult<TResult>
     {
         /// <summary>
         /// <see cref="CleanResult{TResult}"/>のコンストラクタ
@@ -143,9 +144,11 @@
             return $"[{stateText}] {resultText}";
         }
 
-        public static bool operator true(CleanResult<TResult> t) { return t.State == CleanResultState.Success; }
+        public static bool operator true(CleanResult<TResult> t)
+        { return t.State == CleanResultState.Success; }
 
-        public static bool operator false(CleanResult<TResult> t) { return t.State != CleanResultState.Success; }
+        public static bool operator false(CleanResult<TResult> t)
+        { return t.State != CleanResultState.Success; }
 
         /// <summary>
         /// 操作の成功を通知する、戻り値を持ったオブジェクトを返します。

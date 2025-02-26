@@ -35,5 +35,4 @@ namespace StudioIdGames.MimiClean.Domain.IApp
     public interface IAppRepositoryMap<TKey, TValue> : IAppRepository<KeyValuePair<TKey, TValue>>, IReadOnlyDictionary<TKey, TValue>
     {
     }
-
 }

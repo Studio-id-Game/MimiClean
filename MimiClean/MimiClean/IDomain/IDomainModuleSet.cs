@@ -7,7 +7,6 @@ namespace StudioIdGames.MimiClean.IDomain
     /// </summary>
     public interface IDomainModuleSet : IDomainModule, IEnumerable<IDomainModule>
     {
-
         /// <summary>
         /// セット内のモジュールの数
         /// </summary>

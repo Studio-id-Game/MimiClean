@@ -17,13 +17,12 @@ namespace StudioIdGames.MimiCleanSample
             AdapterSetup.SetDefaultService_Tuple(container);
 
             // 各種リポジトリとサービスをカスタムしてビルドする
-            // TODO : AddItem以外、set instance twice の例外が出る。 
+            // TODO : AddItem以外、set instance twice の例外が出る。
             return container
                 .Add<IAddItem.IGateway, AddItemGatewayDummy>()
                 .Add<IMoveItem.IGateway, MoveItemGatewayDummy>()
                 .Add<ISearchItems.IGateway, SearchItemsGatewayDummy>()
                 .BuildServiceProvider();
-
 
             /*
             // 各種リポジトリとサービスをビルドする

@@ -3,6 +3,5 @@
     [MimiServiceType(MimiServiceType.Scoped)]
     public interface IScopedService : IMimiService
     {
-
     }
 }

@@ -18,9 +18,11 @@ namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Presenter
                 case CleanResultState.Success:
                     Console.WriteLine($"{act} action is Success.");
                     break;
+
                 case CleanResultState.Canceled:
                     Console.WriteLine($"{act} action is Canceled.");
                     break;
+
                 case CleanResultState.Failed:
                     Console.WriteLine($"{act} action is Failed. `{usecaseOutput.Error}`");
                     break;

@@ -28,7 +28,6 @@ namespace StudioIdGames.MimiCleanSample.Domain.App.UseCase
             var mapW = mapInfo.Width;
             var mapH = mapInfo.Height;
 
-
             bool found = false;
 
             List<(IItemEntity entity, int oldX, int oldY)> movedEntities = [];

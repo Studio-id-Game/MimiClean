@@ -1,5 +1,4 @@
-﻿
-namespace StudioIdGames.MimiClean.Domain.App.Adapter
+﻿namespace StudioIdGames.MimiClean.Domain.App.Adapter
 {
     using IAdapter;
     using IApp;
@@ -19,7 +18,7 @@ namespace StudioIdGames.MimiClean.Domain.App.Adapter
         protected IAdapterGateway<TInput> Gateway { get; }
 
         /// <summary>
-        /// 動作に利用する <see cref="IAppUseCase{TInput, TOutput}"/> 
+        /// 動作に利用する <see cref="IAppUseCase{TInput, TOutput}"/>
         /// </summary>
         protected IAppUseCase<TInput, TOutput> Usecase { get; }
 

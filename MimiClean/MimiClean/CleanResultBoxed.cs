@@ -57,9 +57,10 @@
             return $"[{stateText}] {resultText}";
         }
 
-        public static bool operator true(CleanResultBoxed<TResult> t) { return t.State == CleanResultState.Success; }
+        public static bool operator true(CleanResultBoxed<TResult> t)
+        { return t.State == CleanResultState.Success; }
 
-        public static bool operator false(CleanResultBoxed<TResult> t) { return t.State != CleanResultState.Success; }
+        public static bool operator false(CleanResultBoxed<TResult> t)
+        { return t.State != CleanResultState.Success; }
     }
-
 }

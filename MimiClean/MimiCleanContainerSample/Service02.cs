@@ -11,7 +11,6 @@ namespace StudioIdGames.MimiCleanContainerSample
         public void Print() => Console.WriteLine("[02_1]" + Service01.Text);
     }
 
-
     public class Service02_OtherConst(IServiceProvider provider) : IService02
     {
         public IService01 Service01 { get; } = provider.GetMimiService<IService01>()!;

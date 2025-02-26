@@ -4,7 +4,6 @@ namespace StudioIdGames.MimiCleanSample.IDomain.IModule
 {
     public interface IItemModuleSet : IDomainModuleSet
     {
-
     }
 
     public interface IItemModuleSet<TInt2D> : IItemModuleSet
