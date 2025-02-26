@@ -29,7 +29,6 @@ namespace StudioIdGames.MimiCleanContainer
                     }
                 }
 
-
                 StaticServices<TInterface>.Instance = instance;
 
                 return instance;

@@ -3,6 +3,5 @@
     [MimiServiceType(MimiServiceType.Singleton)]
     public interface ISingletonService : IMimiService
     {
-
     }
 }

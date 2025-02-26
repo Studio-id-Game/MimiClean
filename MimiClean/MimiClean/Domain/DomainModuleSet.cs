@@ -65,8 +65,8 @@ namespace StudioIdGames.MimiClean.Domain
         ///<inheritdoc/>
         public virtual IEnumerator<IDomainModule> GetEnumerator()
         {
-            // yield return UniqueModule01; 
-            // yield return UniqueModule02; 
+            // yield return UniqueModule01;
+            // yield return UniqueModule02;
 
             foreach (var module in customModules)
             {

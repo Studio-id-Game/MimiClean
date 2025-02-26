@@ -61,7 +61,7 @@ namespace StudioIdGames.MimiCleanContainerSample
         /// | Transient |  58.733 us | 23.3906 us | 1.2821 us |
         /// | Singleton |  40.426 us |  5.9840 us | 0.3280 us |
         /// | Static    |   2.823 us |  0.0584 us | 0.0032 us |
-        /// 
+        ///
         /// COUNT = 10000 * 100
         /// | Method    | Mean       | Error      | StdDev    |
         /// |---------- |-----------:|-----------:|----------:|

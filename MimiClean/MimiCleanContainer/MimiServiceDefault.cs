@@ -1,7 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
 
-
 namespace StudioIdGames.MimiCleanContainer
 {
     public static class MimiServiceDefault<TInterface>

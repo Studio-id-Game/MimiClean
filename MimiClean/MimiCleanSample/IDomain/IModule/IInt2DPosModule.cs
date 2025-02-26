@@ -4,7 +4,6 @@ namespace StudioIdGames.MimiCleanSample.IDomain.IModule
 {
     public interface IInt2DPosModule : IDomainModule
     {
-
     }
 
     public interface IInt2DPosModule<TInt2D> : IInt2DPosModule

@@ -1,5 +1,4 @@
-﻿
-namespace StudioIdGames.MimiCleanSample.Domain.App.UseCase
+﻿namespace StudioIdGames.MimiCleanSample.Domain.App.UseCase
 {
     using IDomain.IEntity;
 

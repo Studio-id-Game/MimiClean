@@ -2,7 +2,6 @@
 
 namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
 {
-
     using IApp.IRepository;
     using IApp.UseCaseIO;
 

@@ -3,8 +3,5 @@
     [MimiServiceType(MimiServiceType.Static)]
     public interface IStaticService : IMimiService
     {
-
     }
-
-
 }

@@ -1,5 +1,4 @@
-﻿
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
+﻿namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
 {
     using Abstract;
     using DomainType;
@@ -35,7 +34,6 @@ namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
                 }
 
                 return new SelectMainActionInput(act);
-
             } while (true);
         }
 
