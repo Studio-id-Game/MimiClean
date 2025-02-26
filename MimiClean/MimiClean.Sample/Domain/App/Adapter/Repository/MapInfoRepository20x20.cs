@@ -2,7 +2,7 @@
 using StudioIdGames.MimiClean.Domain.App;
 using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Repository
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
 {
     using EntityConfig;
     using IApp.IRepository;

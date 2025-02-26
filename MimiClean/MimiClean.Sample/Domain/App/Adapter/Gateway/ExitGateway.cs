@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Gateway
 {
     using Abstract;
     using IAdapter;

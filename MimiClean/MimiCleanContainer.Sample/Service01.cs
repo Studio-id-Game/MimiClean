@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanContainerSample
+namespace StudioIdGames.MimiCleanContainer_Sample
 {
     public class Service01_1 : IService01
     {

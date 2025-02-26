@@ -1,13 +1,13 @@
 ﻿using StudioIdGames.MimiCleanContainer;
 using StudioIdGames.MimiClean;
 
-namespace StudioIdGames.MimiCleanSample
+namespace StudioIdGames.MimiClean_Sample
 {
     using Domain.App.Adapter;
     using Domain.App.Adapter.Gateway;
     using Domain.App.IAdapter;
     using Domain.IApp.IRepository;
-    using StudioIdGames.MimiCleanSample.Domain.App.Adapter.Repository;
+    using StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository;
 
     public class Program
     {

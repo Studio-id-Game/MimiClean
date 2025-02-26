@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean.Domain.App.Adapter;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Controller
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Controller
 {
     using DomainType;
     using IAdapter;

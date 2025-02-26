@@ -1,7 +1,7 @@
 ﻿using StudioIdGames.MimiClean.Domain;
 using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.Entity
+namespace StudioIdGames.MimiClean_Sample.Domain.Entity
 {
     using IDomain.IEntity;
     using IDomain.IModule;

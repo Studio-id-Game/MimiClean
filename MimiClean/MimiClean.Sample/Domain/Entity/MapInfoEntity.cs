@@ -1,10 +1,10 @@
 ﻿using StudioIdGames.MimiClean.Domain;
 using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.Entity
+namespace StudioIdGames.MimiClean_Sample.Domain.Entity
 {
     using IDomain.IEntity;
-    using StudioIdGames.MimiCleanSample.Domain.EntityConfig;
+    using StudioIdGames.MimiClean_Sample.Domain.EntityConfig;
 
     public sealed class MapInfoEntity : DomainEntity, IMapInfoEntity
     {

@@ -1,4 +1,4 @@
-﻿namespace StudioIdGames.MimiCleanSample.Domain.DomainType
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.DomainType
 {
     public enum MainActions
     {

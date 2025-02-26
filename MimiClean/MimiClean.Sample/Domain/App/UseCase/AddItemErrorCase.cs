@@ -1,4 +1,4 @@
-﻿namespace StudioIdGames.MimiCleanSample.Domain.App.UseCase
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
     public enum AddItemErrorCase
     {

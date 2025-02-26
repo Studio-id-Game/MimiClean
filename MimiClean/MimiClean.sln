@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimiClean", "MimiClean\MimiClean.csproj", "{B32B5BC6-C3E2-4434-AD04-27CE3317F354}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimiClean.Sample", "MimiClean.Sample\MimiClean.Sample.csproj", "{93F70087-D21D-494B-9D14-892466A292CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimiClean_Sample", "MimiClean.Sample\MimiClean_Sample.csproj", "{93F70087-D21D-494B-9D14-892466A292CA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimiCleanContainer", "MimiCleanContainer\MimiCleanContainer.csproj", "{BDEC516F-3D8A-48D5-ABB3-75BE1985B7AC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimiCleanContainer.Sample", "MimiCleanContainer.Sample\MimiCleanContainer.Sample.csproj", "{28C9E1DE-84AD-48DB-B903-D97F60D9AE77}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MimiCleanContainer_Sample", "MimiCleanContainer.Sample\MimiCleanContainer_Sample.csproj", "{28C9E1DE-84AD-48DB-B903-D97F60D9AE77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,4 +1,4 @@
-﻿namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Service
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Service
 {
     using IApp.IService;
 

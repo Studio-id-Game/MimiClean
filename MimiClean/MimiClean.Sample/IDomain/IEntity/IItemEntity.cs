@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean.IDomain;
 
-namespace StudioIdGames.MimiCleanSample.IDomain.IEntity
+namespace StudioIdGames.MimiClean_Sample.IDomain.IEntity
 {
     using IDomain.IModule;
 

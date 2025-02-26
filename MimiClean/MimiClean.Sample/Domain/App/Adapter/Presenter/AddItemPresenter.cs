@@ -1,7 +1,7 @@
 ﻿using StudioIdGames.MimiClean;
 using StudioIdGames.MimiClean.Domain.App.Adapter;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Presenter
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
 {
     using IAdapter;
 

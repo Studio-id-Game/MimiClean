@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Gateway
 {
     using IApp.IRepository;
     using IApp.UseCaseIO;

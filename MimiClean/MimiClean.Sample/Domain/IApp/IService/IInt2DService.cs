@@ -1,7 +1,7 @@
 ﻿using StudioIdGames.MimiClean.Domain.IApp;
 using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.IApp.IService
+namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IService
 {
     [MimiServiceType(MimiServiceType.Static)]
     public interface IInt2DService<TInt2D> : IAppService

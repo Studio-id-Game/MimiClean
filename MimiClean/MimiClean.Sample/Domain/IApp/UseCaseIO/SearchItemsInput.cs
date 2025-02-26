@@ -1,4 +1,4 @@
-﻿namespace StudioIdGames.MimiCleanSample.Domain.IApp.UseCaseIO
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.IApp.UseCaseIO
 {
     public readonly struct SearchItemsInput(string name)
     {

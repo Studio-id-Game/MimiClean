@@ -1,7 +1,7 @@
 ﻿using StudioIdGames.MimiClean;
 using StudioIdGames.MimiClean.Domain.App.Adapter;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Gateway.Abstract
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Gateway.Abstract
 {
     public abstract class ConsoleGateway<TInput>(string name) : Gateway<TInput>
     {

@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean.Domain.IApp;
 
-namespace StudioIdGames.MimiCleanSample.Domain.IApp.IUseCase
+namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IUseCase
 {
     using UseCaseIO;
 

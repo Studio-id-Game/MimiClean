@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean.Domain.App;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.UseCase
+namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
     using IApp.IUseCase;
 

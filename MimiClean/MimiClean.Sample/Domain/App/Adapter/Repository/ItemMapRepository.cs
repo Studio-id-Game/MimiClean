@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean.Domain.App;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter.Repository
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
 {
     using IApp.IRepository;
     using IDomain.IEntity;

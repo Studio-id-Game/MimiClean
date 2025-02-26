@@ -2,7 +2,7 @@
 using StudioIdGames.MimiClean.Domain.App;
 using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.UseCase
+namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
     using IApp.IRepository;
     using IApp.IUseCase;

@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.App.Adapter
+namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter
 {
     using Controller;
     using Gateway;

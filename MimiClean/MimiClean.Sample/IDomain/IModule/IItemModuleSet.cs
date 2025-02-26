@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean.IDomain;
 
-namespace StudioIdGames.MimiCleanSample.IDomain.IModule
+namespace StudioIdGames.MimiClean_Sample.IDomain.IModule
 {
     public interface IItemModuleSet : IDomainModuleSet
     {

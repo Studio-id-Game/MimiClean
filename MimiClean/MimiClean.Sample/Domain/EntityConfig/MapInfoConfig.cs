@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain.EntityConfig
+namespace StudioIdGames.MimiClean_Sample.Domain.EntityConfig
 {
     public class MapInfoConfig : IScopedService
     {

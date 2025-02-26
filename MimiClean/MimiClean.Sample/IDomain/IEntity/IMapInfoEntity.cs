@@ -1,4 +1,4 @@
-﻿namespace StudioIdGames.MimiCleanSample.IDomain.IEntity
+﻿namespace StudioIdGames.MimiClean_Sample.IDomain.IEntity
 {
     public interface IMapInfoEntity : MimiClean.IDomain.IDomainEntity
     {

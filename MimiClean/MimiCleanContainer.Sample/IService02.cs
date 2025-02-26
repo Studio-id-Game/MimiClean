@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanContainerSample
+namespace StudioIdGames.MimiCleanContainer_Sample
 {
     public interface IService02 : IStaticService
     {

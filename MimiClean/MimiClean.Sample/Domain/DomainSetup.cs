@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanSample.Domain
+namespace StudioIdGames.MimiClean_Sample.Domain
 {
     using Entity;
     using EntityConfig;

@@ -1,8 +1,8 @@
 ﻿using StudioIdGames.MimiClean.Domain.IApp;
 using StudioIdGames.MimiCleanContainer;
-using StudioIdGames.MimiCleanSample.IDomain.IEntity;
+using StudioIdGames.MimiClean_Sample.IDomain.IEntity;
 
-namespace StudioIdGames.MimiCleanSample.Domain.IApp.IRepository
+namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IRepository
 {
     [MimiServiceType(MimiServiceType.Static)]
     public interface IItemMapRepository : IAppRepository

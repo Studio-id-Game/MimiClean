@@ -3,7 +3,7 @@ using BenchmarkDotNet.Running;
 using Microsoft.Extensions.DependencyInjection;
 using StudioIdGames.MimiCleanContainer;
 
-namespace StudioIdGames.MimiCleanContainerSample
+namespace StudioIdGames.MimiCleanContainer_Sample
 {
     public class Program
     {
