@@ -1,5 +1,5 @@
-﻿using StudioIdGames.MimiClean.Domain.App;
-using StudioIdGames.MimiCleanContainer;
+﻿using StudioIdGames.MimiCleanContainer;
+using StudioIdGames.MimiClean;
 
 namespace StudioIdGames.MimiCleanSample
 {
@@ -7,6 +7,7 @@ namespace StudioIdGames.MimiCleanSample
     using Domain.App.Adapter.Gateway;
     using Domain.App.IAdapter;
     using Domain.IApp.IRepository;
+    using StudioIdGames.MimiCleanSample.Domain.App.Adapter.Repository;
 
     public class Program
     {
@@ -16,18 +17,33 @@ namespace StudioIdGames.MimiCleanSample
             MimiCleanAppSetup.SetDefaultService(container);
             AdapterSetup.SetDefaultService_Tuple(container);
 
-            // 各種リポジトリとサービスをカスタムしてビルドする
-            // TODO : AddItem以外、set instance twice の例外が出る。
-            return container
-                .Add<IAddItem.IGateway, AddItemGatewayDummy>()
-                .Add<IMoveItem.IGateway, MoveItemGatewayDummy>()
-                .Add<ISearchItems.IGateway, SearchItemsGatewayDummy>()
-                .BuildServiceProvider();
+            Console.Write("Please select mode (d:Dummy, other:default) : ");
 
-            /*
+            if (Console.ReadKey().Key == ConsoleKey.D)
+            {
+                // 各種リポジトリとサービスをカスタムする
+                container.Add<IAddItem.IGateway, AddItemGatewayDummy>()
+                         .Add<IMoveItem.IGateway, MoveItemGatewayDummy>()
+                         .Add<ISearchItems.IGateway, SearchItemsGatewayDummy>();
+            }
+
+            Console.WriteLine();
+
+            Console.Write("Please select mapSize(a:10x10, other:20x20) : ");
+
+            if (Console.ReadKey().Key == ConsoleKey.A)
+            {
+                container.Add<IMapInfoRepository, MapInfoRepository10x10>();
+            }
+            else
+            {
+                container.Add<IMapInfoRepository, MapInfoRepository20x20>();
+            }
+
+            Console.WriteLine();
+
             // 各種リポジトリとサービスをビルドする
             return container.BuildServiceProvider();
-            */
         }
 
         public static void Main(/* string[] args */)
