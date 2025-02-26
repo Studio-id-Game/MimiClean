@@ -2,6 +2,7 @@
 # Trigger the action on push to main
 on:
   push:
+    workflow_dispatch: ## テスト用手動トリガー
     branches:
       - main
 
