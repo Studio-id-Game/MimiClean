@@ -3,7 +3,7 @@
 namespace StudioIdGames.MimiClean
 {
     /// <summary>
-    /// <see cref="CleanResult{TResult}"/>のResultを他の型に変換しようとして失敗した場合のエラーを表します
+    /// <see cref="CleanResult{TResult}.Result"/>を他の型に変換しようとして失敗した場合のエラーを表します
     /// </summary>
     /// <typeparam name="T">変換先の型</typeparam>
     public class CleanResultCastError : CleanResultError

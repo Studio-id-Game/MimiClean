@@ -5,10 +5,17 @@ namespace StudioIdGames.MimiClean.Domain.App
 {
     using IApp;
 
+    /// <summary>
+    /// リスト型データストアを実装します。
+    /// </summary>
+    /// <typeparam name="TValue">ストアする値の型</typeparam>
     public abstract class Repository<TValue> : IAppRepository<TValue>
     {
         public int Count => ValuesProtected.Count;
 
+        /// <summary>
+        /// 内部のデータコレクション
+        /// </summary>
         protected abstract IReadOnlyCollection<TValue> ValuesProtected { get; }
 
         public IEnumerator<TValue> GetEnumerator()
@@ -22,8 +29,15 @@ namespace StudioIdGames.MimiClean.Domain.App
         }
     }
 
+    /// <summary>
+    /// 単一値型データストアを実装します。
+    /// </summary>
+    /// <typeparam name="TValue">ストアする値の型</typeparam>
     public abstract class RepositoryMono<TValue> : Repository<TValue>, IAppRepositoryMono<TValue>
     {
+        /// <summary>
+        /// 単一値を表すコレクション
+        /// </summary>
         public class MonoValue : IReadOnlyCollection<TValue>
         {
             public TValue Value { get; set; }
@@ -46,13 +60,21 @@ namespace StudioIdGames.MimiClean.Domain.App
             }
         }
 
+        /// <summary>
+        /// 内部の単一データコレクション
+        /// </summary>
         protected abstract MonoValue ValueProtected { get; }
 
         public TValue Value => ValueProtected.Value;
 
-        protected sealed override IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
+        protected override sealed IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
     }
 
+    /// <summary>
+    /// 辞書型データストアを実装します。
+    /// </summary>
+    /// <typeparam name="TKey">ストアに利用するKeyの型</typeparam>
+    /// <typeparam name="TValue">ストアする値の型</typeparam>
     public abstract class RepositoryMap<TKey, TValue> : Repository<KeyValuePair<TKey, TValue>>, IAppRepositoryMap<TKey, TValue>, IReadOnlyDictionary<TKey, TValue>
     {
         /// <inheritdoc/>
@@ -64,9 +86,11 @@ namespace StudioIdGames.MimiClean.Domain.App
         /// <inheritdoc/>
         public IEnumerable<TValue> Values => MapProtected.Values;
 
+        /// <inheritdoc/>
         protected abstract IReadOnlyDictionary<TKey, TValue> MapProtected { get; }
 
-        protected sealed override IReadOnlyCollection<KeyValuePair<TKey, TValue>> ValuesProtected => MapProtected;
+        /// <inheritdoc/>
+        protected override sealed IReadOnlyCollection<KeyValuePair<TKey, TValue>> ValuesProtected => MapProtected;
 
         /// <inheritdoc/>
         public bool ContainsKey(TKey key)
