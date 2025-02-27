@@ -66,7 +66,7 @@ Manual pre-registration of default factory by `MimiServiceDefault<TInterface>.Se
 
 - We aim to keep the architecture as simple as possible so that the actual operation does not become cumbersome.
 - Basically, the folder (namespace) structure of the library and the user should be the same.
-- In order of increasing abstraction, the architecture consists of four layers: Domain (conceptual design), App ( behavioral design), Adapter (IO design), and Framework (entry points, etc.).
+- In order of increasing abstraction, the architecture consists of four layers: Domain (conceptual design), App (behavioral design), Adapter (Environmental design), and Framework (entry points, etc.).
 - All layers except the framework layer are placed under a namespace of layer that one higher level of abstraction layer. (The namespace of the Adapter layer is `MyNameSpace.Domain.App.Adapter`).
 - All layers except the framework layer have their own abstract interface at a direct sibling namespace. (`MyNameSpace.Domain.App` and `MyNameSpace.Domain.IApp`)
   - In other words, every layer (except Adapter) has one lower level of abstract layer and concrete layer directly under it.
