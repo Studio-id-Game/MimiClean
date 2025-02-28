@@ -9,8 +9,15 @@ namespace StudioIdGames.MimiClean_Sample
     using Domain.IApp.IRepository;
     using StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository;
 
+    /// <summary>
+    /// フレームワーク層のメインプログラム
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// プログラムで使用する全てのServiceを初期化します
+        /// </summary>
+        /// <returns></returns>
         public static MimiServiceProvider InitServices()
         {
             var container = new MimiServiceContainer();
@@ -46,6 +53,9 @@ namespace StudioIdGames.MimiClean_Sample
             return container.BuildServiceProvider();
         }
 
+        /// <summary>
+        /// エントリーポイント
+        /// </summary>
         public static void Main(/* string[] args */)
         {
             var serviceProvider = InitServices();

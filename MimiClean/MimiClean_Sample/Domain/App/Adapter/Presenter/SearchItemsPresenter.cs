@@ -6,6 +6,9 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
     using IAdapter;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="ISearchItems.IPresenter"/> を実装します。
+    /// </summary>
     public class SearchItemsPresenter : Presenter<SearchItemsOutput>, ISearchItems.IPresenter
     {
         public override CleanResult<CleanResult.Void> Present(in CleanResult<SearchItemsOutput> usecaseOutput)

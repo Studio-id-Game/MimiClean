@@ -6,6 +6,9 @@ namespace StudioIdGames.MimiClean_Sample.Domain.Entity
     using IDomain.IEntity;
     using StudioIdGames.MimiClean_Sample.Domain.EntityConfig;
 
+    /// <summary>
+    /// <see cref="IMapInfoEntity"/> を実装します。
+    /// </summary>
     public sealed class MapInfoEntity : DomainEntity, IMapInfoEntity
     {
         public int Height { get; }

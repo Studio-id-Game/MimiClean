@@ -9,6 +9,10 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
     using IApp.IUseCase;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="ISelectMainActionUseCase"/> の実装
+    /// </summary>
+    /// <param name="serviceProvider"></param>
     public class SelectMainActionUseCase(MimiServiceProvider serviceProvider) : Usecase<SelectMainActionInput, SelectMainActionOutput>, ISelectMainActionUseCase
     {
         public override CleanResult<SelectMainActionOutput> Excute(in CleanResult<SelectMainActionInput> input)

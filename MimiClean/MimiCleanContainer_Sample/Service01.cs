@@ -2,20 +2,30 @@
 
 namespace StudioIdGames.MimiCleanContainer_Sample
 {
-    public class Service01_1 : IService01
+    /// <summary>
+    /// <see cref="IService01"/>の実装
+    /// </summary>
+    public class Service01_Default : IService01
     {
-        private string text = "DEFAULT-1";
+        private string text = "DEFAULT-Default";
 
-        public string Text { get => "[01_1]" + text; set => text = value; }
+        public string Text { get => "[01_Default]" + text; set => text = value; }
     }
 
-    public class Service01_2 : IService01
+    /// <summary>
+    /// <see cref="IService01"/>の実装（<see cref="MimiServiceType.Static"/> で上書き）
+    /// </summary>
+    [MimiServiceType(MimiServiceType.Static)]
+    public class Service01_Static : IService01
     {
-        private string text = "DEFAULT-2";
+        private string text = "DEFAULT-Static";
 
-        public string Text { get => "[01_2]" + text; set => text = value; }
+        public string Text { get => "[01_Static]" + text; set => text = value; }
     }
 
+    /// <summary>
+    /// <see cref="IService01"/>の実装（<see cref="MimiServiceType.Singleton"/> で上書き）
+    /// </summary>
     [MimiServiceType(MimiServiceType.Singleton)]
     public class Service01_Singleton : IService01
     {
@@ -24,6 +34,9 @@ namespace StudioIdGames.MimiCleanContainer_Sample
         public string Text { get => "[01_Singleton]" + text; set => text = value; }
     }
 
+    /// <summary>
+    /// <see cref="IService01"/>の実装（<see cref="MimiServiceType.Scoped"/> で上書き）
+    /// </summary>
     [MimiServiceType(MimiServiceType.Scoped)]
     public class Service01_Scoped : IService01
     {
@@ -32,6 +45,9 @@ namespace StudioIdGames.MimiCleanContainer_Sample
         public string Text { get => "[01_Scoped]" + text; set => text = value; }
     }
 
+    /// <summary>
+    /// <see cref="IService01"/>の実装（<see cref="MimiServiceType.Transient"/> で上書き）
+    /// </summary>
     [MimiServiceType(MimiServiceType.Transient)]
     public class Service01_Transient : IService01
     {

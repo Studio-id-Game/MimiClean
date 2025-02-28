@@ -8,8 +8,16 @@ namespace StudioIdGames.MimiClean_Sample.Domain
     using IDomain.IModule;
     using Module;
 
+    /// <summary>
+    /// Domain層のセットアップ機能を提供します
+    /// </summary>
     public static class DomainSetup
     {
+        /// <summary>
+        /// Domain層のデフォルトserviceをセットします。
+        /// </summary>
+        /// <typeparam name="TInt2D">利用する座標系</typeparam>
+        /// <param name="container"></param>
         public static void SetDefaultService<TInt2D>(MimiServiceContainer container)
         {
             MimiServiceDefault<IItemEntity<TInt2D>>.Set<ItemEntity<TInt2D>>(container, 0);

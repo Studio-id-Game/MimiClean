@@ -4,6 +4,9 @@
     using IAdapter;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="IAddItem.IGateway"/> を実装します。コンソール入力を利用します。
+    /// </summary>
     public class AddItemGateway(string name = "AddItem") : ConsoleGateway<AddItemInput>(name), IAddItem.IGateway
     {
         protected override AddItemInput MakeInputProtected()

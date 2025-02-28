@@ -6,6 +6,9 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
     using IAdapter;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="IMoveItem.IPresenter"/> を実装します。
+    /// </summary>
     public class MoveItemPresenter : Presenter<MoveItemOutput>, IMoveItem.IPresenter
     {
         public override CleanResult<CleanResult.Void> Present(in CleanResult<MoveItemOutput> usecaseOutput)

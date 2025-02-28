@@ -2,7 +2,10 @@
 {
     using IApp.IService;
 
-    internal class Int2DServiceArray : IInt2DService<int[]>
+    /// <summary>
+    /// <see cref="IInt2DService{TInt2D}"/>を配列を用いて実装します。
+    /// </summary>
+    public class Int2DServiceArray : IInt2DService<int[]>
     {
         public int[] Add(in int[] a, in int[] b)
         {

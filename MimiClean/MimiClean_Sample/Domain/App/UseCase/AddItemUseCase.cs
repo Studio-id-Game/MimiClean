@@ -10,6 +10,11 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
     using IApp.UseCaseIO;
     using IDomain.IEntity;
 
+    /// <summary>
+    /// <see cref="IAddItemUseCase"/>を実装します。
+    /// </summary>
+    /// <typeparam name="TInt2D">利用する座標系</typeparam>
+    /// <param name="serviceProvider"></param>
     public class AddItemUseCase<TInt2D>(MimiServiceProvider serviceProvider) : Usecase<AddItemInput>, IAddItemUseCase
     {
         public override CleanResult<CleanResult.Void> Excute(in CleanResult<AddItemInput> input)

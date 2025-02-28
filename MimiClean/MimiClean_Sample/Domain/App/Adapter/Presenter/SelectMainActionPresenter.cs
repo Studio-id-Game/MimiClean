@@ -7,7 +7,10 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
     using IAdapter;
     using IApp.UseCaseIO;
 
-    internal class SelectMainActionPresenter : Presenter<SelectMainActionOutput, MainActions>, ISelectMainAction.IPresenter
+    /// <summary>
+    /// <see cref="ISelectMainAction.IPresenter"/> を実装します。
+    /// </summary>
+    public class SelectMainActionPresenter : Presenter<SelectMainActionOutput, MainActions>, ISelectMainAction.IPresenter
     {
         public override CleanResult<MainActions> Present(in CleanResult<SelectMainActionOutput> usecaseOutput)
         {

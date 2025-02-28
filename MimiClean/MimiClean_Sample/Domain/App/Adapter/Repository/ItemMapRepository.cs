@@ -5,6 +5,10 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
     using IApp.IRepository;
     using IDomain.IEntity;
 
+    /// <summary>
+    /// <see cref="IItemMapRepository"/> を実装します。
+    /// </summary>
+    /// <typeparam name="TInt2D">座標系</typeparam>
     public sealed class ItemMapRepository<TInt2D> : RepositoryMap<TInt2D, IItemEntity<TInt2D>>, IItemMapRepository<TInt2D>
         where TInt2D : notnull
     {

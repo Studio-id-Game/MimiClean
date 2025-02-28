@@ -5,6 +5,9 @@
     using IAdapter;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="ISelectMainAction.IGateway"/> を実装します。コンソール入力を利用します。
+    /// </summary>
     public class SelectMainActionGateway(string name = "SelectMainAction") : ConsoleGateway<SelectMainActionInput>(name), ISelectMainAction.IGateway
     {
         protected override SelectMainActionInput MakeInputProtected()
