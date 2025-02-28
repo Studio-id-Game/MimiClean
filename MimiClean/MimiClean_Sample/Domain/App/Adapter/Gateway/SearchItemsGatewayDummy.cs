@@ -5,6 +5,9 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Gateway
     using IApp.IRepository;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="SearchItemsGateway"/> のダミーを実装します。
+    /// </summary>
     public class SearchItemsGatewayDummy(MimiServiceProvider serviceProvider, string name = "SearchItems(Dummy)") : SearchItemsGateway(name)
     {
         protected override SearchItemsInput MakeInputProtected()

@@ -8,6 +8,9 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
     using IApp.IRepository;
     using IDomain.IEntity;
 
+    /// <summary>
+    /// <see cref="IMapInfoRepository"/> を実装します。マップサイズは10x10で固定です。
+    /// </summary>
     public class MapInfoRepository10x10 : RepositoryMono<IMapInfoEntity>, IMapInfoRepository
     {
         public MapInfoRepository10x10(MimiServiceProvider mimiServiceProvider)

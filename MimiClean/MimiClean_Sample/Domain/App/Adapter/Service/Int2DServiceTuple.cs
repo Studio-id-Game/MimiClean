@@ -2,7 +2,10 @@
 {
     using IApp.IService;
 
-    internal class Int2DServiceTuple : IInt2DService<(int x, int y)>
+    /// <summary>
+    /// <see cref="IInt2DService{TInt2D}"/>をタプルを用いて実装します。
+    /// </summary>
+    public class Int2DServiceTuple : IInt2DService<(int x, int y)>
     {
         public (int x, int y) Add(in (int x, int y) a, in (int x, int y) b)
         {

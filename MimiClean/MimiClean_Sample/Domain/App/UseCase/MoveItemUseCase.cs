@@ -10,6 +10,11 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
     using IApp.UseCaseIO;
     using IDomain.IEntity;
 
+    /// <summary>
+    /// <see cref="IMoveItemUseCase"/> の実装
+    /// </summary>
+    /// <typeparam name="TInt2D"></typeparam>
+    /// <param name="serviceProvider"></param>
     public class MoveItemUseCase<TInt2D>(MimiServiceProvider serviceProvider) : Usecase<MoveItemInput, MoveItemOutput>, IMoveItemUseCase
     {
         public override CleanResult<MoveItemOutput> Excute(in CleanResult<MoveItemInput> input)
@@ -52,7 +57,7 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 
                 if (items.ContainsKey(newXY))
                 {
-                    return CleanResult<MoveItemOutput>.Failed(new MoveItemError(this, MoveItemErrorCase.DuplicatePosition(item)));
+                    return CleanResult<MoveItemOutput>.Failed(new MoveItemError(this, MoveItemErrorCase.DuplicatePosition(item.ItemName)));
                 }
 
                 items.Remove(item.XY);

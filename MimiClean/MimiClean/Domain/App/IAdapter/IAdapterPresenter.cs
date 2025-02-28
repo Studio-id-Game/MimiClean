@@ -5,43 +5,39 @@ namespace StudioIdGames.MimiClean.Domain.App.IAdapter
     using IApp;
 
     /// <summary>
-    /// 環境層への応答を表現するインターフェースです。
+    /// 全ての動作に対する応答を抽象化します。
     /// </summary>
     public interface IAdapterPresenter : ITransientService
     {
         /// <summary>
-        /// <see cref="IAppUseCase{TInput, TOutput}"/> の結果を受け取って、環境層への操作と応答を行います。
+        /// 動作の結果を受け取って、応答を行い、操作としての戻り値を返します。
         /// </summary>
-        /// <param name="usecaseOutput"><see cref="IAppUseCase{,}"/> の結果</param>
-        /// <returns>環境層への応答</returns>
+        /// <param name="usecaseOutput">動作の結果</param>
+        /// <returns>動作としての戻り値</returns>
         CleanResult<object> Present(in CleanResult<object> usecaseOutput);
     }
 
     /// <summary>
-    /// 環境層への応答を表現するインターフェースです。
+    /// 出力を持った動作に対する、戻り値を持った応答を抽象化します。
     /// </summary>
-    /// <typeparam name="TOutput">組み合わせる <see cref="IAppUseCase{,}"/> のアウトプットの型</typeparam>
-    /// <typeparam name="TResult">環境層への応答の戻り値の型</typeparam>
+    /// <typeparam name="TOutput">動作の出力の型</typeparam>
+    /// <typeparam name="TResult">操作の戻り値の型</typeparam>
     public interface IAdapterPresenter<TOutput, TResult> : IAdapterPresenter
     {
-        /// <summary>
-        /// <see cref="IAppUseCase{TInput, TOutput}"/> の結果を受け取って、環境層への操作と応答を行います。
-        /// </summary>
-        /// <param name="usecaseOutput"><see cref="IAppUseCase{,}"/> の結果</param>
-        /// <returns>環境層への応答</returns>
+        /// <inheritdoc cref="IAdapterPresenter.Present(in CleanResult{object})"/>
         CleanResult<TResult> Present(in CleanResult<TOutput> usecaseOutput);
     }
 
     /// <summary>
-    /// 環境層への戻り値のない応答を表現するインターフェースです。
+    /// 出力を持った動作に対する、戻り値を持たない応答を抽象化します。
     /// </summary>
-    /// <typeparam name="TOutput">組み合わせる <see cref="IAppUseCase{,}"/> のアウトプットの型</typeparam>
+    /// <typeparam name="TOutput">動作の出力の型</typeparam>
     public interface IAdapterPresenter<TOutput> : IAdapterPresenter<TOutput, CleanResult.Void>
     {
     }
 
     /// <summary>
-    /// 戻り値を持たない <see cref="IAppUseCase{,}"/> に対応した、環境層への戻り値のない応答を表現するインターフェースです。
+    /// 出力を持たない動作に対する、戻り値を持たない応答を抽象化します。
     /// </summary>
     public interface IAdapterPresenterVoid : IAdapterPresenter<CleanResult.Void>
     {

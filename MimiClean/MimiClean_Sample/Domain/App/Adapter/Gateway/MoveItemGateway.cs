@@ -4,6 +4,9 @@
     using IAdapter;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="IMoveItem.IGateway"/> を実装します。コンソール入力を利用します。
+    /// </summary>
     public class MoveItemGateway(string name = "MoveItem") : ConsoleGateway<MoveItemInput>(name), IMoveItem.IGateway
     {
         protected override MoveItemInput MakeInputProtected()

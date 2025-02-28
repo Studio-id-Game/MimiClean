@@ -2,22 +2,30 @@
 
 namespace StudioIdGames.MimiClean_Sample.IDomain.IModule
 {
-    public interface IItemModuleSet : IDomainModuleSet
+    /// <summary>
+    /// 全てのアイテムを表すモジュール群を抽象化します。
+    /// </summary>
+    public interface IItemModuleSet : IDomainModuleSet, IInt2DPosModule, INameModule
     {
-    }
-
-    public interface IItemModuleSet<TInt2D> : IItemModuleSet
-    {
+        /// <summary>
+        /// アイテム名モジュール
+        /// </summary>
         INameModule NameModule { get; }
 
-        IInt2DPosModule<TInt2D> Int2DPosModule { get; }
+        /// <summary>
+        /// アイテム座標モジュール
+        /// </summary>
+        IInt2DPosModule Int2DPosModule { get; }
+    }
 
-        public string ItemName { get; set; }
-
-        public TInt2D XY { get; set; }
-
-        public int X { get; set; }
-
-        public int Y { get; set; }
+    /// <summary>
+    /// <typeparamref name="TInt2D"/>を座標としたアイテムを表すモジュール群を抽象化します。
+    /// </summary>
+    public interface IItemModuleSet<TInt2D> : IItemModuleSet, IInt2DPosModule<TInt2D>
+    {
+        /// <summary>
+        /// アイテム座標モジュール
+        /// </summary>
+        new IInt2DPosModule<TInt2D> Int2DPosModule { get; }
     }
 }

@@ -6,6 +6,10 @@ namespace StudioIdGames.MimiClean_Sample.Domain.Entity
     using IDomain.IEntity;
     using IDomain.IModule;
 
+    /// <summary>
+    /// <see cref="IItemEntity{TInt2D}"/> を実装します。
+    /// </summary>
+    /// <typeparam name="TInt2D"></typeparam>
     public sealed class ItemEntity<TInt2D> : DomainEntity, IItemEntity<TInt2D>
     {
         public ItemEntity(MimiServiceProvider serviceProvider) : base(serviceProvider)
@@ -16,6 +20,8 @@ namespace StudioIdGames.MimiClean_Sample.Domain.Entity
         }
 
         public IItemModuleSet<TInt2D> ItemModuleSet { get; }
+
+        IItemModuleSet IItemEntity.ItemModuleSet => ItemModuleSet;
 
         public string ItemName { get => ItemModuleSet.ItemName; set => ItemModuleSet.ItemName = value; }
 

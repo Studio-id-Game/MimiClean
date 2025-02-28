@@ -43,6 +43,9 @@
         }
     }
 
+    /// <summary>
+    /// Usecase内で問題があった場合の、情報オブジェクトを持ったエラーを表現する抽象クラスです
+    /// </summary>
     public abstract class UseCaseError<TCaseInfo> : UseCaseError
     {
         public TCaseInfo ErrorCase { get; }
@@ -52,7 +55,7 @@
             ErrorCase = errorCase;
         }
 
-        public sealed override string Message => ErrorCaseMessage(ErrorCase);
+        public override sealed string Message => ErrorCaseMessage(ErrorCase);
 
         protected virtual string ErrorCaseMessage(TCaseInfo caseInfo)
         {

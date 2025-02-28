@@ -11,14 +11,25 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter
     using Repository;
     using Service;
 
+    /// <summary>
+    /// Adapter層のセットアップ機能を提供します
+    /// </summary>
     public static class AdapterSetup
     {
+        /// <summary>
+        /// App層のデフォルトserviceをセットします。座標系としてタプルを利用します。
+        /// </summary>
+        /// <param name="container"></param>
         public static void SetDefaultService_Tuple(MimiServiceContainer container)
         {
             SetDefaultService<(int x, int y)>(container);
             MimiServiceDefault<IInt2DService<(int x, int y)>>.Set<Int2DServiceTuple>(container, 0);
         }
 
+        /// <summary>
+        /// App層のデフォルトserviceをセットします。座標系として配列を利用します。
+        /// </summary>
+        /// <param name="container"></param>
         public static void SetDefaultService_Array(MimiServiceContainer container)
         {
             SetDefaultService<int[]>(container);

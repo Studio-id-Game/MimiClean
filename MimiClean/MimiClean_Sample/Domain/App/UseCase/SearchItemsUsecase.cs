@@ -8,6 +8,11 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
     using IApp.IUseCase;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="ISearchItemsUseCase"/> の実装
+    /// </summary>
+    /// <typeparam name="TInt2D"></typeparam>
+    /// <param name="serviceProvider"></param>
     public class SearchItemsUsecase<TInt2D>(MimiServiceProvider serviceProvider) : Usecase<SearchItemsInput, SearchItemsOutput>, ISearchItemsUseCase
     {
         public override CleanResult<SearchItemsOutput> Excute(in CleanResult<SearchItemsInput> input)

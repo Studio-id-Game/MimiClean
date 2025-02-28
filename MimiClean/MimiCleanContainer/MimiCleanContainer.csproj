@@ -9,12 +9,12 @@
 		<Authors>K.Hiroya</Authors>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<VersionPrefix>0.2.0</VersionPrefix>
+		<VersionPrefix>0.2.1</VersionPrefix>
 		<VersionSuffix>bata</VersionSuffix>
 		<Title>MimiClean.CleanContainer</Title>
 		<Description>DI Container StudioIdGames.MimiClean</Description>
 		<PackageProjectUrl>https://github.com/Studio-id-Game/MimiClean</PackageProjectUrl>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
+		<PackageReadmeFile>README-en.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/Studio-id-Game/MimiClean</RepositoryUrl>
 	</PropertyGroup>
 
@@ -25,6 +25,10 @@
 			<PackagePath>\</PackagePath>
 		</None>
 		<None Include="..\..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README-en.md">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>

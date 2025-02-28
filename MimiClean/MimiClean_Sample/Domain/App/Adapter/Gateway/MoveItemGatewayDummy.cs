@@ -5,6 +5,9 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Gateway
     using IApp.IRepository;
     using IApp.UseCaseIO;
 
+    /// <summary>
+    /// <see cref="MoveItemGateway"/> のダミーを実装します。
+    /// </summary>
     public class MoveItemGatewayDummy(MimiServiceProvider serviceProvider, string name = "MoveItem(Dummy)") : MoveItemGateway(name)
     {
         protected override MoveItemInput MakeInputProtected()

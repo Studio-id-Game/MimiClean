@@ -7,14 +7,19 @@ namespace StudioIdGames.MimiCleanContainer_Sample
 {
     public class Program
     {
+        /// <summary>
+        /// <see cref="MimiServiceType"/> による振る舞いの違い等をテストする為の関数。
+        /// </summary>
         public static void ModeTest()
         {
             Console.WriteLine("Hello, World!");
             Console.WriteLine();
 
+            // You cna select services type (TInstance of .Add<TInterface, TInstance>()).
             var services = new MimiServiceContainer()
-                .Add<IService01, Service01_1>()
+                .Add<IService01, Service01_Scoped>()
                 .Add<IService02, Service02_Transient>();
+
             var p = services.BuildServiceProvider();
 
             using var scope = p.CreateScope();
@@ -22,6 +27,7 @@ namespace StudioIdGames.MimiCleanContainer_Sample
             var s2 = provider.GetService<IService02>()!;
 
             s2.Print();
+            Console.WriteLine("<SET SET_01>");
             s2.Set("SET_01");
             s2.Print();
             Console.WriteLine();
@@ -32,6 +38,7 @@ namespace StudioIdGames.MimiCleanContainer_Sample
                 var p2 = scope2.MimiServiceProvider();
                 var s22 = p2.GetService<IService02>()!;
                 s22.Print();
+                Console.WriteLine("<SET SET_02>");
                 s22.Set("SET_02");
                 s22.Print();
                 Console.WriteLine();
@@ -89,7 +96,7 @@ namespace StudioIdGames.MimiCleanContainer_Sample
                     .BuildServiceProvider();
 
             private readonly MimiServiceProvider serviceProviderStatic = new MimiServiceContainer()
-                    .Add<IService01, Service01_1>()
+                    .Add<IService01, Service01_Static>()
                     .BuildServiceProvider();
 
             [Benchmark]
@@ -130,8 +137,19 @@ namespace StudioIdGames.MimiCleanContainer_Sample
 
         private static void Main(string[] _)
         {
-            BenchmarkRunner.Run<PerformanceTest>();
-            // ModeTest();
+            Console.Write("SelectMode (1:PerformanceTest, other:ModeTest) : ");
+            var key = Console.ReadKey().Key;
+            Console.WriteLine();
+
+            if (key == ConsoleKey.D1)
+            {
+                Console.WriteLine();
+                BenchmarkRunner.Run<PerformanceTest>();
+            }
+            else
+            {
+                ModeTest();
+            }
         }
     }
 }
