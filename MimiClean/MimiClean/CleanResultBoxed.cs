@@ -45,7 +45,7 @@
         }
 
         /// <summary>
-        /// 値のBox型か解除し、ref struct 構造体に変換します。
+        /// 値のBox化を解除し、ref struct 構造体に変換します。
         /// </summary>
         /// <returns>ref struct 化したオブジェクト</returns>
         public CleanResult<TResult> Unbox() => new CleanResult<TResult>(State, Result, Error);

@@ -2,8 +2,6 @@
 
 namespace StudioIdGames.MimiClean.Domain.App.IAdapter
 {
-    using IApp;
-
     /// <summary>
     /// 全ての動作に対する応答を抽象化します。
     /// </summary>

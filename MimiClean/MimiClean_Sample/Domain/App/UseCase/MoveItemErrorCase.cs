@@ -1,7 +1,5 @@
 ﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
-    using IDomain.IEntity;
-
     /// <summary>
     /// アイテムを移動する動作のエラー内容
     /// </summary>

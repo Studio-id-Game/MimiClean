@@ -1,6 +1,6 @@
 ﻿using StudioIdGames.MimiClean.Domain.IApp;
-using StudioIdGames.MimiCleanContainer;
 using StudioIdGames.MimiClean_Sample.IDomain.IEntity;
+using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IRepository
 {

@@ -35,7 +35,7 @@
     /// レールウェイ指向プログラミング（Railway-Oriented Programming, ROP）に基づいたエラーハンドリングを提供します。
     /// </summary>
     /// <typeparam name="TResult"></typeparam>
-    public readonly struct CleanResult<TResult>
+    public readonly ref struct CleanResult<TResult>
     {
         /// <summary>
         /// <see cref="CleanResult{TResult}"/>のコンストラクタ
@@ -144,10 +144,10 @@
             return $"[{stateText}] {resultText}";
         }
 
-        public static bool operator true(CleanResult<TResult> t)
+        public static bool operator true(in CleanResult<TResult> t)
         { return t.State == CleanResultState.Success; }
 
-        public static bool operator false(CleanResult<TResult> t)
+        public static bool operator false(in CleanResult<TResult> t)
         { return t.State != CleanResultState.Success; }
 
         /// <summary>
