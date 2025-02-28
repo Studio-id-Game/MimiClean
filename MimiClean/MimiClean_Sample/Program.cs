@@ -1,5 +1,5 @@
-﻿using StudioIdGames.MimiCleanContainer;
-using StudioIdGames.MimiClean;
+﻿using StudioIdGames.MimiClean;
+using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiClean_Sample
 {
