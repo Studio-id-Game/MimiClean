@@ -150,6 +150,12 @@
         public static bool operator false(in CleanResult<TResult> t)
         { return t.State != CleanResultState.Success; }
 
+        public static implicit operator TResult(in CleanResult<TResult> t)
+        {
+            return t.State == CleanResultState.Success ? t.Result :
+                throw new System.InvalidCastException($"Can't implcit cast when {nameof(Result)} is not {nameof(CleanResultState.Success)}");
+        }
+
         /// <summary>
         /// 操作の成功を通知する、戻り値を持ったオブジェクトを返します。
         /// </summary>
