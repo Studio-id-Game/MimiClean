@@ -29,6 +29,24 @@
         /// </summary>
         /// <returns></returns>
         public static CleanResult<Void> Failed(CleanResultError error) => CleanResult<Void>.Failed(error);
+
+        /// <summary>
+        /// 操作の成功を通知する、戻り値のあるオブジェクトを返します。
+        /// </summary>
+        /// <returns></returns>
+        public static CleanResult<T> Success<T>(T value) => CleanResult<T>.Success(value);
+
+        /// <summary>
+        /// 操作の中断を通知する、戻り値のあるオブジェクトを返します。
+        /// </summary>
+        /// <returns></returns>
+        public static CleanResult<T> Canceled<T>(T value) => CleanResult<T>.Canceled(value);
+
+        /// <summary>
+        /// 操作の失敗を通知する、戻り値のあるオブジェクトを返します。
+        /// </summary>
+        /// <returns></returns>
+        public static CleanResult<T> Failed<T>(CleanResultError error) => CleanResult<T>.Failed(error);
     }
 
     /// <summary>
