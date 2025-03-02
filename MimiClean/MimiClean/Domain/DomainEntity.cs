@@ -12,7 +12,7 @@ namespace StudioIdGames.MimiClean.Domain
     /// </summary>
     public abstract class DomainEntity : IDomainEntity
     {
-        protected readonly ref struct CreateEntityScope : IDisposable
+        protected readonly ref struct CreateEntityScope
         {
             private readonly ICurrentEntityService service;
             public readonly IDomainEntity prevEntity;
