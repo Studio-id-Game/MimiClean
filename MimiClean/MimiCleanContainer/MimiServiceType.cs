@@ -23,7 +23,7 @@
         Transient = 3,
 
         /// <summary>
-        /// Static Generic Cache を利用した高速なシングルトンサービスを表します。
+        /// Static Type Caching を利用した高速なシングルトンサービスを表します。
         /// </summary>
         Static = 4,
     }
