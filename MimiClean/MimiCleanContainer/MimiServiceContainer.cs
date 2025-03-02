@@ -8,11 +8,11 @@ namespace StudioIdGames.MimiCleanContainer
     /// </summary>
     public class MimiServiceContainer
     {
-        private readonly MimiServiceCollection services;
+        private readonly IServiceCollection services;
 
         public MimiServiceContainer()
         {
-            services = new MimiServiceCollection();
+            services = new ServiceCollection();
             services.AddTransient<MimiServiceProvider>();
         }
 
@@ -54,7 +54,7 @@ namespace StudioIdGames.MimiCleanContainer
         /// <returns></returns>
         public MimiServiceProvider BuildServiceProvider()
         {
-            return new MimiServiceProvider(services.BuildServiceProvider());
+            return services.BuildMimiServiceProvider();
         }
     }
 }
