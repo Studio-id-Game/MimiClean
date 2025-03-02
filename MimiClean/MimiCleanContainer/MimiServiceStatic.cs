@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Collections.Generic;
 
 namespace StudioIdGames.MimiCleanContainer
 {
@@ -6,7 +8,7 @@ namespace StudioIdGames.MimiCleanContainer
     /// Static Type Caching を利用して、<see cref="StaticService{TInterface, TSelf}"/>で実装された機能を管理します。
     /// </summary>
     /// <typeparam name="TInterface">機能を定義しているインターフェース</typeparam>
-    internal static class StaticServices<TInterface>
+    internal static class MimiServiceStatic<TInterface>
         where TInterface : class, IMimiService
     {
         private static TInterface instance;
