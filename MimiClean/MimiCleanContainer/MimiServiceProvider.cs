@@ -7,6 +7,9 @@ namespace StudioIdGames.MimiCleanContainer
     /// </summary>
     public class MimiServiceProvider : IServiceProvider
     {
+        /// <summary>
+        /// ベースとなっている<see cref="IServiceProvider"/>
+        /// </summary>
         public IServiceProvider BaseProvider { get; }
 
         public MimiServiceProvider(IServiceProvider baseProvider)
@@ -22,7 +25,7 @@ namespace StudioIdGames.MimiCleanContainer
         }
 
         /// <summary>
-        /// <typeparamref name="T"/>型のserviceに一時的にアクセスし、<paramref name="config"/> によって変更を加えます。また、チェーンで記述できるように戻り値として自身を返します。
+        /// <typeparamref name="T"/>型のserviceに一時的にアクセスし、<paramref name="config"/> によって読み取りや書き込みをします。また、チェーンで記述できるように戻り値として自身を返します。
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="config">チェーン可能な自身の参照</param>

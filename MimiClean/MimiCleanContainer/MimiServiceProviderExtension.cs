@@ -1,5 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using System;
+using System.Linq;
+using System.Reflection;
 
 namespace StudioIdGames.MimiCleanContainer
 {
@@ -17,8 +19,24 @@ namespace StudioIdGames.MimiCleanContainer
         public static T GetMimiService<T>(this IServiceProvider serviceProvider)
             where T : class, IMimiService
         {
-            return StaticServices<T>.IsUsed ? StaticServices<T>.Instance : serviceProvider.GetService<T>();
+            return MimiServiceStatic<T>.IsUsed ? MimiServiceStatic<T>.Instance : serviceProvider.GetService<T>();
         }
+
+        /* 非Generic版？
+        public static object GetMimiService(this IServiceProvider serviceProvider, Type t)
+        {
+            var method = typeof(MimiServiceProviderExtension)
+                .GetMethods(BindingFlags.Static | BindingFlags.Public)
+                .First(e =>
+                {
+                    return e.Name == "GetMimiService" &&
+                    e.IsGenericMethod;
+                })
+                .MakeGenericMethod(t);
+
+            return method.Invoke(null, new object[] { serviceProvider });
+        }
+        */
 
         /// <summary>
         /// <see cref="IServiceProvider"/> を、MimiServiceが実装するカスタム動作を考慮できる <see cref="MimiCleanContainer.MimiServiceProvider"/> に変換します。

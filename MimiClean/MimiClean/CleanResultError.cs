@@ -1,4 +1,6 @@
-﻿namespace StudioIdGames.MimiClean
+﻿using System;
+
+namespace StudioIdGames.MimiClean
 {
     /// <summary>
     /// <see cref="CleanResult{TResult}"/>のためのエラーを表現するクラス
@@ -14,6 +16,11 @@
         public override string ToString()
         {
             return Message;
+        }
+
+        public static implicit operator CleanResultError(Exception exception)
+        {
+            return new CleanResultException(exception);
         }
     }
 }

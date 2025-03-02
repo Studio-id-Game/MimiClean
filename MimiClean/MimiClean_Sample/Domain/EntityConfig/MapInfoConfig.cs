@@ -38,5 +38,10 @@ namespace StudioIdGames.MimiClean_Sample.Domain.EntityConfig
             Width = width;
             return this;
         }
+
+        public override string ToString()
+        {
+            return $"({Width}, {Height})";
+        }
     }
 }

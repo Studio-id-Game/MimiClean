@@ -47,7 +47,7 @@ namespace StudioIdGames.MimiClean_Sample
                 container.Add<IMapInfoRepository, MapInfoRepository20x20>();
             }
 
-            Console.WriteLine();
+            Console.WriteLine("\n");
 
             // 各種リポジトリとサービスをビルドする
             return container.BuildServiceProvider();
@@ -60,14 +60,14 @@ namespace StudioIdGames.MimiClean_Sample
         {
             var serviceProvider = InitServices();
 
-            var mapInfo = serviceProvider.GetService<IMapInfoRepository>().Value;
-
-            Console.WriteLine($"MapInfo : WH = {mapInfo.Width}, {mapInfo.Height}");
+            serviceProvider.Config<IMapInfoRepository>(mapInfo =>
+            {
+                Console.WriteLine($"MapInfo : WH = {mapInfo.Value.Width}, {mapInfo.Value.Height}");
+            });
 
             while (true)
             {
-                var mainController = serviceProvider.GetService<ISelectMainAction>();
-                mainController.Invoke();
+                serviceProvider.GetService<ISelectMainAction>().Invoke();
                 Console.WriteLine();
             }
         }
