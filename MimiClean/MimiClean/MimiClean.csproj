@@ -8,7 +8,7 @@
 		<Authors>K.Hiroya</Authors>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
-		<VersionPrefix>1.1.1</VersionPrefix>
+		<VersionPrefix>1.2.0</VersionPrefix>
 		<VersionSuffix>bata</VersionSuffix>
 		<Title>MimiClean</Title>
 		<Description>C# Simple clean-like architecture</Description>
