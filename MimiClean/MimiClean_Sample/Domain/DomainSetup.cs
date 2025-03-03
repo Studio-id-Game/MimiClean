@@ -17,18 +17,23 @@ namespace StudioIdGames.MimiClean_Sample.Domain
         /// Domain層のデフォルトserviceをセットします。
         /// </summary>
         /// <typeparam name="TInt2D">利用する座標系</typeparam>
-        /// <param name="container"></param>
-        public static void SetDefaultService<TInt2D>(MimiServiceContainer container)
+        public static void SetDefaultService<TInt2D>()
         {
-            MimiServiceDefault<IItemEntity<TInt2D>>.Set<ItemEntity<TInt2D>>(container, 0);
-            MimiServiceDefault<IItemEntity>.Ref<IItemEntity<TInt2D>>(container, 0);
-            MimiServiceDefault<IMapInfoEntity>.Set<MapInfoEntity>(container, 0);
-            MimiServiceDefault<MapInfoConfig>.Set<MapInfoConfig>(container, 0);
-            MimiServiceDefault<IInt2DPosModule<TInt2D>>.Set<Int2DPosModule<TInt2D>>(container, 0);
-            MimiServiceDefault<IInt2DPosModule>.Ref<IInt2DPosModule<TInt2D>>(container, 0);
-            MimiServiceDefault<IItemModuleSet<TInt2D>>.Set<ItemModuleSet<TInt2D>>(container, 0);
-            MimiServiceDefault<IItemModuleSet>.Ref<IItemModuleSet<TInt2D>>(container, 0);
-            MimiServiceDefault<INameModule>.Set<NameModule>(container, 0);
+            MimiServiceDefault.Set<IItemEntity<TInt2D>, ItemEntity<TInt2D>>();
+            MimiServiceDefault.Ref<IItemEntity, IItemEntity<TInt2D>>();
+            MimiServiceDefault.Set<IMapInfoEntity, MapInfoEntity>();
+            MimiServiceDefault.Set<MapInfoConfig>();
+            MimiServiceDefault.Set<IInt2DPosModule<TInt2D>, Int2DPosModule<TInt2D>>();
+            MimiServiceDefault.Ref<IInt2DPosModule, IInt2DPosModule<TInt2D>>();
+            MimiServiceDefault.Set<IItemModuleSet<TInt2D>, ItemModuleSet<TInt2D>>();
+            MimiServiceDefault.Ref<IItemModuleSet, IItemModuleSet<TInt2D>>();
+            MimiServiceDefault.Set<INameModule, NameModule>();
+        }
+
+        [Obsolete("Unused arguments")]
+        public static void SetDefaultService<TInt2D>(MimiServiceContainer _)
+        {
+            SetDefaultService<TInt2D>();
         }
     }
 }

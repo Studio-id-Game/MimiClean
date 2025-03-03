@@ -1,4 +1,5 @@
 ﻿using StudioIdGames.MimiCleanContainer;
+using System;
 
 namespace StudioIdGames.MimiClean.Domain.App
 {
@@ -13,10 +14,15 @@ namespace StudioIdGames.MimiClean.Domain.App
         /// <summary>
         /// MimiCleanのApp層が内部で利用するサービスをセットアップします。
         /// </summary>
-        /// <param name="container"></param>
-        public static void SetDefaultService(MimiServiceContainer container)
+        public static void SetDefaultService()
         {
-            MimiServiceDefault<ICurrentEntityService>.Set<CurrentEntityService>(container, 0);
+            MimiServiceDefault.Set<ICurrentEntityService, CurrentEntityService>();
+        }
+
+        [Obsolete("Unused argument.")]
+        public static void SetDefaultService(MimiServiceContainer _)
+        {
+            SetDefaultService();
         }
     }
 }
