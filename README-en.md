@@ -80,10 +80,17 @@ Manual pre-registration of default factory by `MimiServiceDefault<TInterface>.Se
 # Version Information
 
 - v0.x : Created a working form for now
-- v1.x : Implemented DI Container (MimiCleanContainer) and redesigned the namespace design to bring the functionality and philosophy closer to Clean Architecture.
+- v1.x bata: Implemented DI Container (MimiCleanContainer) and redesigned namespace to make it closer to Clean Architecture in functionality and philosophy.
+  - v1.1.x bata: Implemented the minimum functionality required to be called Clean Architecture and DI Container.
+  - v1.2.x bata: Minor enhancements and optimizations to the features implemented in v1.1.x bata.
+  - v1.3.x bata: Implement most of the essential features for practical use in Unity and tool development.
 
 # Development Background
 
 Basically, it was created for game development (Unity, my own development tool). Since trying to define it strictly would make it cumbersome to implement and use, we aim to make it as simple and easy to use as possible.
 
 If you have any bugs or feature requests, [please feel free to Issue us!] (https://github.com/Studio-id-Game/MimiClean/issues)
+
+# Translation Tool
+
+Translated with DeepL.com (free version)

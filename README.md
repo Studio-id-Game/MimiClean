@@ -81,8 +81,11 @@ BenchmarkDotNetによる検証の結果、実際にSingletonの約7%の時間コ
 
 # バージョン情報
 
-- v0.x : とりあえず動く形の物を作成
-- v1.x : DI Container (MimiCleanContainer) の実装と名前空間設計の見直しで、機能や思想を Clean Architecture に近づけた。
+- v0.x bata: とりあえず動く形の物を作成
+- v1.x bata: DI Container (MimiCleanContainer) の実装と名前空間設計の見直しで、機能や思想を Clean Architecture に近づけた。
+  - v1.1.x bata: Clean Architecture と DI Container と呼べるだけの必要最低限の機能を実装した。
+  - v1.2.x bata: v1.1.x bata で実装した機能の小規模な拡張と最適化を実施した。
+  - v1.3.x bata: Unityやツール開発での実際の利用を想定し、実用上不可欠な機能のほとんどを実装する。
 
 # 開発背景
 
