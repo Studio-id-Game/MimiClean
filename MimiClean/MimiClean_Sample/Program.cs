@@ -21,8 +21,10 @@ namespace StudioIdGames.MimiClean_Sample
         public static MimiServiceProvider InitServices()
         {
             var container = new MimiServiceContainer();
-            MimiCleanSetup.SetDefaultService(container);
-            AdapterSetup.SetDefaultService_Tuple(container);
+            MimiCleanSetup.SetDefaultService();
+
+            // 変更可能
+            AdapterSetup.SetDefaultService_Tuple();
 
             Console.Write("Please select mode (d:Dummy, other:default) : ");
 

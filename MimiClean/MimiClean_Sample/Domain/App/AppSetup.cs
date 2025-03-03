@@ -14,16 +14,21 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App
         /// App層のデフォルトserviceをセットします。
         /// </summary>
         /// <typeparam name="TInt2D">利用する座標系</typeparam>
-        /// <param name="container"></param>
+        public static void SetDefaultService<TInt2D>()
+        {
+            DomainSetup.SetDefaultService<TInt2D>();
+
+            MimiServiceDefault.Set<IAddItemUseCase, AddItemUseCase<TInt2D>>();
+            MimiServiceDefault.Set<IExitUseCase, ExitUseCase>();
+            MimiServiceDefault.Set<IMoveItemUseCase, MoveItemUseCase<TInt2D>>();
+            MimiServiceDefault.Set<ISearchItemsUseCase, SearchItemsUsecase<TInt2D>>();
+            MimiServiceDefault.Set<ISelectMainActionUseCase, SelectMainActionUseCase>();
+        }
+
+        [Obsolete("Unused arguments")]
         public static void SetDefaultService<TInt2D>(MimiServiceContainer container)
         {
-            DomainSetup.SetDefaultService<TInt2D>(container);
-
-            MimiServiceDefault<IAddItemUseCase>.Set<AddItemUseCase<TInt2D>>(container, 0);
-            MimiServiceDefault<IExitUseCase>.Set<ExitUseCase>(container, 0);
-            MimiServiceDefault<IMoveItemUseCase>.Set<MoveItemUseCase<TInt2D>>(container, 0);
-            MimiServiceDefault<ISearchItemsUseCase>.Set<SearchItemsUsecase<TInt2D>>(container, 0);
-            MimiServiceDefault<ISelectMainActionUseCase>.Set<SelectMainActionUseCase>(container, 0);
+            SetDefaultService<TInt2D>();
         }
     }
 }
