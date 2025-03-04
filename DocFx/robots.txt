@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://studio-id-game.github.io/MimiClean/sitemap.xml
