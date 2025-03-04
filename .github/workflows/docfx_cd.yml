@@ -35,7 +35,10 @@ jobs:
 
     - run: dotnet tool update -g docfx
     - run: docfx DocFx/docfx.json
-
+    
+    - name: Remove BOM from sitemap.xml
+    - run: sed -i '1s/^\xEF\xBB\xBF//' DocFx/_site/sitemap.xml
+    
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
