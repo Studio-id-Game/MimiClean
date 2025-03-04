@@ -68,7 +68,8 @@
         "files": [
           "logo.svg",
           "favicon.ico",
-          "googlec803c82e9c3c4f22.html"
+          "googlec803c82e9c3c4f22.html",
+          "robots.txt"
         ]
       }
     ],
