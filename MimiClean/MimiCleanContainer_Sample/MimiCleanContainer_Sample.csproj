@@ -16,4 +16,22 @@
 	  <ProjectReference Include="..\MimiCleanContainer\MimiCleanContainer.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<None Include="..\..\LICENSE" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README-en.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\THIRD-PARTY-NOTICES.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 </Project>
