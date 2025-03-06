@@ -1,34 +1,45 @@
-﻿using StudioIdGames.MimiClean.Domain;
-using StudioIdGames.MimiClean.Domain.IApp;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.Module
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.Module
 {
+    using StudioIdGames.MimiClean.Domain;
     using IApp.IService;
-    using IDomain.IModule;
+    using StudioIdGames.MimiClean_Sample.Domain.Entity;
+    using StudioIdGames.MimiClean_Sample.IDomain;
 
     /// <summary>
-    /// <see cref="IInt2DPosModule{TInt2D}"/>を実装します。
+    /// <see cref="IInt2DPosProperty{TInt2D}"/>を実装するモジュールです。
     /// </summary>
     /// <typeparam name="TInt2D"></typeparam>
-    /// <param name="int2d"></param>
-    /// <param name="currentEntity"></param>
-    /// <param name="moduleName"></param>
-    public sealed class Int2DPosModule<TInt2D>(IInt2DService<TInt2D> int2d, ICurrentEntityService currentEntity, string? moduleName = null) : DomainModule(currentEntity, moduleName), IInt2DPosModule<TInt2D>
+    public sealed class Int2DPosModule<TInt2D> : DomainModule, IInt2DPosProperty<TInt2D>
     {
-        private readonly IInt2DService<TInt2D> int2d = int2d;
+        /// <param name="int2d"></param>
+        /// <param name="entity"></param>
+        /// <param name="moduleName"></param>
+        public Int2DPosModule(DomainEntity entity, Func<IInt2DService<TInt2D>> int2d, string? moduleName = null) :
+            base(entity, moduleName)
+        {
+            this.int2d = int2d ?? throw new ArgumentNullException(nameof(int2d));
+            XY = Int2d.New(0, 0);
+        }
 
+        private readonly Func<IInt2DService<TInt2D>> int2d;
+
+        private IInt2DService<TInt2D> Int2d => int2d();
+
+        /// <inheritdoc/>
+        public TInt2D XY { get; set; }
+
+        /// <inheritdoc/>
         public int X
         {
-            get => int2d.GetX(XY);
-            set => XY = int2d.New(value, int2d.GetY(XY));
+            get => Int2d.GetX(XY);
+            set => XY = Int2d.New(value, Int2d.GetY(XY));
         }
 
+        /// <inheritdoc/>
         public int Y
         {
-            get => int2d.GetY(XY);
-            set => XY = int2d.New(int2d.GetX(XY), value);
+            get => Int2d.GetY(XY);
+            set => XY = Int2d.New(Int2d.GetX(XY), value);
         }
-
-        public TInt2D XY { get; set; } = int2d.New(0, 0);
     }
 }

@@ -1,26 +1,20 @@
-﻿using StudioIdGames.MimiClean.Domain;
-using StudioIdGames.MimiCleanContainer;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.Entity
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.Entity
 {
-    using IDomain.IEntity;
-    using StudioIdGames.MimiClean_Sample.Domain.EntityConfig;
+    using StudioIdGames.MimiClean.Domain;
 
     /// <summary>
     /// <see cref="IMapInfoEntity"/> を実装します。
     /// </summary>
-    public sealed class MapInfoEntity : DomainEntity, IMapInfoEntity
+    public sealed class MapInfoEntity(int height, int width) : DomainEntity
     {
-        public int Height { get; }
+        /// <summary>
+        /// マップの高さ
+        /// </summary>
+        public int Height { get; } = height;
 
-        public int Width { get; }
-
-        public MapInfoEntity(MimiServiceProvider serviceProvider, MapInfoConfig config) : base(serviceProvider)
-        {
-            using var _ = new CreateEntityScope(serviceProvider, this);
-
-            Height = config.Height;
-            Width = config.Width;
-        }
+        /// <summary>
+        /// マップの幅
+        /// </summary>
+        public int Width { get; } = width;
     }
 }
