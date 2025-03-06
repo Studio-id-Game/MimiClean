@@ -1,12 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace StudioIdGames.MimiClean.Domain.IApp
+﻿namespace StudioIdGames.MimiClean.Domain.IApp
 {
+    using MimiCleanContainer;
+    using System.Collections;
+    using System.Collections.Generic;
+
     /// <summary>
     /// 全てのデータストアを抽象化します。
     /// </summary>
-    public interface IAppRepository : IEnumerable, IAppService
+#pragma warning disable CS0618 // 型またはメンバーが旧型式です
+
+    public interface IAppRepository : IEnumerable, IMimiService, IAppService
+#pragma warning restore CS0618 // 型またはメンバーが旧型式です
     {
         /// <summary>
         /// ストアされているデータの件数
