@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<RootNamespace>StudioIdGames.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
+		<AssemblyName>StudioIdGames.$(MSBuildProjectName)</AssemblyName>
+		<Company>StudioIdGames</Company>
+		<Authors>K.Hiroya</Authors>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+		<VersionPrefix>1.2.1</VersionPrefix>
+		<VersionSuffix>bata</VersionSuffix>
+		<Title>MimiClean</Title>
+		<Description>C# Simple clean-like architecture, System.Threading.Tasks.Task add-on</Description>
+		<PackageProjectUrl>https://github.com/Studio-id-Game/MimiClean</PackageProjectUrl>
+		<PackageReadmeFile>README-en.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/Studio-id-Game/MimiClean</RepositoryUrl>
+		<Copyright>Copyright © 2015-2025 StudioIdGames</Copyright>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MimiClean\MimiClean.csproj" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<None Include="..\..\LICENSE" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README-en.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\THIRD-PARTY-NOTICES.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+	
+</Project>
