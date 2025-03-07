@@ -35,10 +35,15 @@ namespace StudioIdGames.MimiClean.Domain.App
     /// <typeparam name="TValue">ストアする値の型</typeparam>
     public abstract class RepositoryMono<TValue> : Repository<TValue>, IAppRepositoryMono<TValue>
     {
+        public interface IMonoValue : IReadOnlyCollection<TValue>
+        {
+            TValue Value { get; }
+        }
+
         /// <summary>
         /// 単一値を表すコレクション
         /// </summary>
-        public class MonoValue : IReadOnlyCollection<TValue>
+        public class MonoValue : IMonoValue
         {
             public TValue Value { get; set; }
 
@@ -63,7 +68,7 @@ namespace StudioIdGames.MimiClean.Domain.App
         /// <summary>
         /// 内部の単一データコレクション
         /// </summary>
-        protected abstract MonoValue ValueProtected { get; }
+        protected abstract IMonoValue ValueProtected { get; }
 
         public TValue Value => ValueProtected.Value;
 
