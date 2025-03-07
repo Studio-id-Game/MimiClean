@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 
-namespace StudioIdGames.MimiClean
+namespace StudioIdGames.MimiClean.Collections
 {
-    [Obsolete("Use Collections.CachingCollection<TValue>")]
     public abstract class CachingCollection<TValue> : CachingBase<int, TValue>, IReadOnlyCollection<CleanResultBoxed<TValue>>
     {
-        public object this[int index] => GetValue(index);
+        public CleanResult<TValue> this[int index] => GetValue(index);
 
         public override sealed CleanResult<TValue> GetValue(int index)
         {

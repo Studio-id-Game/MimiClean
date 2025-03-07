@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace StudioIdGames.MimiClean
+namespace StudioIdGames.MimiClean.Collections
 {
-    [Obsolete("Use Collections.CachingDictionary<TKey, TValue>")]
-    public abstract class CachingDictionary<TKey, TValue> : CachingBase<TKey, TValue>, IReadOnlyDictionary<TKey, CleanResultBoxed<TValue>>
+    public abstract class CachingDictionary<TKey, TValue> :
+        CachingBase<TKey, TValue>, IReadOnlyDictionary<TKey, CleanResultBoxed<TValue>>
     {
         public CachingDictionary(IEqualityComparer<TKey> comparer = null) : base(comparer)
         {
