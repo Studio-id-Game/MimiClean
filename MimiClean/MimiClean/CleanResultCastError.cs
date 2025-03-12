@@ -1,13 +1,17 @@
-﻿using System;
-
-namespace StudioIdGames.MimiClean
+﻿namespace StudioIdGames.MimiClean
 {
+    using System;
+
     /// <summary>
     /// <see cref="CleanResult{TResult}.Result"/>を他の型に変換しようとして失敗した場合のエラーを表します
     /// </summary>
-    /// <typeparam name="T">変換先の型</typeparam>
     public class CleanResultCastError : CleanResultError
     {
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="tResult">変換元の型</param>
+        /// <param name="t">変換先の型</param>
         public CleanResultCastError(Type tResult, Type t)
         {
             TResult = tResult;
