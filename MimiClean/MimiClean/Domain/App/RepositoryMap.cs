@@ -25,7 +25,7 @@
         protected abstract IReadOnlyDictionary<TKey, TValue> MapProtected { get; }
 
         /// <inheritdoc/>
-        protected override sealed IReadOnlyCollection<KeyValuePair<TKey, TValue>> ValuesProtected => MapProtected;
+        protected sealed override IReadOnlyCollection<KeyValuePair<TKey, TValue>> ValuesProtected => MapProtected;
 
         /// <inheritdoc/>
         public bool ContainsKey(TKey key)

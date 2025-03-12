@@ -58,6 +58,6 @@
         public TValue Value => ValueProtected.Value;
 
         /// <inheritdoc/>
-        protected override sealed IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
+        protected sealed override IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
     }
 }

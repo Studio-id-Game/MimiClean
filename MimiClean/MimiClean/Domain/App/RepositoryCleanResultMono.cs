@@ -95,7 +95,7 @@
         }
 
         /// <inheritdoc/>
-        protected override sealed IMonoCollection<CleanResultBoxed<TValue>> ValueProtected => ValueCleanResultProtected;
+        protected sealed override IMonoCollection<CleanResultBoxed<TValue>> ValueProtected => ValueCleanResultProtected;
 
         /// <summary>
         /// <see cref="ValueProtected"/> として利用する <see cref="ICleanResultMonoCollection{TResult}"/>

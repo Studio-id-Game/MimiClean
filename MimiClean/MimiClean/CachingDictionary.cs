@@ -58,7 +58,7 @@ namespace StudioIdGames.MimiClean
         }
 
         /// <inheritdoc/>
-        public override sealed CleanResult<TValue> GetValue(TKey key)
+        public sealed override CleanResult<TValue> GetValue(TKey key)
         {
             return base.GetValue(key);
         }

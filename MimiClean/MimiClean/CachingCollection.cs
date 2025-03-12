@@ -14,7 +14,7 @@ namespace StudioIdGames.MimiClean
         public CleanResult<TValue> this[int index] => GetValue(index);
 
         /// <inheritdoc/>
-        public override sealed CleanResult<TValue> GetValue(int index)
+        public sealed override CleanResult<TValue> GetValue(int index)
         {
             if (index < 0 || Count <= index)
             {

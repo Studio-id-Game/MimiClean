@@ -24,7 +24,7 @@
         }
 
         /// <inheritdoc/>
-        protected override sealed IReadOnlyCollection<CleanResultBoxed<TValue>> ValuesProtected => CleanResultValuesProtected;
+        protected sealed override IReadOnlyCollection<CleanResultBoxed<TValue>> ValuesProtected => CleanResultValuesProtected;
 
         /// <summary>
         /// <see cref="ValuesProtected"/> として利用する <see cref="ICleanResultCollection{TResult}"/>
