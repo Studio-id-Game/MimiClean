@@ -1,8 +1,7 @@
 ﻿namespace StudioIdGames.MimiClean_Sample.Domain.Module
 {
-    using StudioIdGames.MimiClean.Domain;
     using IApp.IService;
-    using StudioIdGames.MimiClean_Sample.Domain.Entity;
+    using StudioIdGames.MimiClean.Domain;
     using StudioIdGames.MimiClean_Sample.IDomain;
 
     /// <summary>

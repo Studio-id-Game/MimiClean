@@ -1,7 +1,7 @@
 ﻿namespace StudioIdGames.MimiClean_Sample.Domain.Module
 {
-    using StudioIdGames.MimiClean.Domain;
     using IDomain;
+    using StudioIdGames.MimiClean.Domain;
 
     /// <summary>
     /// <see cref="IItemNameProperty"/>を実装するモジュールです。
