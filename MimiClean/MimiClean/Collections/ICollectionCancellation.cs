@@ -10,7 +10,7 @@
     public interface ICollectionCancellation<TValue>
     {
         /// <summary>
-        /// キャンセルを考慮して、<typeparamref name="TValue"/>を列挙します
+        /// キャンセルを考慮して、要素を列挙します
         /// </summary>
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
