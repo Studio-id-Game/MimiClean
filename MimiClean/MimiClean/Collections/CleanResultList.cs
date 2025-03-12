@@ -35,7 +35,7 @@
         /// </summary>
         /// <param name="value">変換過程値</param>
         /// <returns></returns>
-        protected abstract CleanResult<TResult> GetResult(in TValue value);
+        protected abstract CleanResult<TResult> GetResult(TValue value);
 
         /// <inheritdoc/>
         public IEnumerator<CleanResultBoxed<TResult>> GetEnumerator()

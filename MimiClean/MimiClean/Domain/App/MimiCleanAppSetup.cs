@@ -21,6 +21,10 @@ namespace StudioIdGames.MimiClean.Domain.App
 #pragma warning restore CS0618 // 型またはメンバーが旧型式です
         }
 
+        /// <summary>
+        /// 非推奨
+        /// </summary>
+        /// <param name="_"></param>
         [Obsolete("Unused argument.")]
         public static void SetDefaultService(MimiServiceContainer _)
         {
