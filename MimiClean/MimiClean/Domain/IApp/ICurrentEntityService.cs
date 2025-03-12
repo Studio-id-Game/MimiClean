@@ -1,8 +1,7 @@
 ﻿namespace StudioIdGames.MimiClean.Domain.IApp
 {
-    using MimiCleanContainer;
-
     using IDomain;
+    using MimiCleanContainer;
     using System;
 
     /// <summary>
