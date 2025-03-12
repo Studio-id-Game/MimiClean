@@ -5,13 +5,15 @@
     using StudioIdGames.MimiClean.Domain.App;
     using StudioIdGames.MimiClean.Task;
     using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading;
     using System.Threading.Tasks;
 
     internal class Program
     {
         private class StartActRepository : RepositoryCleanResult<Task>
         {
-            protected override IReadOnlyCollection<CleanResultBoxed<Task>> ValuesProtected { get; } = new Acts(acts);
+            protected override ICleanResultCollection<Task> CleanResultValuesProtected { get; } = new Acts(acts);
 
             private static readonly List<Func<Task>> acts =
             [
@@ -22,11 +24,11 @@
                         Console.Write(item);
                         if (item == '\n')
                         {
-                            await Task.Delay(500);
+                            await Task.Delay(200);
                         }
                         else
                         {
-                            await Task.Delay(50);
+                            await Task.Delay(20);
                         }
                     }
                 }),
@@ -42,11 +44,11 @@ Let's Start The Sample Program!!" + "\n\n";
                         Console.Write(item);
                         if (item == '\n')
                         {
-                            await Task.Delay(500);
+                            await Task.Delay(200);
                         }
                         else
                         {
-                            await Task.Delay(50);
+                            await Task.Delay(20);
                         }
                     }
                 }),
@@ -54,7 +56,12 @@ Let's Start The Sample Program!!" + "\n\n";
 
             private class Acts(IReadOnlyList<Func<Task>> acts) : CleanResultList<Func<Task>, Task>(acts)
             {
-                protected override CleanResult<Task> GetResult(in Func<Task> value)
+                public override IEnumerable<CleanResultBoxed<Task>> GetValues(CancellationToken cancellationToken)
+                {
+                    return base.GetValues(cancellationToken);
+                }
+
+                protected override CleanResult<Task> GetResult(Func<Task> value)
                 {
                     return CleanResult.Success(value?.Invoke() ?? Task.CompletedTask);
                 }
@@ -71,7 +78,7 @@ Let's Start The Sample Program!!" + "\n\n";
                 {"Fish", "Uo-Pichi" }
             };
 
-            protected override IReadOnlyDictionary<string, CleanResultBoxed<Task<string>>> MapProtected { get; } = new Names(names);
+            protected override ICleanResultDictionary<string, Task<string>> CleanResultMapProtected { get; } = new Names(names);
 
             private class Names(IReadOnlyDictionary<string, string> names) : CleanResultDictionary<string, string, Task<string>>(names)
             {
@@ -107,13 +114,13 @@ Let's Start The Sample Program!!" + "\n\n";
             task.Wait();
         }
 
-        private static async Task MainAsync(string[] args)
+        private static async Task MainAsync(string[] _)
         {
             var startActRep = new StartActRepository();
 
             foreach (var act in startActRep)
             {
-                await act;
+                await act.Unbox();
             }
 
             var namesRep = new NamesRepository();
@@ -128,7 +135,7 @@ Let's Start The Sample Program!!" + "\n\n";
                     {
                         return Task.Run(async () =>
                         {
-                            Write(e.Key, await e.Value);
+                            Write(e.Key, await e.Value.Unbox());
                         });
                     })
                     .ToArray();
@@ -156,7 +163,7 @@ Let's Start The Sample Program!!" + "\n\n";
                 foreach (var key in namesRep.Keys)
                 {
                     Console.Write($"The {key} is called ...");
-                    Write(await namesRep[key]);
+                    Write(await namesRep[key].Unbox());
                 }
 
                 static void Write(in CleanResult<string> res)
