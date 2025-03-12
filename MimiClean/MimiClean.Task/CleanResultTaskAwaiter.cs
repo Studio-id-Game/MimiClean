@@ -5,7 +5,8 @@
     using System.Threading.Tasks;
 
     /// <summary>
-    /// 参考： https://ufcpp.net/study/csharp/sp5_awaitable.html#awaiter
+    /// 参考：<a href="https://ufcpp.net/study/csharp/sp5_awaitable.html#awaiter"/><br/>
+    /// <see cref="CleanResult{TResult}"/>(TResult=<see cref="Task{TResult}"/>) を待機するためのAwaiterです。
     /// </summary>
     /// <typeparam name="T"></typeparam>
     public readonly struct CleanResultTaskAwaiter<T> : ICriticalNotifyCompletion, INotifyCompletion
@@ -15,7 +16,11 @@
         private readonly Task<T> task;
         private readonly TaskAwaiter<T> taskAwaiter;
 
-        public CleanResultTaskAwaiter(in CleanResult<Task<T>> cleanResult)
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="cleanResult"></param>
+        public CleanResultTaskAwaiter(CleanResult<Task<T>> cleanResult)
         {
             state = cleanResult.State;
             error = cleanResult.Error;
@@ -32,8 +37,10 @@
             taskAwaiter = task.GetAwaiter();
         }
 
+        /// <inheritdoc cref="TaskAwaiter{TResult}.IsCompleted"/>
         public bool IsCompleted => taskAwaiter.IsCompleted;
 
+        /// <inheritdoc cref="TaskAwaiter{TResult}.GetResult"/>
         public CleanResult<T> GetResult()
         {
             try
@@ -65,7 +72,7 @@
                         throw new InvalidOperationException();
                 }
             }
-            catch (TaskCanceledException)
+            catch (OperationCanceledException)
             {
                 return CleanResult<T>.Canceled();
             }
@@ -75,11 +82,13 @@
             }
         }
 
+        /// <inheritdoc cref="TaskAwaiter{TResult}.OnCompleted"/>
         public void OnCompleted(Action continuation)
         {
             taskAwaiter.OnCompleted(continuation);
         }
 
+        /// <inheritdoc cref="TaskAwaiter{TResult}.UnsafeOnCompleted"/>
         public void UnsafeOnCompleted(Action continuation)
         {
             taskAwaiter.UnsafeOnCompleted(continuation);
@@ -87,7 +96,8 @@
     }
 
     /// <summary>
-    /// 参考： https://ufcpp.net/study/csharp/sp5_awaitable.html#awaiter
+    /// 参考：<a href="https://ufcpp.net/study/csharp/sp5_awaitable.html#awaiter"/><br/>
+    /// <see cref="CleanResult{TResult}"/>(TResult=<see cref="Task"/>) を待機するためのAwaiterです。
     /// </summary>
     public readonly struct CleanResultTaskAwaiter : ICriticalNotifyCompletion, INotifyCompletion
     {
@@ -96,7 +106,11 @@
         private readonly Task task;
         private readonly TaskAwaiter taskAwaiter;
 
-        public CleanResultTaskAwaiter(in CleanResult<Task> cleanResult)
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="cleanResult"></param>
+        public CleanResultTaskAwaiter(CleanResult<Task> cleanResult)
         {
             state = cleanResult.State;
             error = cleanResult.Error;
@@ -113,8 +127,10 @@
             taskAwaiter = task.GetAwaiter();
         }
 
+        /// <inheritdoc cref="TaskAwaiter.IsCompleted"/>
         public bool IsCompleted => taskAwaiter.IsCompleted;
 
+        /// <inheritdoc cref="TaskAwaiter.GetResult"/>
         public CleanResult<CleanResult.Void> GetResult()
         {
             try
@@ -146,7 +162,7 @@
                         throw new InvalidOperationException();
                 }
             }
-            catch (TaskCanceledException)
+            catch (OperationCanceledException)
             {
                 return CleanResult.Canceled();
             }
@@ -156,11 +172,13 @@
             }
         }
 
+        /// <inheritdoc cref="TaskAwaiter.OnCompleted"/>
         public void OnCompleted(Action continuation)
         {
             taskAwaiter.OnCompleted(continuation);
         }
 
+        /// <inheritdoc cref="TaskAwaiter.UnsafeOnCompleted"/>
         public void UnsafeOnCompleted(Action continuation)
         {
             taskAwaiter.UnsafeOnCompleted(continuation);
