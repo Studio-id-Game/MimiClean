@@ -16,11 +16,9 @@
 		<PackageReadmeFile>README-en.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/Studio-id-Game/MimiClean</RepositoryUrl>
 		<Copyright>Copyright © 2015-2025 StudioIdGames</Copyright>
+		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
-
-	<ItemGroup>
-		<ProjectReference Include="..\MimiCleanContainer\MimiCleanContainer.csproj" />
-	</ItemGroup>
 
 	<ItemGroup>
 		<None Include="..\..\LICENSE" Link="Doc\%(FileName)%(Extension)">
@@ -39,6 +37,10 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\MimiCleanContainer\MimiCleanContainer.csproj" />
 	</ItemGroup>
 
 </Project>

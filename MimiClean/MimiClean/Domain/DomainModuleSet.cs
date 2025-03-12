@@ -134,7 +134,6 @@
         /// <summary>
         /// モジュールをセットに追加します。
         /// </summary>
-        /// <typeparam name="T">追加するモジュールのクラス</typeparam>
         /// <param name="value">追加するモジュールのインスタンス</param>
         /// <returns>追加に成功した時のみtrue</returns>
         public virtual bool CustomAdd(DomainModule value)

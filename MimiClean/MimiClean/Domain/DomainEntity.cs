@@ -13,12 +13,20 @@
     public abstract class DomainEntity : IDomainEntity
 #pragma warning restore CS0618 // 型またはメンバーが旧型式です
     {
+        /// <summary>
+        /// 未使用
+        /// </summary>
         [Obsolete("This feature is no longer useful.")]
         protected readonly ref struct CreateEntityScope
         {
             private readonly IApp.ICurrentEntityService service;
-            public readonly IDomainEntity prevEntity;
+            private readonly IDomainEntity prevEntity;
 
+            /// <summary>
+            /// コンストラクター
+            /// </summary>
+            /// <param name="mimiServiceProvider"></param>
+            /// <param name="newEntiry"></param>
             public CreateEntityScope(MimiServiceProvider mimiServiceProvider, IDomainEntity newEntiry)
             {
                 service = mimiServiceProvider.GetMimiService<IApp.ICurrentEntityService>();
@@ -27,16 +35,24 @@
                 service.CurrentEntity = newEntiry;
             }
 
+            /// <inheritdoc cref="IDisposable.Dispose"/>
             public void Dispose()
             {
                 service.CurrentEntity = prevEntity;
             }
         }
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
         public DomainEntity()
         {
         }
 
+        /// <summary>
+        /// 未使用
+        /// </summary>
+        /// <param name="_">未使用</param>
         [Obsolete("This feature is no longer useful.")]
         public DomainEntity(MimiServiceProvider _)
         {

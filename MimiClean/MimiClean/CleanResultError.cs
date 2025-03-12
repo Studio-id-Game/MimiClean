@@ -18,6 +18,10 @@ namespace StudioIdGames.MimiClean
             return Message;
         }
 
+        /// <summary>
+        /// <see cref="Exception"/>からの暗黙的変換を許可します。
+        /// </summary>
+        /// <param name="exception"></param>
         public static implicit operator CleanResultError(Exception exception)
         {
             return new CleanResultException(exception);
