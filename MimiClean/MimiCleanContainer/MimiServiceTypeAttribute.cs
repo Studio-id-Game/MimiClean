@@ -22,6 +22,10 @@ namespace StudioIdGames.MimiCleanContainer
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Interface, Inherited = true, AllowMultiple = false)]
     public sealed class MimiServiceTypeAttribute : Attribute
     {
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
+        /// <param name="serviceType">サービスのタイプ</param>
         public MimiServiceTypeAttribute(MimiServiceType serviceType)
         {
             ServiceType = serviceType;

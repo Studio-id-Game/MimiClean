@@ -12,6 +12,10 @@ namespace StudioIdGames.MimiCleanContainer
         /// </summary>
         public IServiceProvider BaseProvider { get; }
 
+        /// <summary>
+        /// <paramref name="baseProvider"/>を元にして<see cref="MimiServiceProvider"/>インスタンスを作成します。
+        /// </summary>
+        /// <param name="baseProvider"></param>
         public MimiServiceProvider(IServiceProvider baseProvider)
         {
             BaseProvider = baseProvider;
@@ -37,6 +41,7 @@ namespace StudioIdGames.MimiCleanContainer
             return this;
         }
 
+        /// <inheritdoc/>
         public object GetService(Type serviceType)
         {
             return BaseProvider.GetService(serviceType);

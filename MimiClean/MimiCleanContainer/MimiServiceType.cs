@@ -5,6 +5,9 @@
     /// </summary>
     public enum MimiServiceType
     {
+        /// <summary>
+        /// 未定なサービスのタイプを表します。
+        /// </summary>
         None = 0,
 
         /// <summary>

@@ -47,30 +47,7 @@
             {
                 var res = taskAwaiter.GetResult();
 
-                if (state != CleanResultState.Success)
-                {
-                    return new CleanResult<T>(state, res, error);
-                }
-
-                switch (task.Status)
-                {
-                    case TaskStatus.Canceled:
-                        return CleanResult<T>.Canceled();
-
-                    case TaskStatus.Faulted:
-                        return CleanResult<T>.Failed(new CleanResultException(task.Exception));
-
-                    case TaskStatus.RanToCompletion:
-                        return CleanResult<T>.Success(res);
-
-                    case TaskStatus.Created:
-                    case TaskStatus.Running:
-                    case TaskStatus.WaitingForActivation:
-                    case TaskStatus.WaitingForChildrenToComplete:
-                    case TaskStatus.WaitingToRun:
-                    default:
-                        throw new InvalidOperationException();
-                }
+                return GetCleanResult(res);
             }
             catch (OperationCanceledException)
             {
@@ -79,6 +56,34 @@
             catch (Exception e)
             {
                 return CleanResult<T>.Failed(new CleanResultException(e));
+            }
+        }
+
+        private CleanResult<T> GetCleanResult(T res)
+        {
+            if (state != CleanResultState.Success)
+            {
+                return new CleanResult<T>(state, res, error);
+            }
+
+            switch (task.Status)
+            {
+                case TaskStatus.Canceled:
+                    return CleanResult<T>.Canceled();
+
+                case TaskStatus.Faulted:
+                    return CleanResult<T>.Failed(task.Exception);
+
+                case TaskStatus.RanToCompletion:
+                    return CleanResult<T>.Success(res);
+
+                // case TaskStatus.Created:
+                // case TaskStatus.Running:
+                // case TaskStatus.WaitingForActivation:
+                // case TaskStatus.WaitingForChildrenToComplete:
+                // case TaskStatus.WaitingToRun:
+                default:
+                    throw new InvalidOperationException();
             }
         }
 
@@ -137,38 +142,43 @@
             {
                 taskAwaiter.GetResult();
 
-                if (state != CleanResultState.Success)
-                {
-                    return new CleanResult<CleanResult.Void>(state, default, error);
-                }
-
-                switch (task.Status)
-                {
-                    case TaskStatus.Canceled:
-                        return CleanResult.Canceled();
-
-                    case TaskStatus.Faulted:
-                        return CleanResult.Failed(new CleanResultException(task.Exception));
-
-                    case TaskStatus.RanToCompletion:
-                        return CleanResult.Success();
-
-                    case TaskStatus.Created:
-                    case TaskStatus.Running:
-                    case TaskStatus.WaitingForActivation:
-                    case TaskStatus.WaitingForChildrenToComplete:
-                    case TaskStatus.WaitingToRun:
-                    default:
-                        throw new InvalidOperationException();
-                }
+                return GetCleanResult();
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException e)
             {
-                return CleanResult.Canceled();
+                return CleanResult<CleanResult.Void>.Canceled(default, e);
             }
             catch (Exception e)
             {
                 return CleanResult.Failed(new CleanResultException(e));
+            }
+        }
+
+        private CleanResult<CleanResult.Void> GetCleanResult()
+        {
+            if (state != CleanResultState.Success)
+            {
+                return new CleanResult<CleanResult.Void>(state, default, error);
+            }
+
+            switch (task.Status)
+            {
+                case TaskStatus.Canceled:
+                    return CleanResult.Canceled();
+
+                case TaskStatus.Faulted:
+                    return CleanResult.Failed(task.Exception);
+
+                case TaskStatus.RanToCompletion:
+                    return CleanResult.Success();
+
+                // case TaskStatus.Created:
+                // case TaskStatus.Running:
+                // case TaskStatus.WaitingForActivation:
+                // case TaskStatus.WaitingForChildrenToComplete:
+                // case TaskStatus.WaitingToRun:
+                default:
+                    throw new InvalidOperationException();
             }
         }
 

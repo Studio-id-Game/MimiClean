@@ -39,7 +39,6 @@ namespace StudioIdGames.MimiCleanContainer
         /// <summary>
         /// <see cref="IServiceProvider"/> を、MimiServiceが実装するカスタム動作を考慮できる <see cref="MimiCleanContainer.MimiServiceProvider"/> に変換します。
         /// </summary>
-        /// <typeparam name="T"></typeparam>
         /// <param name="serviceProvider"></param>
         /// <returns></returns>
         public static MimiServiceProvider AsMimiServiceProvider(this IServiceProvider serviceProvider)
