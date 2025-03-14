@@ -15,18 +15,25 @@
 		<PackageProjectUrl>https://github.com/Studio-id-Game/MimiClean</PackageProjectUrl>
 		<PackageReadmeFile>README-en.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/Studio-id-Game/MimiClean</RepositoryUrl>
+		<Copyright>Copyright © 2015-2025 StudioIdGames</Copyright>
+		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<None Include="..\..\LICENSE">
+		<None Include="..\..\LICENSE" Link="Doc\%(FileName)%(Extension)">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<None Include="..\..\README.md">
+		<None Include="..\..\README.md" Link="Doc\%(FileName)%(Extension)">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
-		<None Include="..\..\README-en.md">
+		<None Include="..\..\README-en.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\THIRD-PARTY-NOTICES.md" Link="Doc\%(FileName)%(Extension)">
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>

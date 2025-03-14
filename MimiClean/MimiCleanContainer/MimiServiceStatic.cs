@@ -1,11 +1,9 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace StudioIdGames.MimiCleanContainer
 {
     /// <summary>
-    /// Static Type Caching を利用して、<see cref="StaticService{TInterface, TSelf}"/>で実装された機能を管理します。
+    /// Static Type Caching を利用して、<see cref="IStaticService"/>で実装された機能を管理します。
     /// </summary>
     /// <typeparam name="TInterface">機能を定義しているインターフェース</typeparam>
     internal static class MimiServiceStatic<TInterface>
@@ -15,7 +13,7 @@ namespace StudioIdGames.MimiCleanContainer
         private static bool isUsed;
 
         /// <summary>
-        /// <see cref="TInterface"/>として利用するインスタンス。nullを取得しようとした場合エラーをスローします。
+        /// <typeparamref name="TInterface"/> として利用するインスタンス。nullを取得しようとした場合エラーをスローします。
         /// </summary>
         public static TInterface Instance
         {

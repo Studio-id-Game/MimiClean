@@ -15,6 +15,7 @@ namespace StudioIdGames.MimiCleanContainer
         /// <summary>
         /// <typeparamref name="TInterface"/>にデフォルトで使用するカスタムファクトリー関数を登録します。優先度が高いものが優先され、同じ優先度の場合は後から設定されたものが優先されます。
         /// </summary>
+        /// <typeparam name="TInterface">Serviceの定義</typeparam>
         /// <param name="factory">カスタムファクトリー関数</param>
         /// <param name="priority">優先度</param>
         public static void Set<TInterface>(Func<IServiceProvider, TInterface> factory = null, int priority = 0)
@@ -33,7 +34,8 @@ namespace StudioIdGames.MimiCleanContainer
         /// <summary>
         /// <typeparamref name="TInterface"/>にデフォルトで使用するTypeとして<typeparamref name="TInstance"/>を利用します。優先度が高いものが優先され、同じ優先度の場合は後から設定されたものが優先されます。
         /// </summary>
-        /// <typeparam name="TInstance">利用するType</typeparam>
+        /// <typeparam name="TInterface">Serviceの定義</typeparam>
+        /// <typeparam name="TInstance">利用するインスタンスタイプ</typeparam>
         /// <param name="factory">カスタムファクトリー関数</param>
         /// <param name="priority">優先度</param>
         public static void Set<TInterface, TInstance>(Func<IServiceProvider, TInstance> factory = null, int priority = 0)
@@ -53,7 +55,8 @@ namespace StudioIdGames.MimiCleanContainer
         /// <summary>
         /// <typeparamref name="TInterface"/>として<typeparamref name="TRefTo"/>を参照します。優先度が高いものが優先され、同じ優先度の場合は後から設定されたものが優先されます。
         /// </summary>
-        /// <typeparam name="TRefTo">参照するType</typeparam>
+        /// <typeparam name="TInterface">Serviceの定義</typeparam>
+        /// <typeparam name="TRefTo">参照先</typeparam>
         /// <param name="priority">優先度</param>
         public static void Ref<TInterface, TRefTo>(int priority = 0)
             where TInterface : class, IMimiService
@@ -84,6 +87,7 @@ namespace StudioIdGames.MimiCleanContainer
         /// <summary>
         /// <typeparamref name="TInterface"/>にデフォルトで使用するカスタムファクトリー関数を登録します。優先度が高いものが優先され、同じ優先度の場合は後から設定されたものが優先されます。
         /// </summary>
+        /// <param name="_">未利用</param>
         /// <param name="factory">カスタムファクトリー関数</param>
         /// <param name="priority">優先度</param>
         public static void Set(MimiServiceContainer _ = null, Func<IServiceProvider, TInterface> factory = null, int priority = 0)
@@ -95,6 +99,7 @@ namespace StudioIdGames.MimiCleanContainer
         /// <typeparamref name="TInterface"/>にデフォルトで使用するTypeとして<typeparamref name="TInstance"/>を利用します。優先度が高いものが優先され、同じ優先度の場合は後から設定されたものが優先されます。
         /// </summary>
         /// <typeparam name="TInstance">利用するType</typeparam>
+        /// <param name="_">未利用</param>
         /// <param name="priority">優先度</param>
         public static void Set<TInstance>(MimiServiceContainer _ = null, int priority = 0)
             where TInstance : class, TInterface
@@ -106,6 +111,7 @@ namespace StudioIdGames.MimiCleanContainer
         /// <typeparamref name="TInterface"/>として<typeparamref name="TRefTo"/>を参照します。優先度が高いものが優先され、同じ優先度の場合は後から設定されたものが優先されます。
         /// </summary>
         /// <typeparam name="TRefTo">参照するType</typeparam>
+        /// <param name="_">未利用</param>
         /// <param name="priority">優先度</param>
         public static void Ref<TRefTo>(MimiServiceContainer _ = null, int priority = 0)
             where TRefTo : class, TInterface

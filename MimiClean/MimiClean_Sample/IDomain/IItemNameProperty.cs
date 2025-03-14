@@ -1,11 +1,9 @@
-﻿using StudioIdGames.MimiClean.IDomain;
-
-namespace StudioIdGames.MimiClean_Sample.IDomain.IModule
+﻿namespace StudioIdGames.MimiClean_Sample.IDomain
 {
     /// <summary>
     /// 全てのアイテム名モジュールを抽象化します。
     /// </summary>
-    public interface INameModule : IDomainModule
+    public interface IItemNameProperty
     {
         /// <summary>
         /// アイテム名

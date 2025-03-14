@@ -1,6 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-
 	<PropertyGroup>
 		<TargetFramework>netstandard2.0</TargetFramework>
 		<RootNamespace>StudioIdGames.$(MSBuildProjectName.Replace(" ", "_"))</RootNamespace>
@@ -16,22 +15,32 @@
 		<PackageProjectUrl>https://github.com/Studio-id-Game/MimiClean</PackageProjectUrl>
 		<PackageReadmeFile>README-en.md</PackageReadmeFile>
 		<RepositoryUrl>https://github.com/Studio-id-Game/MimiClean</RepositoryUrl>
+		<Copyright>Copyright © 2015-2025 StudioIdGames</Copyright>
+		<ProduceReferenceAssembly>True</ProduceReferenceAssembly>
+		<GenerateDocumentationFile>True</GenerateDocumentationFile>
 	</PropertyGroup>
 
 	<ItemGroup>
+		<None Include="..\..\LICENSE" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\README-en.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\..\THIRD-PARTY-NOTICES.md" Link="Doc\%(FileName)%(Extension)">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.2" />
-		<None Include="..\..\LICENSE">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<None Include="..\..\README.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
-		<None Include="..\..\README-en.md">
-			<Pack>True</Pack>
-			<PackagePath>\</PackagePath>
-		</None>
 	</ItemGroup>
 
 </Project>

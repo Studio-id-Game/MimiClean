@@ -1,9 +1,9 @@
-﻿using StudioIdGames.MimiClean.Domain.IApp;
-using StudioIdGames.MimiClean_Sample.IDomain.IEntity;
-using StudioIdGames.MimiCleanContainer;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IRepository
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IRepository
 {
+    using Entity;
+    using MimiClean.Domain.IApp;
+    using MimiCleanContainer;
+
     /// <summary>
     /// 全てのアイテムマップリポジトリを抽象化します。
     /// </summary>
@@ -20,14 +20,14 @@ namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IRepository
     /// 座標が <typeparamref name="TInt2D"/> で表されるアイテムマップリポジトリを抽象化します。
     /// </summary>
     /// <typeparam name="TInt2D"></typeparam>
-    public interface IItemMapRepository<TInt2D> : IItemMapRepository, IAppRepositoryMap<TInt2D, IItemEntity<TInt2D>>
+    public interface IItemMapRepository<TInt2D> : IItemMapRepository, IAppRepositoryMap<TInt2D, ItemEntity<TInt2D>>
     {
         /// <summary>
         /// 座標を持ったアイテムの追加を試みます。
         /// </summary>
         /// <param name="value"></param>
         /// <returns>アイテムの追加に成功した時ture</returns>
-        public bool TryAdd(IItemEntity<TInt2D> value);
+        public bool TryAdd(ItemEntity<TInt2D> value);
 
         /// <summary>
         /// 指定座標のアイテムを削除します。

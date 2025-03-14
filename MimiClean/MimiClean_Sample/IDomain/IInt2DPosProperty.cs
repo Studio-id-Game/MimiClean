@@ -1,11 +1,9 @@
-﻿using StudioIdGames.MimiClean.IDomain;
-
-namespace StudioIdGames.MimiClean_Sample.IDomain.IModule
+﻿namespace StudioIdGames.MimiClean_Sample.IDomain
 {
     /// <summary>
     /// 全ての２次元整数座標モジュールを抽象化します。
     /// </summary>
-    public interface IInt2DPosModule : IDomainModule
+    public interface IInt2DPosProperty
     {
         /// <summary>
         /// x座標
@@ -21,7 +19,7 @@ namespace StudioIdGames.MimiClean_Sample.IDomain.IModule
     /// <summary>
     /// <typeparamref name="TInt2D"/>型の２次元整数座標モジュールを抽象化します。
     /// </summary>
-    public interface IInt2DPosModule<TInt2D> : IInt2DPosModule
+    public interface IInt2DPosProperty<TInt2D> : IInt2DPosProperty
     {
         /// <summary>
         /// ２次元整数座標

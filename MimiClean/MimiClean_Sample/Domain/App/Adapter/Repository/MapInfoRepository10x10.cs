@@ -4,22 +4,19 @@ using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
 {
-    using EntityConfig;
+    using Entity;
     using IApp.IRepository;
-    using IDomain.IEntity;
 
     /// <summary>
     /// <see cref="IMapInfoRepository"/> を実装します。マップサイズは10x10で固定です。
     /// </summary>
-    public class MapInfoRepository10x10 : RepositoryMono<IMapInfoEntity>, IMapInfoRepository
+    public class MapInfoRepository10x10 : RepositoryMono<MapInfoEntity>, IMapInfoRepository
     {
         public MapInfoRepository10x10(MimiServiceProvider mimiServiceProvider)
         {
             using var scope = mimiServiceProvider.CreateScope();
 
-            var entity = scope.MimiServiceProvider()
-                .Config<MapInfoConfig>(c => c.SetHeight(10).SetWidth(10))
-                .GetService<IMapInfoEntity>();
+            var entity = new MapInfoEntity(10, 10);
 
             ValueProtected = new MonoValue(entity);
         }

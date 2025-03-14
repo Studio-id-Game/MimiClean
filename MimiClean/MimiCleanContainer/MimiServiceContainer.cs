@@ -10,6 +10,9 @@ namespace StudioIdGames.MimiCleanContainer
     {
         private readonly IServiceCollection services;
 
+        /// <summary>
+        /// コンストラクター
+        /// </summary>
         public MimiServiceContainer()
         {
             services = new ServiceCollection();

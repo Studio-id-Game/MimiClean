@@ -1,15 +1,20 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Reflection;
 
 namespace StudioIdGames.MimiClean
 {
-    public abstract class CachingCollection<TValue> : CachingBase<int, TValue>, IReadOnlyCollection<CleanResultBoxed<TValue>>
+    /// <inheritdoc cref="Collections.CachingCollection{TValue}"/>
+    [Obsolete("Use Collections.CachingCollection<TValue>")]
+    public abstract class CachingCollection<TValue> : CachingBase<int, TValue>, IReadOnlyList<CleanResultBoxed<TValue>>
     {
-        public object this[int index] => GetValue(index);
+        CleanResultBoxed<TValue> IReadOnlyList<CleanResultBoxed<TValue>>.this[int index] => this[index].Box();
 
-        public override sealed CleanResult<TValue> GetValue(int index)
+        /// <inheritdoc/>
+        public CleanResult<TValue> this[int index] => GetValue(index);
+
+        /// <inheritdoc/>
+        public sealed override CleanResult<TValue> GetValue(int index)
         {
             if (index < 0 || Count <= index)
             {
@@ -19,8 +24,10 @@ namespace StudioIdGames.MimiClean
             return base.GetValue(index);
         }
 
+        /// <inheritdoc/>
         protected abstract override CleanResult<TValue> GetValueProtected(int index);
 
+        /// <inheritdoc/>
         public IEnumerator<CleanResultBoxed<TValue>> GetEnumerator()
         {
             for (int i = 0; i < Count; i++)

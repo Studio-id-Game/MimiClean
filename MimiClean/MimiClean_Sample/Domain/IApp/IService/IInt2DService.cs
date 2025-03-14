@@ -1,14 +1,12 @@
-﻿using StudioIdGames.MimiClean.Domain.IApp;
-using StudioIdGames.MimiCleanContainer;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IService
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IService
 {
+    using MimiCleanContainer;
+
     /// <summary>
     /// <typeparamref name="TInt2D"/> で表される二次元整数座標の演算をserviceとして抽象化します。
     /// </summary>
     /// <typeparam name="TInt2D"></typeparam>
-    [MimiServiceType(MimiServiceType.Static)]
-    public interface IInt2DService<TInt2D> : IAppService
+    public interface IInt2DService<TInt2D> : IStaticService
     {
         /// <summary>
         /// 座標の加算を表します。

@@ -1,14 +1,13 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain.App;
-using StudioIdGames.MimiCleanContainer;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
+    using Entity;
     using IApp.IRepository;
     using IApp.IService;
     using IApp.IUseCase;
     using IApp.UseCaseIO;
-    using IDomain.IEntity;
+    using MimiClean;
+    using MimiClean.Domain.App;
+    using MimiCleanContainer;
 
     /// <summary>
     /// <see cref="IMoveItemUseCase"/> の実装
@@ -35,7 +34,7 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 
             bool found = false;
 
-            List<(IItemEntity entity, int oldX, int oldY)> movedEntities = [];
+            List<(ItemEntity<TInt2D> entity, int oldX, int oldY)> movedEntities = [];
 
             foreach (var item in items.Values.ToArray())
             {

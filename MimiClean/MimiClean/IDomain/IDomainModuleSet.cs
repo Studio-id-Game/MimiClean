@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
-
-namespace StudioIdGames.MimiClean.IDomain
+﻿namespace StudioIdGames.MimiClean.IDomain
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
-    /// <see cref="IDomainModule"/>の特定の組み合わせを表現するインターフェースです。
+    /// <see cref="IDomainModule"/>の特定の組み合わせを表現するインターフェースです。<br/>
+    /// Domain層をinterface化するのは Bad Pattern なので非推奨になりました。
     /// </summary>
+    [Obsolete("Use StudioIdGames.MimiClean.Domain.DomainModuleSet")]
     public interface IDomainModuleSet : IDomainModule, IEnumerable<IDomainModule>
     {
         /// <summary>

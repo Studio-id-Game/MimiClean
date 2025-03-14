@@ -1,12 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-
-namespace StudioIdGames.MimiClean.Domain.IApp
+﻿namespace StudioIdGames.MimiClean.Domain.IApp
 {
+    using MimiCleanContainer;
+    using StudioIdGames.MimiClean.Collections;
+    using System.Collections;
+    using System.Collections.Generic;
+
     /// <summary>
     /// 全てのデータストアを抽象化します。
     /// </summary>
-    public interface IAppRepository : IEnumerable, IAppService
+#pragma warning disable CS0618 // 型またはメンバーが旧型式です IAppService
+
+    public interface IAppRepository : IEnumerable, IMimiService, IAppService
+#pragma warning restore CS0618 // 型またはメンバーが旧型式です IAppService
     {
         /// <summary>
         /// ストアされているデータの件数
@@ -18,7 +23,7 @@ namespace StudioIdGames.MimiClean.Domain.IApp
     /// リスト型データストアを抽象化します。
     /// </summary>
     /// <typeparam name="TValue">ストアする値の型</typeparam>
-    public interface IAppRepository<TValue> : IAppRepository, IEnumerable<TValue>, IReadOnlyCollection<TValue>
+    public interface IAppRepository<out TValue> : IAppRepository, IReadOnlyCollection<TValue>
     {
     }
 
@@ -26,12 +31,8 @@ namespace StudioIdGames.MimiClean.Domain.IApp
     /// 単一値型データストアを抽象化します。
     /// </summary>
     /// <typeparam name="TValue">ストアする値の型</typeparam>
-    public interface IAppRepositoryMono<TValue> : IAppRepository<TValue>
+    public interface IAppRepositoryMono<out TValue> : IAppRepository, IMonoCollection<TValue>
     {
-        /// <summary>
-        /// ストアされている単一の値
-        /// </summary>
-        TValue Value { get; }
     }
 
     /// <summary>
@@ -39,7 +40,7 @@ namespace StudioIdGames.MimiClean.Domain.IApp
     /// </summary>
     /// <typeparam name="TKey">ストアに利用するKeyの型</typeparam>
     /// <typeparam name="TValue">ストアする値の型</typeparam>
-    public interface IAppRepositoryMap<TKey, TValue> : IAppRepository<KeyValuePair<TKey, TValue>>, IReadOnlyDictionary<TKey, TValue>
+    public interface IAppRepositoryMap<TKey, TValue> : IAppRepository, IReadOnlyDictionary<TKey, TValue>
     {
     }
 }

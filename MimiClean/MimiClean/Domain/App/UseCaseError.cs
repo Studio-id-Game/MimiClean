@@ -55,7 +55,7 @@
             ErrorCase = errorCase;
         }
 
-        public override sealed string Message => ErrorCaseMessage(ErrorCase);
+        public sealed override string Message => ErrorCaseMessage(ErrorCase);
 
         protected virtual string ErrorCaseMessage(TCaseInfo caseInfo)
         {

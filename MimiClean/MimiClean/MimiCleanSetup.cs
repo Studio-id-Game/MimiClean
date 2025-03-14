@@ -16,6 +16,10 @@ namespace StudioIdGames.MimiClean
             Domain.App.MimiCleanAppSetup.SetDefaultService();
         }
 
+        /// <summary>
+        /// MimiCleanが内部で利用するサービスをセットアップします。
+        /// </summary>
+        /// <param name="_">未使用</param>
         [Obsolete("Unused arguments")]
         public static void SetDefaultService(MimiServiceContainer _)
         {

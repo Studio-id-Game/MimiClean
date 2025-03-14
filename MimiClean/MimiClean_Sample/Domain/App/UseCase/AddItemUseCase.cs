@@ -1,14 +1,13 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain.App;
-using StudioIdGames.MimiCleanContainer;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
+    using Entity;
     using IApp.IRepository;
     using IApp.IService;
     using IApp.IUseCase;
     using IApp.UseCaseIO;
-    using IDomain.IEntity;
+    using MimiClean;
+    using MimiClean.Domain.App;
+    using MimiCleanContainer;
 
     /// <summary>
     /// <see cref="IAddItemUseCase"/>を実装します。
@@ -47,10 +46,12 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
                 return CleanResult.Failed(new AddItemError(this, AddItemErrorCase.DuplicatePosition));
             }
 
-            var item = serviceProvider.GetService<IItemEntity<TInt2D>>();
-            item.X = x;
-            item.Y = y;
-            item.ItemName = name;
+            var item = new ItemEntity<TInt2D>(serviceProvider.GetService<IInt2DService<TInt2D>>)
+            {
+                X = x,
+                Y = y,
+                ItemName = name
+            };
 
             return items.TryAdd(item) ? CleanResult.Success() : CleanResult.Failed(new AddItemError(this, AddItemErrorCase.DuplicatePosition));
         }
