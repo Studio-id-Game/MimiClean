@@ -83,7 +83,8 @@ Manual pre-registration of default factory by `MimiServiceDefault<TInterface>.Se
 - v1.x bata: Implemented DI Container (MimiCleanContainer) and redesigned namespace to make it closer to Clean Architecture in functionality and philosophy.
   - v1.1.x bata: Implemented the minimum functionality required to be called Clean Architecture and DI Container.
   - v1.2.x bata: Minor enhancements and optimizations to the features implemented in v1.1.x bata.
-  - v1.3.x bata: Implement most of the essential features for practical use in Unity and tool development.
+  - v1.3.x bata: Implement most of the essential features for practical use in tool development.
+  - v1.4.x bata: Support Unity (UniTask) and make some simple performance improvements.
 
 # Development Background
 
