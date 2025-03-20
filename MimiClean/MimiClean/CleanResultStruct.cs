@@ -66,12 +66,12 @@ namespace StudioIdGames.MimiClean
         {
             get
             {
-                if (State == CleanResultState.Failed)
+                if (State == CleanResultState.Success)
                 {
                     return result;
                 }
 
-                throw new InvalidOperationException("Result can be obtained only when the State is not Failed.");
+                throw new InvalidOperationException($"Result can be obtained only when the State is {State}. You can use a {nameof(TryGetValue)}() method.");
             }
         }
 
