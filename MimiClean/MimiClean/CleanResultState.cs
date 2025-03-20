@@ -3,7 +3,7 @@
     /// <summary>
     /// <see cref="CleanResult{TResult}"/>で利用する、操作の状態を表します。
     /// </summary>
-    public enum CleanResultState
+    public enum CleanResultState : byte
     {
         /// <summary>
         /// 操作が成功し、Resultが得られている状態を表します。
