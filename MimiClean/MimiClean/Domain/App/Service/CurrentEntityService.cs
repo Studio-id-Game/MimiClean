@@ -12,6 +12,7 @@ namespace StudioIdGames.MimiClean.Domain.App.Service
     [Obsolete("This feature is no longer useful.")]
     public sealed class CurrentEntityService : IStaticService, ICurrentEntityService
     {
+        /// <inheritdoc/>
         public IDomainEntity CurrentEntity { get; set; }
     }
 }
