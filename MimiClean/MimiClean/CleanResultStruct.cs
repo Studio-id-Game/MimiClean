@@ -92,7 +92,7 @@ namespace StudioIdGames.MimiClean
         /// <inheritdoc/>
         public CleanResultState TryGetValue(out TResult result)
         {
-            result = Result;
+            result = this.result;
             return State;
         }
 
