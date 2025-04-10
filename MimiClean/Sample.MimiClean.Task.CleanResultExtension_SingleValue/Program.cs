@@ -4,13 +4,14 @@
     using StudioIdGames.MimiClean.Collections;
     using StudioIdGames.MimiClean.Domain.App;
     using StudioIdGames.MimiClean.Task;
+    using System;
     using System.Threading.Tasks;
 
     internal class Program
     {
         private class StartActRepository : RepositoryCleanResultMono<Task>
         {
-            private class CountUp : CleanResultMonoValue
+            private class CountUp : CleanResultMonoCollection<Task>
             {
                 public override CleanResult<Task> GetValue(CancellationToken cancellationToken)
                 {
@@ -50,7 +51,7 @@ Let's Start The Sample Program!!" + "\n\n";
 
         private class CountRepository : RepositoryCleanResultMono<Task<int>>
         {
-            private class CountUp : CleanResultMonoValue
+            private class CountUp : CleanResultMonoCollection<Task<int>>
             {
                 private int num = 1;
 
@@ -145,14 +146,21 @@ Let's Start The Sample Program!!" + "\n\n";
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    Write(i, await countRep.GetValue(cts.Token));
+                    try
+                    {
+                        Write(i, await countRep.GetValue(cts.Token));
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine($"[{i}] {e.Message}");
+                    }
                 }
             }
         }
 
         private static void Write(int index, in CleanResult<int> res)
         {
-            Console.WriteLine($"[{index}] {res.State}, {res.Result}");
+            Console.WriteLine($"[{index}] {res.TryGetValue(out var result)}, {result}");
         }
     }
 }

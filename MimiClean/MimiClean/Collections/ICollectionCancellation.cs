@@ -15,5 +15,13 @@
         /// <param name="cancellationToken"></param>
         /// <returns></returns>
         IEnumerable<TValue> GetValues(CancellationToken cancellationToken);
+
+        /// <summary>
+        /// キャンセルを考慮して、指定したインデックスに対応する要素を取得します
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns></returns>
+        TValue ElementAt(int index, CancellationToken cancellationToken);
     }
 }

@@ -1,5 +1,6 @@
 ﻿namespace StudioIdGames.MimiClean.Collections
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Threading;
@@ -26,7 +27,7 @@
         public int Count => values.Count;
 
         /// <inheritdoc cref="IReadOnlyList{T}.this[int]"/>
-        public CleanResult<TResult> this[int index] => GetResult(values[index]);
+        public CleanResult<TResult> this[int index] => ElementAt(index, CancellationToken.None);
 
         CleanResultBoxed<TResult> IReadOnlyList<CleanResultBoxed<TResult>>.this[int index] => this[index].Box();
 
@@ -34,8 +35,12 @@
         /// 内部辞書の検索結果から、最終的な値の作成を実装します。
         /// </summary>
         /// <param name="value">変換過程値</param>
+        /// <param name="cancellationToken">キャンセルトークン</param>
         /// <returns></returns>
-        protected abstract CleanResult<TResult> GetResult(TValue value);
+        protected virtual CleanResult<TResult> GetResult(TValue value, CancellationToken cancellationToken) => throw new NotImplementedException();
+
+        /// <inheritdoc cref="GetResult(TValue, CancellationToken)"/>
+        protected virtual CleanResult<TResult> GetResult(TValue value) => GetResult(value, CancellationToken.None);
 
         /// <inheritdoc/>
         public IEnumerator<CleanResultBoxed<TResult>> GetEnumerator()
@@ -54,7 +59,28 @@
         /// <inheritdoc/>
         public virtual IEnumerable<CleanResultBoxed<TResult>> GetValues(CancellationToken cancellationToken)
         {
-            return this;
+            foreach (var item in values)
+            {
+                yield return GetResult(item, cancellationToken).Box();
+            }
+        }
+
+        /// <inheritdoc/>
+        public CleanResult<TResult> ElementAt(int index, CancellationToken cancellationToken)
+        {
+            if (0 <= index && index < values.Count)
+            {
+                return GetResult(values[index], cancellationToken);
+            }
+            else
+            {
+                return CleanResult.Failed<TResult>(new IndexOutOfRangeException(nameof(index)));
+            }
+        }
+
+        CleanResultBoxed<TResult> ICollectionCancellation<CleanResultBoxed<TResult>>.ElementAt(int index, CancellationToken cancellationToken)
+        {
+            return ElementAt(index, cancellationToken).Box();
         }
     }
 }

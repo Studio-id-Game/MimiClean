@@ -15,24 +15,24 @@
         {
             protected override ICleanResultCollection<Task> CleanResultValuesProtected { get; } = new Acts(acts);
 
-            private static readonly List<Func<Task>> acts =
+            private static readonly List<Func<CancellationToken, Task>> acts =
             [
-                () => Task.Run(async () =>
+                (ct) => Task.Run(async ( ) =>
                 {
                     foreach (var item in "Hello!!\n\n")
                     {
                         Console.Write(item);
                         if (item == '\n')
                         {
-                            await Task.Delay(200);
+                            await Task.Delay(200, ct);
                         }
                         else
                         {
-                            await Task.Delay(20);
+                            await Task.Delay(20, ct);
                         }
                     }
                 }),
-                () => Task.Run(async () =>
+                (ct) => Task.Run(async () =>
                 {
                     var text =
 
@@ -44,26 +44,26 @@ Let's Start The Sample Program!!" + "\n\n";
                         Console.Write(item);
                         if (item == '\n')
                         {
-                            await Task.Delay(200);
+                            await Task.Delay(200, ct);
                         }
                         else
                         {
-                            await Task.Delay(20);
+                            await Task.Delay(20, ct);
                         }
                     }
                 }),
             ];
 
-            private class Acts(IReadOnlyList<Func<Task>> acts) : CleanResultList<Func<Task>, Task>(acts)
+            private class Acts(IReadOnlyList<Func<CancellationToken, Task>> acts) : CleanResultList<Func<CancellationToken, Task>, Task>(acts)
             {
                 public override IEnumerable<CleanResultBoxed<Task>> GetValues(CancellationToken cancellationToken)
                 {
                     return base.GetValues(cancellationToken);
                 }
 
-                protected override CleanResult<Task> GetResult(Func<Task> value)
+                protected override CleanResult<Task> GetResult(Func<CancellationToken, Task> value, CancellationToken cancellationToken)
                 {
-                    return CleanResult.Success(value?.Invoke() ?? Task.CompletedTask);
+                    return CleanResult.Success(value?.Invoke(cancellationToken) ?? Task.CompletedTask);
                 }
             }
         }
@@ -82,29 +82,72 @@ Let's Start The Sample Program!!" + "\n\n";
 
             private class Names(IReadOnlyDictionary<string, string> names) : CleanResultDictionary<string, string, Task<string>>(names)
             {
-                protected override CleanResult<Task<string>> GetResult(string key, string value, bool isDefined)
+                protected override CleanResult<Task<string>> GetResult(string key, string value, bool isDefined, CancellationToken cancellationToken)
                 {
                     if (isDefined)
                     {
-                        return CleanResult.Success(Task.Run(async () =>
+                        var task = Task.Run(async () =>
                         {
                             if (Random.Shared.NextDouble() < 0.75)
                             {
-                                await Task.Delay(1000);
+                                await Task.Delay(1000, cancellationToken);
                                 return value;
                             }
                             else
                             {
-                                await Task.Delay(1500);
+                                await Task.Delay(1000, cancellationToken);
                                 throw new Exception("Dummy Access Error");
                             }
-                        }));
+                        });
+
+                        return CleanResult.Success(task);
                     }
                     else
                     {
                         return CleanResult.Failed<Task<string>>(new ArgumentOutOfRangeException(nameof(key)));
                     }
                 }
+            }
+        }
+
+        private class SimpleCanceller : IDisposable
+        {
+            private readonly CancellationTokenSource tokenSource = new();
+
+            public SimpleCanceller()
+            {
+                var token = tokenSource.Token;
+                _ = Task.Run(async () =>
+                {
+                    while (true)
+                    {
+                        if (Console.KeyAvailable)
+                        {
+                            if (Console.ReadKey().Key == ConsoleKey.Enter)
+                            {
+                                if (!tokenSource.IsCancellationRequested)
+                                {
+                                    tokenSource.Cancel();
+                                    Console.WriteLine();
+                                }
+                                break;
+                            }
+                        }
+
+                        await Task.Delay(50, token);
+                    }
+                }, token);
+            }
+
+            public CancellationToken Token => tokenSource.Token;
+
+            public void Dispose()
+            {
+                if (!tokenSource.IsCancellationRequested)
+                {
+                    tokenSource.Cancel();
+                }
+                tokenSource.Dispose();
             }
         }
 
@@ -116,67 +159,78 @@ Let's Start The Sample Program!!" + "\n\n";
 
         private static async Task MainAsync(string[] _)
         {
+            Console.WriteLine("[Press Enter to cancel a section.]\n");
+
             var startActRep = new StartActRepository();
 
-            foreach (var act in startActRep)
+            using (var cts = new SimpleCanceller())
             {
-                await act.Unbox();
+                foreach (var act in startActRep.GetValues(cts.Token))
+                {
+                    await act.Unbox();
+                }
             }
 
             var namesRep = new NamesRepository();
 
             for (int i = 0; i < 3; i++)
             {
+                using var cts = new SimpleCanceller();
+
                 Console.WriteLine($"- When All -------------------");
 
-                var tasks = namesRep
+                var tasks = namesRep.GetValues(cts.Token)
                     .Where(e => e.Value.IsSuccess)
-                    .Select(e =>
+                    .Select(async e =>
                     {
-                        return Task.Run(async () =>
+                        try
                         {
                             Write(e.Key, await e.Value.Unbox());
-                        });
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.Write($"The {e.Key} is error, by {ex.GetType()} : {ex.Message}!\n");
+                        }
                     })
                     .ToArray();
 
                 await Task.WhenAll(tasks);
 
-                static void Write(string key, in CleanResult<string> res)
-                {
-                    if (res)
-                    {
-                        Console.Write($"The {key} is called {res.Result}!\n");
-                    }
-                    else
-                    {
-                        Console.Write($"The {key} is called ...??\n");
-                    }
-                }
+                Console.WriteLine();
             }
 
             Console.WriteLine();
 
             for (int i = 0; i < 3; i++)
             {
+                using var cts = new SimpleCanceller();
                 Console.WriteLine($"- Step by Step -------------------");
-                foreach (var key in namesRep.Keys)
+
+                foreach (var (key, value) in namesRep.GetValues(cts.Token))
                 {
-                    Console.Write($"The {key} is called ...");
-                    Write(await namesRep[key].Unbox());
+                    try
+                    {
+                        Write(key, await value.Unbox());
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.Write($"The {key} is error, by {ex.GetType()} : {ex.Message}!\n");
+                    }
                 }
 
-                static void Write(in CleanResult<string> res)
-                {
-                    if (res)
-                    {
-                        Console.WriteLine($"{res.Result}!");
-                    }
-                    else
-                    {
-                        Console.WriteLine($" ...??");
-                    }
-                }
+                Console.WriteLine();
+            }
+        }
+
+        private static void Write(string key, in CleanResult<string> res)
+        {
+            if (res)
+            {
+                Console.WriteLine($"The {key} is called {res.Result}!");
+            }
+            else
+            {
+                Console.WriteLine($"The {key} is {res.State}!");
             }
         }
     }
