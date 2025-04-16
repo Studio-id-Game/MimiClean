@@ -39,7 +39,7 @@ StudioIdGames.MimiClean 及び StudioIdGames.MimiCleanContainer は、サード�
 - [Repository](https://github.com/Cysharp/UniTask/)
 - [License](https://github.com/Cysharp/UniTask/?path=LICENSE)
 
-## NuGetForUnity
+## NuGet importer for Unity
 
 - [Repository](https://github.com/GlitchEnzo/NuGetForUnity/)
 - [License](https://github.com/GlitchEnzo/NuGetForUnity/?path=LICENSE)
