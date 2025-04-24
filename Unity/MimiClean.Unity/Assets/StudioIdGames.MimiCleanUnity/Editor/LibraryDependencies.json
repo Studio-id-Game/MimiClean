@@ -1,0 +1,11 @@
+{
+    "packageName": "MimiCleanUnity",
+    "assemblyDatas": [
+        "Microsoft.Extensions.DependencyInjection : 9.0.0.0",
+        "Microsoft.Extensions.DependencyInjection.Abstractions : 9.0.0.0",
+        "netstandard : 2.1.0.0",
+        "StudioIdGames.MimiClean : 1.4.0.0",
+        "StudioIdGames.MimiCleanContainer : 0.3.0.0",
+        "UniTask : 0.0.0.0"
+    ]
+}

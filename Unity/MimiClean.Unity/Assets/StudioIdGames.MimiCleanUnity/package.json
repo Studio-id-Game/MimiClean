@@ -1,0 +1,22 @@
+{
+    "name": "com.studio-id-games.mimi-clean-unity",
+    "displayName": "StudioIdGames.MimiCleanUnity",
+    "author": {
+        "name": "StudioIdGames",
+        "email": "studioid.game@gmail.com",
+        "url": "https://github.com/Studio-id-Game/MimiClean"
+    },
+    "version": "0.1.0",
+    "unity": "2018.4",
+    "description": "C# Simple clean-like architecture for Unity",
+    "keywords": [
+        "system",
+        "architecture",
+        "tool"
+    ],
+    "license": "MIT",
+    "documentationUrl": "https://studio-id-game.github.io/MimiClean/",
+    "licensesUrl": "https://github.com/Studio-id-Game/MimiClean?path=LICENSE",
+    "dependencies": {
+    }
+}
