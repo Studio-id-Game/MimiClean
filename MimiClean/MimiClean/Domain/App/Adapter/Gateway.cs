@@ -8,6 +8,7 @@
     /// <typeparam name="TInput">取得する入力オブジェクトの型</typeparam>
     public abstract class Gateway<TInput> : IAdapterGateway<TInput>
     {
+        /// <inheritdoc/>
         public abstract CleanResult<TInput> MakeInput();
 
         CleanResult<object> IAdapterGateway.MakeInput() => MakeInput().AsObject();

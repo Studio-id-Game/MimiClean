@@ -6,6 +6,7 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
 {
     using Entity;
     using IApp.IRepository;
+    using StudioIdGames.MimiClean.Collections;
 
     /// <summary>
     /// <see cref="IMapInfoRepository"/> を実装します。マップサイズは10x10で固定です。
@@ -18,9 +19,9 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
 
             var entity = new MapInfoEntity(10, 10);
 
-            ValueProtected = new MonoValue(entity);
+            ValueProtected = new MonoCollection<MapInfoEntity>(entity);
         }
 
-        protected override MonoValue ValueProtected { get; }
+        protected override MonoCollection<MapInfoEntity> ValueProtected { get; }
     }
 }

@@ -27,14 +27,14 @@
 
             if (cleanResult.Result == null)
             {
-                task = Task.FromResult<T>(default);
+                task = null;
+                taskAwaiter = default;
             }
             else
             {
                 task = cleanResult.Result;
+                taskAwaiter = task.GetAwaiter();
             }
-
-            taskAwaiter = task.GetAwaiter();
         }
 
         /// <inheritdoc cref="TaskAwaiter{TResult}.IsCompleted"/>
@@ -43,29 +43,26 @@
         /// <inheritdoc cref="TaskAwaiter{TResult}.GetResult"/>
         public CleanResult<T> GetResult()
         {
+            if (state != CleanResultState.Success || task == null)
+            {
+                return new CleanResult<T>(state, default, error);
+            }
+
+            T res = default;
             try
             {
-                var res = taskAwaiter.GetResult();
+                res = taskAwaiter.GetResult();
 
                 return GetCleanResult(res);
             }
-            catch (OperationCanceledException)
+            catch (OperationCanceledException e)
             {
-                return CleanResult<T>.Canceled();
-            }
-            catch (Exception e)
-            {
-                return CleanResult<T>.Failed(new CleanResultException(e));
+                return CleanResult<T>.Canceled(res, e);
             }
         }
 
         private CleanResult<T> GetCleanResult(T res)
         {
-            if (state != CleanResultState.Success)
-            {
-                return new CleanResult<T>(state, res, error);
-            }
-
             switch (task.Status)
             {
                 case TaskStatus.Canceled:
@@ -122,14 +119,14 @@
 
             if (cleanResult.Result == null)
             {
-                task = Task.CompletedTask;
+                task = null;
+                taskAwaiter = default;
             }
             else
             {
                 task = cleanResult.Result;
+                taskAwaiter = task.GetAwaiter();
             }
-
-            taskAwaiter = task.GetAwaiter();
         }
 
         /// <inheritdoc cref="TaskAwaiter.IsCompleted"/>
@@ -138,6 +135,11 @@
         /// <inheritdoc cref="TaskAwaiter.GetResult"/>
         public CleanResult<CleanResult.Void> GetResult()
         {
+            if (state != CleanResultState.Success || task == null)
+            {
+                return new CleanResult<CleanResult.Void>(state, default, error);
+            }
+
             try
             {
                 taskAwaiter.GetResult();
@@ -148,19 +150,10 @@
             {
                 return CleanResult<CleanResult.Void>.Canceled(default, e);
             }
-            catch (Exception e)
-            {
-                return CleanResult.Failed(new CleanResultException(e));
-            }
         }
 
         private CleanResult<CleanResult.Void> GetCleanResult()
         {
-            if (state != CleanResultState.Success)
-            {
-                return new CleanResult<CleanResult.Void>(state, default, error);
-            }
-
             switch (task.Status)
             {
                 case TaskStatus.Canceled:

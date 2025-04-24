@@ -16,7 +16,7 @@
         int Count { get; }
 
         /// <summary>
-        /// このセットに含まれる<see cref="DomainModule{TDomainEntity}"/>を列挙します。
+        /// このセットに含まれる<see cref="IDomainModule"/>を列挙します。
         /// </summary>
         /// <typeparam name="T">列挙するモジュールの型フィルター</typeparam>
         /// <returns>結果の列挙体</returns>

@@ -1,5 +1,17 @@
 ### YamlMime:ManagedReference
 apiRules:
 - exclude:
-    uidRegex: ^System\.*
-    type: Namespace
+    uidRegex: ^System\.Object
+    type: Type
+- exclude:
+    uidRegex: ^UnityEngine\.Object
+    type: Type
+- exclude:
+    uidRegex: ^UnityEngine\.Component
+    type: Type
+- exclude:
+    uidRegex: ^UnityEngine\.Behaviour
+    type: Type
+- exclude:
+    uidRegex: ^UnityEngine\.MonoBehaviour
+    type: Type

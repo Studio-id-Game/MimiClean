@@ -2,7 +2,6 @@
 {
     using IApp;
     using StudioIdGames.MimiClean.Collections;
-    using System.Collections;
     using System.Collections.Generic;
 
     /// <summary>
@@ -17,35 +16,16 @@
         {
         }
 
-        /// <summary>
-        /// 単一値を表すコレクション
-        /// </summary>
-        public class MonoValue : IMonoCollection<TValue>
+        /// <inheritdoc/>
+        [System.Obsolete("Use MonoCollection<TValue>")]
+        public class MonoValue : MonoCollection<TValue>
         {
-            /// <inheritdoc/>
-            public TValue Value { get; set; }
-
-            /// <inheritdoc/>
-            public int Count => 1;
-
             /// <summary>
             /// コンストラクター
             /// </summary>
             /// <param name="value">ストアする単一の値</param>
-            public MonoValue(TValue value = default)
+            public MonoValue(TValue value = default) : base(value)
             {
-                Value = value;
-            }
-
-            /// <inheritdoc/>
-            public IEnumerator<TValue> GetEnumerator()
-            {
-                yield return Value;
-            }
-
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                yield return Value;
             }
         }
 
@@ -58,6 +38,6 @@
         public TValue Value => ValueProtected.Value;
 
         /// <inheritdoc/>
-        protected sealed override IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
+        protected override sealed IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
     }
 }

@@ -22,6 +22,18 @@
         protected abstract ICleanResultDictionary<TKey, TValue> CleanResultMapProtected { get; }
 
         /// <inheritdoc/>
+        public KeyValuePair<TKey, CleanResultBoxed<TValue>> ElementAt(int index, CancellationToken cancellationToken)
+        {
+            return CleanResultMapProtected.ElementAt(index, cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public CleanResult<TValue> GetValue(TKey key, CancellationToken cancellationToken)
+        {
+            return CleanResultMapProtected.GetValue(key, cancellationToken);
+        }
+
+        /// <inheritdoc/>
         public IEnumerable<KeyValuePair<TKey, CleanResultBoxed<TValue>>> GetValues(CancellationToken cancellationToken)
         {
             return CleanResultMapProtected.GetValues(cancellationToken);

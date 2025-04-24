@@ -3,7 +3,6 @@
     using IApp;
     using StudioIdGames.MimiClean.Collections;
     using System;
-    using System.Collections;
     using System.Collections.Generic;
     using System.Threading;
 
@@ -49,53 +48,34 @@
                     GetValue(cancellationToken).Box(),
                 };
             }
-        }
-
-        /// <inheritdoc/>
-        public abstract class CleanResultMonoValue : ICleanResultMonoCollection<TValue>
-        {
-            /// <inheritdoc/>
-            public virtual CleanResult<TValue> Value => GetValue(default);
 
             /// <inheritdoc/>
-            public int Count
+            public CleanResult<TValue> ElementAt(int index, CancellationToken cancellationToken)
             {
-                get
+                if (index == 0)
                 {
-                    var v = Value;
-                    return v.As(v.IsSuccess ? 1 : 0);
+                    return GetValue(cancellationToken);
+                }
+                else
+                {
+                    return CleanResult.Failed<TValue>(new IndexOutOfRangeException(nameof(index)));
                 }
             }
 
-            /// <inheritdoc/>
-            CleanResultBoxed<TValue> IMonoCollection<CleanResultBoxed<TValue>>.Value => Value.Box();
-
-            /// <inheritdoc/>
-            public IEnumerable<CleanResultBoxed<TValue>> GetValues(CancellationToken cancellationToken)
+            CleanResultBoxed<TValue> ICollectionCancellation<CleanResultBoxed<TValue>>.ElementAt(int index, CancellationToken cancellationToken)
             {
-                return new CleanResultBoxed<TValue>[]
-                {
-                    GetValue(cancellationToken).Box(),
-                };
-            }
-
-            /// <inheritdoc/>
-            public IEnumerator<CleanResultBoxed<TValue>> GetEnumerator()
-            {
-                yield return Value.Box();
-            }
-
-            /// <inheritdoc/>
-            public abstract CleanResult<TValue> GetValue(CancellationToken cancellationToken);
-
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                yield return Value.Box();
+                return ElementAt(index, cancellationToken).Box();
             }
         }
 
         /// <inheritdoc/>
-        protected sealed override IMonoCollection<CleanResultBoxed<TValue>> ValueProtected => ValueCleanResultProtected;
+        [Obsolete("Use CleanResultMonoCollection<TValue>")]
+        public abstract class CleanResultMonoValue : CleanResultMonoCollection<TValue>
+        {
+        }
+
+        /// <inheritdoc/>
+        protected override sealed IMonoCollection<CleanResultBoxed<TValue>> ValueProtected => ValueCleanResultProtected;
 
         /// <summary>
         /// <see cref="ValueProtected"/> として利用する <see cref="ICleanResultMonoCollection{TResult}"/>
@@ -112,6 +92,24 @@
         public IEnumerable<CleanResultBoxed<TValue>> GetValues(CancellationToken cancellationToken)
         {
             return new CleanResultBoxed<TValue>[] { GetValue(cancellationToken).Box() };
+        }
+
+        /// <inheritdoc/>
+        public CleanResult<TValue> ElementAt(int index, CancellationToken cancellationToken)
+        {
+            if (index == 0)
+            {
+                return GetValue(cancellationToken);
+            }
+            else
+            {
+                return CleanResult.Failed<TValue>(new IndexOutOfRangeException(nameof(index)));
+            }
+        }
+
+        CleanResultBoxed<TValue> ICollectionCancellation<CleanResultBoxed<TValue>>.ElementAt(int index, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
         }
     }
 }

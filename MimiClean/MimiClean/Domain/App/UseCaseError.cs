@@ -21,8 +21,14 @@
             UseCase = useCase;
         }
 
+        /// <inheritdoc/>
         public override string Message => DefaultErrorMessage();
 
+        /// <summary>
+        /// デフォルトのエラー文
+        /// </summary>
+        /// <param name="errorName"></param>
+        /// <returns></returns>
         protected virtual string DefaultErrorMessage(string errorName = null)
         {
             return $"`{errorName ?? GetType().Name}` Error in Usecase `{UseCase.GetType().Name}`.";
@@ -48,20 +54,31 @@
     /// </summary>
     public abstract class UseCaseError<TCaseInfo> : UseCaseError
     {
+        /// <summary>
+        /// エラーの種別情報
+        /// </summary>
         public TCaseInfo ErrorCase { get; }
 
+        /// <inheritdoc/>
         protected UseCaseError(IAppUseCase useCase, TCaseInfo errorCase) : base(useCase)
         {
             ErrorCase = errorCase;
         }
 
-        public sealed override string Message => ErrorCaseMessage(ErrorCase);
+        /// <inheritdoc/>
+        public override sealed string Message => ErrorCaseMessage(ErrorCase);
 
+        /// <summary>
+        /// エラーの種別情報を文字列化するメソッド
+        /// </summary>
+        /// <param name="caseInfo"></param>
+        /// <returns></returns>
         protected virtual string ErrorCaseMessage(TCaseInfo caseInfo)
         {
             return DefaultErrorMessage(caseInfo.ToString());
         }
 
+        /// <inheritdoc/>
         protected override string DefaultErrorMessage(string errorName = null)
         {
             return base.DefaultErrorMessage($"{GetType().Name} - {errorName}");

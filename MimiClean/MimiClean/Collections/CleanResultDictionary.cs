@@ -1,5 +1,6 @@
 ﻿namespace StudioIdGames.MimiClean.Collections
 {
+    using System;
     using System.Collections;
     using System.Collections.Generic;
     using System.Linq;
@@ -106,13 +107,50 @@
         /// <param name="key">キー</param>
         /// <param name="value">内部辞書の検索結果</param>
         /// <param name="isDefined">キーが存在しているか</param>
+        /// <param name="cancellationToken">キャンセルトークン</param>
         /// <returns></returns>
-        protected abstract CleanResult<TResult> GetResult(TKey key, TValue value, bool isDefined);
+        protected virtual CleanResult<TResult> GetResult(TKey key, TValue value, bool isDefined, CancellationToken cancellationToken) => throw new NotImplementedException();
+
+        /// <inheritdoc cref="GetResult(TKey, TValue, bool, CancellationToken)"/>
+        protected virtual CleanResult<TResult> GetResult(TKey key, TValue value, bool isDefined) => GetResult(key, value, isDefined, CancellationToken.None);
 
         /// <inheritdoc/>
         public virtual IEnumerable<KeyValuePair<TKey, CleanResultBoxed<TResult>>> GetValues(CancellationToken cancellationToken)
         {
-            return this;
+            foreach (var key in Keys)
+            {
+                var value = GetValue(key, cancellationToken);
+                yield return new KeyValuePair<TKey, CleanResultBoxed<TResult>>(key, value.Box());
+            }
+        }
+
+        /// <inheritdoc/>
+        public CleanResult<TResult> GetValue(TKey key, CancellationToken cancellationToken)
+        {
+            if (Dictionary.TryGetValue(key, out var value))
+            {
+                return GetResult(key, value, true, cancellationToken);
+            }
+            else
+            {
+                return GetResult(key, value, false, cancellationToken);
+            }
+        }
+
+        /// <inheritdoc/>
+        public KeyValuePair<TKey, CleanResultBoxed<TResult>> ElementAt(int index, CancellationToken cancellationToken)
+        {
+            if (0 <= index && index < Keys.Count())
+            {
+                var key = Keys.ElementAt(index);
+                var value = GetValue(key, cancellationToken).Box();
+                return new KeyValuePair<TKey, CleanResultBoxed<TResult>>(key, value);
+            }
+            else
+            {
+                var value = CleanResult.Failed<TResult>(new KeyNotFoundException(nameof(index))).Box();
+                return new KeyValuePair<TKey, CleanResultBoxed<TResult>>(default, value);
+            }
         }
     }
 }

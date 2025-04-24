@@ -9,8 +9,10 @@
     /// <typeparam name="TResult">操作の戻り値の型</typeparam>
     public abstract class Presenter<TOutput, TResult> : IAdapterPresenter<TOutput, TResult>
     {
+        /// <inheritdoc/>
         public abstract CleanResult<TResult> Present(in CleanResult<TOutput> usecaseOutput);
 
+        /// <inheritdoc/>
         public CleanResult<object> Present(in CleanResult<object> usecaseOutput)
         {
             return Present(usecaseOutput.As<TOutput>()).AsObject();

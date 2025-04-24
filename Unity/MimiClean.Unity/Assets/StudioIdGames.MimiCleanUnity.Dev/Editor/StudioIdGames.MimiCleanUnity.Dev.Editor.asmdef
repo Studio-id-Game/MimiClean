@@ -1,0 +1,18 @@
+{
+    "name": "StudioIdGames.MimiCleanUnity.Dev.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:1f697500d4432884280f85d5355c707d"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

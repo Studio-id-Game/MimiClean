@@ -7,6 +7,12 @@
           "files": [
             "**/*.sln"
           ]
+        },
+        {
+          "src": "../Unity",
+          "files": [
+            "**/*.sln"
+          ]
         }
       ],
       "dest": "api",
@@ -79,9 +85,10 @@
       "templates/unity"
     ],
     "xref": [
+      "https://normanderwan.github.io/UnityXrefMaps/2021.3/xrefmap.yml"
     ],
     "xrefService": [
-        "https://xref.docs.microsoft.com/query?uid={uid}"
+      "https://xref.docs.microsoft.com/query?uid={uid}"
     ]
   }
 }

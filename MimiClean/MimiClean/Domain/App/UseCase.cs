@@ -15,6 +15,7 @@
             return CleanResult<TOutput>.Failed(new UseCaseError.NotImplemented(this));
         }
 
+        /// <inheritdoc/>
         public CleanResult<object> Excute(in CleanResult<object> input)
         {
             return Excute(input.As<TInput>()).AsObject();
@@ -34,6 +35,7 @@
     /// </summary>
     public abstract class UsecaseVoid : Usecase<CleanResult.Void>, IAppUseCaseVoid
     {
+        /// <inheritdoc/>
         public override CleanResult<CleanResult.Void> Excute(in CleanResult<CleanResult.Void> input)
         {
             return CleanResult.Success();

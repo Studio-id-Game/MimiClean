@@ -1,10 +1,15 @@
-﻿namespace StudioIdGames.MimiClean
+﻿using System;
+
+namespace StudioIdGames.MimiClean
 {
     /// <summary>
     /// 合計メモリ数が16バイト以上なら、<see cref="CleanResultBoxed{TResult}"/> または <see cref="CleanResult{TResult}"/> を利用するべきです。
     /// </summary>　
     public readonly struct CleanResultStruct<TResult> : ICleanResult<TResult>
     {
+        private readonly CleanResultErrorToken errorToken;
+        private readonly TResult result;
+
         /// <summary>
         /// <see cref="CleanResultStruct{TResult}"/>のコンストラクタ
         /// </summary>
@@ -14,8 +19,19 @@
         public CleanResultStruct(CleanResultState state, TResult result, CleanResultError error)
         {
             State = state;
-            Result = result;
-            Error = error;
+            this.result = result;
+            errorToken = CleanResultErrorToken.Create(error);
+        }
+
+        /// <summary>
+        /// <see cref="CleanResultStruct{TResult}"/>のコンストラクタ
+        /// </summary>
+        /// <param name="result">操作にした場合の、操作の結果の戻り値を表します</param>
+        public CleanResultStruct(TResult result)
+        {
+            State = CleanResultState.Success;
+            this.result = result;
+            errorToken = CleanResultErrorToken.Create(null);
         }
 
         /// <summary>
@@ -26,8 +42,8 @@
         public CleanResultStruct(CleanResultState state, TResult result)
         {
             State = state;
-            Result = result;
-            Error = null;
+            this.result = result;
+            errorToken = CleanResultErrorToken.Create(null);
         }
 
         /// <summary>
@@ -38,20 +54,31 @@
         public CleanResultStruct(CleanResultState state, CleanResultError error)
         {
             State = state;
-            Result = default;
-            Error = error;
+            this.result = default;
+            errorToken = CleanResultErrorToken.Create(error);
         }
 
         /// <inheritdoc/>
         public CleanResultState State { get; }
 
         /// <inheritdoc/>
-        public TResult Result { get; }
+        public TResult Result
+        {
+            get
+            {
+                if (State == CleanResultState.Success)
+                {
+                    return result;
+                }
+
+                throw new InvalidOperationException($"Result can be obtained only when the State is {State}. You can use a {nameof(TryGetValue)}() method.");
+            }
+        }
 
         object ICleanResult.Result => Result;
 
         /// <inheritdoc/>
-        public CleanResultError Error { get; }
+        public CleanResultError Error => errorToken.PopError();
 
         /// <inheritdoc/>
         public bool IsSuccess => State == CleanResultState.Success;
@@ -65,7 +92,7 @@
         /// <inheritdoc/>
         public CleanResultState TryGetValue(out TResult result)
         {
-            result = Result;
+            result = this.result;
             return State;
         }
 

@@ -21,6 +21,24 @@
             {
                 return this;
             }
+
+            /// <inheritdoc/>
+            public CleanResult<TValue> ElementAt(int index, CancellationToken cancellationToken)
+            {
+                if (0 <= index && index < Count)
+                {
+                    return this[index];
+                }
+                else
+                {
+                    return CleanResult<TValue>.Failed(new IndexOutOfRangeException(nameof(index)));
+                }
+            }
+
+            CleanResultBoxed<TValue> ICollectionCancellation<CleanResultBoxed<TValue>>.ElementAt(int index, CancellationToken cancellationToken)
+            {
+                return ElementAt(index, cancellationToken).Box();
+            }
         }
 
         /// <inheritdoc/>
@@ -35,6 +53,17 @@
         public IEnumerable<CleanResultBoxed<TValue>> GetValues(CancellationToken cancellationToken)
         {
             return CleanResultValuesProtected.GetValues(cancellationToken);
+        }
+
+        /// <inheritdoc/>
+        public CleanResult<TValue> ElementAt(int index, CancellationToken cancellationToken)
+        {
+            return CleanResultValuesProtected.ElementAt(index, cancellationToken);
+        }
+
+        CleanResultBoxed<TValue> ICollectionCancellation<CleanResultBoxed<TValue>>.ElementAt(int index, CancellationToken cancellationToken)
+        {
+            return ElementAt(index, cancellationToken).Box();
         }
     }
 }
