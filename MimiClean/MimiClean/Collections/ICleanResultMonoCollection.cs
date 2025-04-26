@@ -1,5 +1,6 @@
 ﻿namespace StudioIdGames.MimiClean.Collections
 {
+    using StudioIdGames.MimiClean.Railway;
     using System.Threading;
 
     /// <summary>

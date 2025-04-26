@@ -14,21 +14,21 @@
         /// <param name="a"></param>
         /// <param name="b"></param>
         /// <returns></returns>
-        public TInt2D Add(in TInt2D a, in TInt2D b);
+        TInt2D Add(in TInt2D a, in TInt2D b);
 
         /// <summary>
         /// x座標を取り出します。
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public int GetX(in TInt2D pos);
+        int GetX(in TInt2D pos);
 
         /// <summary>
         /// y座標を取り出します。
         /// </summary>
         /// <param name="pos"></param>
         /// <returns></returns>
-        public int GetY(in TInt2D pos);
+        int GetY(in TInt2D pos);
 
         /// <summary>
         /// 新しい座標を作成します。
@@ -36,6 +36,6 @@
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
-        public TInt2D New(int x, int y);
+        TInt2D New(int x, int y);
     }
 }

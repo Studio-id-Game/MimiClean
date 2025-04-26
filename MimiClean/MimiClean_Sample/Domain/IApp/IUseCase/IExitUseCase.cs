@@ -1,4 +1,4 @@
-﻿using StudioIdGames.MimiClean.Domain.IApp;
+﻿using StudioIdGames.MimiClean.IApp;
 
 namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IUseCase
 {

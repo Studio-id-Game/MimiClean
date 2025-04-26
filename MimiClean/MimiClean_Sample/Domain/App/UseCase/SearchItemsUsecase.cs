@@ -1,12 +1,12 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain.App;
-using StudioIdGames.MimiCleanContainer;
+﻿using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
     using IApp.IRepository;
     using IApp.IUseCase;
     using IApp.UseCaseIO;
+    using StudioIdGames.MimiClean.App;
+    using StudioIdGames.MimiClean.Railway;
 
     /// <summary>
     /// <see cref="ISearchItemsUseCase"/> の実装

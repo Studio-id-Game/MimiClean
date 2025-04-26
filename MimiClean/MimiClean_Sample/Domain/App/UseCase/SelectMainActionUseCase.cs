@@ -1,6 +1,4 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain.App;
-using StudioIdGames.MimiCleanContainer;
+﻿using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
@@ -8,6 +6,8 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
     using IAdapter;
     using IApp.IUseCase;
     using IApp.UseCaseIO;
+    using StudioIdGames.MimiClean.App;
+    using StudioIdGames.MimiClean.Railway;
 
     /// <summary>
     /// <see cref="ISelectMainActionUseCase"/> の実装

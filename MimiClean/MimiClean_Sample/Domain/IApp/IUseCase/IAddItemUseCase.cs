@@ -1,7 +1,6 @@
-﻿using StudioIdGames.MimiClean.Domain.IApp;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IUseCase
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IUseCase
 {
+    using StudioIdGames.MimiClean.IApp;
     using UseCaseIO;
 
     /// <summary>

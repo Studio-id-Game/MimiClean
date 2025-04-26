@@ -1,5 +1,5 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain.App.Adapter;
+﻿using StudioIdGames.MimiClean.Adapter;
+using StudioIdGames.MimiClean.Railway;
 
 namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Gateway.Abstract
 {

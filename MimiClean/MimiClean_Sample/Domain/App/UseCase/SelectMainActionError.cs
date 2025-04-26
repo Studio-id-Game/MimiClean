@@ -1,9 +1,8 @@
-﻿using StudioIdGames.MimiClean.Domain.App;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
     using DomainType;
     using IApp.IUseCase;
+    using StudioIdGames.MimiClean.App;
 
     /// <summary>
     /// 基本動作リストから動作を選択する動作のエラー

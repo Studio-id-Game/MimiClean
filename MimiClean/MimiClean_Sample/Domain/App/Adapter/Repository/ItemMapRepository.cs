@@ -1,9 +1,8 @@
-﻿using StudioIdGames.MimiClean.Domain.App;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
 {
     using Entity;
     using IApp.IRepository;
+    using StudioIdGames.MimiClean.App;
 
     /// <summary>
     /// <see cref="IItemMapRepository"/> を実装します。

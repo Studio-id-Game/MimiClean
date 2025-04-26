@@ -1,10 +1,9 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain.App.Adapter;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
 {
     using IAdapter;
     using IApp.UseCaseIO;
+    using StudioIdGames.MimiClean.Adapter;
+    using StudioIdGames.MimiClean.Railway;
 
     /// <summary>
     /// <see cref="ISearchItems.IPresenter"/> を実装します。

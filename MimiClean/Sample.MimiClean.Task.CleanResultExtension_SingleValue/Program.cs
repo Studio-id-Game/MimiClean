@@ -1,8 +1,8 @@
 ﻿namespace StudioIdGames.Sample.MimiClean.Task.CleanResultExtension_SingleValue
 {
-    using StudioIdGames.MimiClean;
+    using StudioIdGames.MimiClean.App;
     using StudioIdGames.MimiClean.Collections;
-    using StudioIdGames.MimiClean.Domain.App;
+    using StudioIdGames.MimiClean.Railway;
     using StudioIdGames.MimiClean.Task;
     using System;
     using System.Threading.Tasks;

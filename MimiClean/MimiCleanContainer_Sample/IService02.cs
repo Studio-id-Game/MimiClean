@@ -7,8 +7,8 @@ namespace StudioIdGames.MimiCleanContainer_Sample
     /// </summary>
     public interface IService02 : IStaticService
     {
-        public void Set(string t);
+        void Set(string t);
 
-        public void Print();
+        void Print();
     }
 }

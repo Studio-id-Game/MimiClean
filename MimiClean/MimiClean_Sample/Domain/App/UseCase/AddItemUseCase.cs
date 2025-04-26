@@ -5,9 +5,9 @@
     using IApp.IService;
     using IApp.IUseCase;
     using IApp.UseCaseIO;
-    using MimiClean;
-    using MimiClean.Domain.App;
     using MimiCleanContainer;
+    using StudioIdGames.MimiClean.App;
+    using StudioIdGames.MimiClean.Railway;
 
     /// <summary>
     /// <see cref="IAddItemUseCase"/>を実装します。

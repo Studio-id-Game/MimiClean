@@ -1,10 +1,9 @@
-﻿using StudioIdGames.MimiClean.Domain.App.Adapter;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Controller
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Controller
 {
     using IAdapter;
     using IApp.IUseCase;
     using IApp.UseCaseIO;
+    using StudioIdGames.MimiClean.Adapter;
 
     /// <summary>
     /// <see cref="IMoveItem"/>を実装します。

@@ -1,9 +1,8 @@
-﻿using StudioIdGames.MimiClean;
-using StudioIdGames.MimiClean.Domain.App.Adapter;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Presenter
 {
     using IAdapter;
+    using StudioIdGames.MimiClean.Adapter;
+    using StudioIdGames.MimiClean.Railway;
 
     /// <summary>
     /// <see cref="IExit.IPresenter"/> を実装します。

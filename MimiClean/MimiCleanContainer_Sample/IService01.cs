@@ -7,6 +7,6 @@ namespace StudioIdGames.MimiCleanContainer_Sample
     /// </summary>
     public interface IService01 : IStaticService
     {
-        public string Text { get; set; }
+        string Text { get; set; }
     }
 }

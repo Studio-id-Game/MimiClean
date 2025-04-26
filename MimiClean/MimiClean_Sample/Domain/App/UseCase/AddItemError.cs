@@ -1,8 +1,7 @@
-﻿using StudioIdGames.MimiClean.Domain.App;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.UseCase
 {
     using IApp.IUseCase;
+    using StudioIdGames.MimiClean.App;
 
     /// <summary>
     /// アイテムを追加する動作のエラー

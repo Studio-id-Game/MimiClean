@@ -1,8 +1,8 @@
 ﻿namespace StudioIdGames.MimiClean_Sample.Domain.IApp.IRepository
 {
     using Entity;
-    using MimiClean.Domain.IApp;
     using MimiCleanContainer;
+    using StudioIdGames.MimiClean.IApp;
 
     /// <summary>
     /// 全てのアイテムマップリポジトリを抽象化します。
@@ -13,7 +13,7 @@
         /// <summary>
         /// アイテムの名前一覧
         /// </summary>
-        public IEnumerable<string> ItemNames { get; }
+        IEnumerable<string> ItemNames { get; }
     }
 
     /// <summary>
@@ -27,13 +27,13 @@
         /// </summary>
         /// <param name="value"></param>
         /// <returns>アイテムの追加に成功した時ture</returns>
-        public bool TryAdd(ItemEntity<TInt2D> value);
+        bool TryAdd(ItemEntity<TInt2D> value);
 
         /// <summary>
         /// 指定座標のアイテムを削除します。
         /// </summary>
         /// <param name="key"></param>
         /// <returns></returns>
-        public bool Remove(TInt2D key);
+        bool Remove(TInt2D key);
     }
 }

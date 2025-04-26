@@ -1,11 +1,11 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using StudioIdGames.MimiClean.Domain.App;
 using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository
 {
     using Entity;
     using IApp.IRepository;
+    using StudioIdGames.MimiClean.App;
     using StudioIdGames.MimiClean.Collections;
 
     /// <summary>

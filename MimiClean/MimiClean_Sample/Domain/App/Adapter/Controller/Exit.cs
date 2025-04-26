@@ -1,9 +1,8 @@
-﻿using StudioIdGames.MimiClean.Domain.App.Adapter;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Controller
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Controller
 {
     using IAdapter;
     using IApp.IUseCase;
+    using StudioIdGames.MimiClean.Adapter;
 
     /// <summary>
     /// <see cref="IExit"/>を実装します。

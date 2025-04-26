@@ -1,8 +1,7 @@
-﻿using StudioIdGames.MimiClean.Domain.App.IAdapter;
-
-namespace StudioIdGames.MimiClean_Sample.Domain.App.IAdapter
+﻿namespace StudioIdGames.MimiClean_Sample.Domain.App.IAdapter
 {
     using IApp.UseCaseIO;
+    using StudioIdGames.MimiClean.IAdapter;
 
     /// <summary>
     /// アイテムを追加する全ての操作を抽象化します。
@@ -12,14 +11,14 @@ namespace StudioIdGames.MimiClean_Sample.Domain.App.IAdapter
         /// <summary>
         /// アイテムを追加する際の全ての入力操作を抽象化します。
         /// </summary>
-        public interface IGateway : IAdapterGateway<AddItemInput>
+        interface IGateway : IAdapterGateway<AddItemInput>
         {
         }
 
         /// <summary>
         /// アイテムを追加する際の全ての出力応答を抽象化します。
         /// </summary>
-        public interface IPresenter : IAdapterPresenterVoid
+        interface IPresenter : IAdapterPresenterVoid
         {
         }
     }
