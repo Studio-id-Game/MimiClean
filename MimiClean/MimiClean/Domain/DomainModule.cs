@@ -1,7 +1,7 @@
 ﻿namespace StudioIdGames.MimiClean.Domain
 {
     using IDomain;
-    using StudioIdGames.MimiClean.Domain.IApp;
+    using StudioIdGames.MimiClean.IApp;
     using System;
 
     /// <summary>

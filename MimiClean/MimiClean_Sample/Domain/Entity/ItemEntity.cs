@@ -3,7 +3,7 @@
     using IDomain;
     using Module;
     using StudioIdGames.MimiClean.Domain;
-    using StudioIdGames.MimiClean_Sample.Domain.IApp.IService;
+    using StudioIdGames.MimiClean_Sample.IApp.IService;
 
     /// <summary>
     /// <see cref="IItemProperty{TInt2D}"/> を実装するエンティティです。

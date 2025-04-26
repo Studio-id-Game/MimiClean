@@ -2,6 +2,7 @@
 {
     using IDomain;
     using MimiCleanContainer;
+    using StudioIdGames.MimiClean.IApp;
     using System;
     using System.Collections.Generic;
 
@@ -19,7 +20,7 @@
         [Obsolete("This feature is no longer useful.")]
         protected readonly ref struct CreateEntityScope
         {
-            private readonly IApp.ICurrentEntityService service;
+            private readonly ICurrentEntityService service;
             private readonly IDomainEntity prevEntity;
 
             /// <summary>
@@ -29,7 +30,7 @@
             /// <param name="newEntiry"></param>
             public CreateEntityScope(MimiServiceProvider mimiServiceProvider, IDomainEntity newEntiry)
             {
-                service = mimiServiceProvider.GetMimiService<IApp.ICurrentEntityService>();
+                service = mimiServiceProvider.GetMimiService<ICurrentEntityService>();
                 prevEntity = service.CurrentEntity;
 
                 service.CurrentEntity = newEntiry;

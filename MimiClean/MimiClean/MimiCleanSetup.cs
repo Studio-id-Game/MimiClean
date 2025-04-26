@@ -1,4 +1,5 @@
-﻿using StudioIdGames.MimiCleanContainer;
+﻿using StudioIdGames.MimiClean.App;
+using StudioIdGames.MimiCleanContainer;
 using System;
 
 namespace StudioIdGames.MimiClean
@@ -13,7 +14,7 @@ namespace StudioIdGames.MimiClean
         /// </summary>
         public static void SetDefaultService()
         {
-            Domain.App.MimiCleanAppSetup.SetDefaultService();
+            MimiCleanAppSetup.SetDefaultService();
         }
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace StudioIdGames.MimiClean
         [Obsolete("Unused arguments")]
         public static void SetDefaultService(MimiServiceContainer _)
         {
-            Domain.App.MimiCleanAppSetup.SetDefaultService();
+            MimiCleanAppSetup.SetDefaultService();
         }
     }
 }
