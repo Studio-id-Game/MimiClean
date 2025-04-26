@@ -1,0 +1,11 @@
+﻿using StudioIdGames.MimiClean.IApp;
+
+namespace StudioIdGames.MimiClean_Sample.IApp.IUseCase
+{
+    /// <summary>
+    /// 全てのプログラム終了動作を抽象化します。
+    /// </summary>
+    public interface IExitUseCase : IAppUseCaseVoid
+    {
+    }
+}

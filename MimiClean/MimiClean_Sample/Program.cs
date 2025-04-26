@@ -3,11 +3,11 @@ using StudioIdGames.MimiCleanContainer;
 
 namespace StudioIdGames.MimiClean_Sample
 {
-    using Domain.App.Adapter;
-    using Domain.App.Adapter.Gateway;
-    using Domain.App.IAdapter;
-    using Domain.IApp.IRepository;
-    using StudioIdGames.MimiClean_Sample.Domain.App.Adapter.Repository;
+    using StudioIdGames.MimiClean_Sample.Adapter;
+    using StudioIdGames.MimiClean_Sample.Adapter.Gateway;
+    using StudioIdGames.MimiClean_Sample.Adapter.Repository;
+    using StudioIdGames.MimiClean_Sample.IAdapter;
+    using StudioIdGames.MimiClean_Sample.IApp.IRepository;
 
     /// <summary>
     /// フレームワーク層のメインプログラム
