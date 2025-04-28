@@ -23,6 +23,13 @@ namespace StudioIdGames.MimiClean.Railway
             errorToken = CleanResultErrorToken.Create(error);
         }
 
+        private CleanResultStruct(CleanResultState state, TResult result, CleanResultErrorToken errorToken)
+        {
+            State = state;
+            this.result = result;
+            this.errorToken = errorToken;
+        }
+
         /// <summary>
         /// <see cref="CleanResultStruct{TResult}"/>のコンストラクタ
         /// </summary>
@@ -102,7 +109,7 @@ namespace StudioIdGames.MimiClean.Railway
         /// <returns>新しいCleanResult</returns>
         public CleanResultStruct<CleanResult.Void> AsVoid()
         {
-            return new CleanResultStruct<CleanResult.Void>(State, default, Error);
+            return new CleanResultStruct<CleanResult.Void>(State, default, errorToken);
         }
 
         /// <summary>
@@ -111,7 +118,7 @@ namespace StudioIdGames.MimiClean.Railway
         /// <returns>新しいCleanResult</returns>
         public CleanResultStruct<object> AsObject()
         {
-            return new CleanResultStruct<object>(State, Result, Error);
+            return new CleanResultStruct<object>(State, Result, errorToken);
         }
 
         /// <summary>
@@ -122,7 +129,7 @@ namespace StudioIdGames.MimiClean.Railway
         /// <returns>新しいCleanResult</returns>
         public CleanResultStruct<T> As<T>(T result)
         {
-            return new CleanResultStruct<T>(State, result, Error);
+            return new CleanResultStruct<T>(State, result, errorToken);
         }
 
         /// <summary>
