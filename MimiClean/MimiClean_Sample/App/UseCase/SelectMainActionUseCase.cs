@@ -7,6 +7,7 @@ namespace StudioIdGames.MimiClean_Sample.App.UseCase
     using IApp.UseCaseIO;
     using StudioIdGames.MimiClean.App;
     using StudioIdGames.MimiClean.Railway;
+    using StudioIdGames.MimiClean_Sample.Domain.DomainType;
 
     /// <summary>
     /// <see cref="ISelectMainActionUseCase"/> の実装

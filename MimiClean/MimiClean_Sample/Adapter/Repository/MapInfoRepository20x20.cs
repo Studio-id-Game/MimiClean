@@ -6,6 +6,7 @@ namespace StudioIdGames.MimiClean_Sample.Adapter.Repository
     using IApp.IRepository;
     using StudioIdGames.MimiClean.App;
     using StudioIdGames.MimiClean.Collections;
+    using StudioIdGames.MimiClean_Sample.Domain.Entity;
 
     /// <summary>
     /// <see cref="IMapInfoRepository"/> を実装します。マップサイズは20x20で固定です。

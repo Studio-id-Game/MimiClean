@@ -2,6 +2,7 @@
 {
     using MimiCleanContainer;
     using StudioIdGames.MimiClean.IApp;
+    using StudioIdGames.MimiClean_Sample.Domain.Entity;
 
     /// <summary>
     /// 全てのアイテムマップリポジトリを抽象化します。

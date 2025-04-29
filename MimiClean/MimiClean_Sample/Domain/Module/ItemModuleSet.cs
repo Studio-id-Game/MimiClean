@@ -46,7 +46,7 @@
         /// <inheritdoc/>
         public int Y { get => Int2DPosProperty.Y; set => Int2DPosProperty.Y = value; }
 
-        public override IEnumerable<T> Get_v2<T>(Predicate<T>? match = null)
+        public override IEnumerable<T> Get<T>(Predicate<T>? match = null)
         {
             if (match == null)
             {
@@ -59,17 +59,17 @@
                 if (Int2DPosProperty is T int2DPosModuleT && match(int2DPosModuleT)) yield return int2DPosModuleT;
             }
 
-            foreach (var item in base.Get_v2<T>())
+            foreach (var item in base.Get<T>())
             {
                 yield return item;
             }
         }
 
-        public override IEnumerator<DomainModule> GetEnumerator_v2()
+        public override IEnumerator<DomainModule> GetEnumerator()
         {
             yield return ItemNameProperty;
             yield return Int2DPosProperty;
-            foreach (var module in CustomModules_v2)
+            foreach (var module in CustomModules)
             {
                 yield return module;
             }
