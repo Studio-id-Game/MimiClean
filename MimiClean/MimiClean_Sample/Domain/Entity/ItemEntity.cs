@@ -17,7 +17,7 @@
         }
 
         /// <inheritdoc/>
-        public override IEnumerable<T> M_v2<T>() => ItemModuleSet.Get_v2<T>();
+        public override IEnumerable<T> M<T>() => ItemModuleSet.Get<T>();
 
         /// <summary>
         /// アイテムを定義するモジュールセット

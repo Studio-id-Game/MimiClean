@@ -2,6 +2,7 @@
 {
     using IApp.UseCaseIO;
     using StudioIdGames.MimiClean.IAdapter;
+    using StudioIdGames.MimiClean_Sample.Domain.DomainType;
 
     /// <summary>
     /// 基本動作を選択する全ての操作を抽象化します。

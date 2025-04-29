@@ -3,7 +3,6 @@
     using IApp;
     using StudioIdGames.MimiClean.Collections;
     using StudioIdGames.MimiClean.Railway;
-    using System;
     using System.Collections.Generic;
     using System.Threading;
 
@@ -38,22 +37,6 @@
         public IEnumerable<KeyValuePair<TKey, CleanResultBoxed<TValue>>> GetValues(CancellationToken cancellationToken)
         {
             return CleanResultMapProtected.GetValues(cancellationToken);
-        }
-
-        /// <summary>
-        /// 未使用
-        /// </summary>
-        [Obsolete("Use CachingCollection<TValue>")]
-        public abstract class DefaultKeys : CachingCollection<TKey>
-        {
-        }
-
-        /// <summary>
-        /// 未使用
-        /// </summary>
-        [Obsolete("Use CachingDictionary<TKey, TValue>")]
-        public abstract class DefaultValues : CachingDictionary<TKey, TValue>
-        {
         }
     }
 }

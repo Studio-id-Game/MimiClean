@@ -10,25 +10,6 @@
     /// <typeparam name="TValue">ストアする値の型</typeparam>
     public abstract class RepositoryMono<TValue> : Repository<TValue>, IAppRepositoryMono<TValue>
     {
-        /// <inheritdoc/>
-        [System.Obsolete("Use IMonoCollection<TValue>")]
-        public interface IMonoValue : IMonoCollection<TValue>
-        {
-        }
-
-        /// <inheritdoc/>
-        [System.Obsolete("Use MonoCollection<TValue>")]
-        public class MonoValue : MonoCollection<TValue>
-        {
-            /// <summary>
-            /// コンストラクター
-            /// </summary>
-            /// <param name="value">ストアする単一の値</param>
-            public MonoValue(TValue value = default) : base(value)
-            {
-            }
-        }
-
         /// <summary>
         /// <see cref="ValuesProtected"/> として利用する <see cref="IMonoCollection{TValue}"/>
         /// </summary>
@@ -38,6 +19,6 @@
         public TValue Value => ValueProtected.Value;
 
         /// <inheritdoc/>
-        protected sealed override IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
+        protected override sealed IReadOnlyCollection<TValue> ValuesProtected => ValueProtected;
     }
 }

@@ -3,6 +3,7 @@
     using Abstract;
     using IAdapter;
     using IApp.UseCaseIO;
+    using StudioIdGames.MimiClean_Sample.Domain.DomainType;
 
     /// <summary>
     /// <see cref="ISelectMainAction.IGateway"/> を実装します。コンソール入力を利用します。

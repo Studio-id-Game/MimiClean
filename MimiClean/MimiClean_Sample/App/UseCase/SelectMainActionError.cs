@@ -2,6 +2,7 @@
 {
     using IApp.IUseCase;
     using StudioIdGames.MimiClean.App;
+    using StudioIdGames.MimiClean_Sample.Domain.DomainType;
 
     /// <summary>
     /// 基本動作リストから動作を選択する動作のエラー

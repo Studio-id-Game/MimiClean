@@ -2,6 +2,7 @@
 {
     using IApp.IRepository;
     using StudioIdGames.MimiClean.App;
+    using StudioIdGames.MimiClean_Sample.Domain.Entity;
 
     /// <summary>
     /// <see cref="IItemMapRepository"/> を実装します。

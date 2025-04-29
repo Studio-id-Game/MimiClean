@@ -7,6 +7,7 @@
     using MimiCleanContainer;
     using StudioIdGames.MimiClean.App;
     using StudioIdGames.MimiClean.Railway;
+    using StudioIdGames.MimiClean_Sample.Domain.Entity;
 
     /// <summary>
     /// <see cref="IAddItemUseCase"/>を実装します。

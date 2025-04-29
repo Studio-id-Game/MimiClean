@@ -4,6 +4,7 @@
     using IApp.UseCaseIO;
     using StudioIdGames.MimiClean.Adapter;
     using StudioIdGames.MimiClean.Railway;
+    using StudioIdGames.MimiClean_Sample.Domain.DomainType;
 
     /// <summary>
     /// <see cref="ISelectMainAction.IPresenter"/> を実装します。
@@ -12,24 +13,22 @@
     {
         public override CleanResult<MainActions> Present(in CleanResult<SelectMainActionOutput> usecaseOutput)
         {
-            var act = usecaseOutput.Result.mainAction;
-
-            switch (usecaseOutput.State)
+            switch (usecaseOutput.TryGetValue(out var output))
             {
                 case CleanResultState.Success:
-                    Console.WriteLine($"{act} action is Success.");
+                    Console.WriteLine($"{output.mainAction} action is Success.");
                     break;
 
                 case CleanResultState.Canceled:
-                    Console.WriteLine($"{act} action is Canceled.");
+                    Console.WriteLine($"{output.mainAction} action is Canceled.");
                     break;
 
                 case CleanResultState.Failed:
-                    Console.WriteLine($"{act} action is Failed. `{usecaseOutput.Error}`");
+                    Console.WriteLine($"{output.mainAction} action is Failed. `{usecaseOutput.Error}`");
                     break;
             }
 
-            return usecaseOutput.As(act);
+            return usecaseOutput.As(output.mainAction);
         }
     }
 }

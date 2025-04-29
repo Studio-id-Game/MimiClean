@@ -25,11 +25,5 @@ namespace StudioIdGames.MimiClean_Sample.App
             MimiServiceDefault.Set<ISearchItemsUseCase, SearchItemsUsecase<TInt2D>>();
             MimiServiceDefault.Set<ISelectMainActionUseCase, SelectMainActionUseCase>();
         }
-
-        [Obsolete("Unused arguments")]
-        public static void SetDefaultService<TInt2D>(MimiServiceContainer container)
-        {
-            SetDefaultService<TInt2D>();
-        }
     }
 }

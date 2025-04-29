@@ -1,7 +1,5 @@
 ﻿namespace StudioIdGames.MimiClean.Domain
 {
-    using IDomain;
-    using StudioIdGames.MimiClean.IApp;
     using System;
     using System.Collections;
     using System.Collections.Generic;
@@ -9,14 +7,9 @@
     /// <summary>
     /// <see cref="DomainModule"/>の特定の組み合わせを表現するクラスです。継承して利用する事も出来ます。
     /// </summary>
-#pragma warning disable CS0618 // 型またはメンバーが旧型式です IDomainModuleSet
 
-    public class DomainModuleSet : DomainModule, IReadOnlyCollection<DomainModule>, IDomainModuleSet
-#pragma warning restore CS0618 // 型またはメンバーが旧型式です IDomainModuleSet
+    public class DomainModuleSet : DomainModule, IReadOnlyCollection<DomainModule>
     {
-        [Obsolete("IDomainModuleを完全に削除した時にcustomModulesに統一する")]
-        private readonly List<IDomainModule> customModulesOld = new List<IDomainModule>();
-
         private readonly List<DomainModule> customModules = new List<DomainModule>();
 
         /// <summary>
@@ -29,81 +22,12 @@
         }
 
         /// <summary>
-        /// <see cref="DomainModuleSet"/>のコンストラクタ
-        /// </summary>
-        /// <param name="currentEntity">親の<see cref="DomainEntity"/></param>
-        /// <param name="moduleName">モジュールのカスタム名。デフォルトは GetType().Name です。</param>
-        ///
-        [Obsolete("This feature is no longer useful.")]
-        public DomainModuleSet(ICurrentEntityService currentEntity, string moduleName = null) : base(currentEntity, moduleName)
-        {
-        }
-
-        /// <summary>
         /// 継承先から内部のリストにアクセスするための関数
-        /// （IDomainModuleを完全に廃止した時、<see cref="CustomModules_v2"/> の動作に変更します）
         /// </summary>
-        [Obsolete("IDomainModule is Obsoleted.")]
-        protected IReadOnlyList<IDomainModule> CustomModules => customModulesOld;
-
-        /// <summary>
-        /// 継承先から内部のリストにアクセスするための関数
-        /// （IDomainModuleを完全に廃止した際の<see cref="CustomModules"/>の動作です）
-        /// </summary>
-        protected IReadOnlyList<DomainModule> CustomModules_v2 => customModules;
+        protected IReadOnlyList<DomainModule> CustomModules => customModules;
 
         ///<inheritdoc/>
-#pragma warning disable CS0618 // 型またはメンバーが旧型式です customModulesOld
-        public virtual int Count => customModules.Count + customModulesOld.Count;
-#pragma warning restore CS0618 // 型またはメンバーが旧型式です customModulesOld
-
-        ///<inheritdoc/>
-        [Obsolete("IDomainModuleSet is Obsoleted.")]
-        public virtual IEnumerable<T> Get<T>()
-            where T : class, IDomainModule
-        {
-            foreach (var module in customModulesOld)
-            {
-                if (module is T moduleT) yield return moduleT;
-            }
-        }
-
-        ///<inheritdoc/>
-        [Obsolete("IDomainModuleSet is Obsoleted.")]
-        public virtual bool Add<T>()
-            where T : class, IDomainModule, new()
-        {
-            return Add(new T());
-        }
-
-        ///<inheritdoc/>
-        [Obsolete("IDomainModuleSet is Obsoleted.")]
-        public virtual bool Add<T>(T value)
-            where T : class, IDomainModule
-        {
-            customModulesOld.Add(value);
-            return true;
-        }
-
-        ///<inheritdoc/>
-        [Obsolete("IDomainModuleSet is Obsoleted.")]
-        public virtual bool Remove<T>(T value) where T : class, IDomainModule
-        {
-            return customModulesOld.Remove(value);
-        }
-
-        ///<inheritdoc/>
-        [Obsolete("IDomainModuleSet is Obsoleted.")]
-        public virtual IEnumerator<IDomainModule> GetEnumerator()
-        {
-            // yield return UniqueModule01;
-            // yield return UniqueModule02;
-
-            foreach (var module in customModulesOld)
-            {
-                yield return module;
-            }
-        }
+        public virtual int Count => customModules.Count;
 
         /// <summary>
         /// このセットに含まれる<see cref="DomainModule"/>を列挙します。
@@ -112,7 +36,7 @@
         /// <typeparam name="T">列挙するモジュールの型フィルター</typeparam>
         /// <param name="match">列挙の条件。nullの場合全ての <typeparamref name="T"/> を列挙します。</param>
         /// <returns>結果の列挙体</returns>
-        public virtual IEnumerable<T> Get_v2<T>(Predicate<T> match = null)
+        public virtual IEnumerable<T> Get<T>(Predicate<T> match = null)
             where T : DomainModule
         {
             if (match == null)
@@ -162,11 +86,8 @@
             return customModules.RemoveAll(match);
         }
 
-        /// <summary>
-        /// このセットに含まれる<see cref="DomainModule"/>を列挙します。
-        /// （IDomainModuleSetを完全に廃止した際の<see cref="GetEnumerator"/>の動作です）
-        /// </summary>
-        public virtual IEnumerator<DomainModule> GetEnumerator_v2()
+        ///<inheritdoc/>
+        public virtual IEnumerator<DomainModule> GetEnumerator()
         {
             var modules = customModules;
 
@@ -180,31 +101,9 @@
         }
 
         ///<inheritdoc/>
-        IEnumerator<DomainModule> IEnumerable<DomainModule>.GetEnumerator()
-        {
-            return GetEnumerator_v2();
-        }
-
-        /// <summary>
-        /// IDomainModuleSetを完全に廃止した際のデフォルト列挙体としての動作です。
-        /// foreach でv2の動作を実現できます。
-        /// </summary>
-        public IEnumerable<DomainModule> Enum_v2 => this;
-
-        ///<inheritdoc/>
         IEnumerator IEnumerable.GetEnumerator()
         {
-#pragma warning disable CS0618 // 型またはメンバーが旧型式です GetEnumerator()
-            foreach (var module in this)
-            {
-                yield return module;
-            }
-#pragma warning restore CS0618 // 型またはメンバーが旧型式です GetEnumerator()
-
-            foreach (var module in Enum_v2)
-            {
-                yield return module;
-            }
+            return GetEnumerator();
         }
     }
 }

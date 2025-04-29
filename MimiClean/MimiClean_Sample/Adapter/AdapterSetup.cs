@@ -35,18 +35,6 @@ namespace StudioIdGames.MimiClean_Sample.Adapter
             MimiServiceDefault.Set<IInt2DService<int[]>, Int2DServiceArray>();
         }
 
-        [Obsolete("Unused arguments")]
-        public static void SetDefaultService_Tuple(MimiServiceContainer? _)
-        {
-            SetDefaultService_Tuple();
-        }
-
-        [Obsolete("Unused arguments")]
-        public static void SetDefaultService_Array(MimiServiceContainer? _)
-        {
-            SetDefaultService_Array();
-        }
-
         private static void SetDefaultService<TInt2D>()
             where TInt2D : notnull
         {
