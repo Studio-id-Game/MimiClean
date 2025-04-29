@@ -8,10 +8,8 @@
     /// <summary>
     /// 全てのデータストアを抽象化します。
     /// </summary>
-#pragma warning disable CS0618 // 型またはメンバーが旧型式です IAppService
 
-    public interface IAppRepository : IEnumerable, IMimiService, IAppService
-#pragma warning restore CS0618 // 型またはメンバーが旧型式です IAppService
+    public interface IAppRepository : IEnumerable, IMimiService
     {
         /// <summary>
         /// ストアされているデータの件数
